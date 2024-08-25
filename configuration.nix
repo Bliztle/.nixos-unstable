@@ -6,9 +6,83 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
     ];
+
+  ##### Shell
+  # It is 3 lines to enable zsh
+  programs.zsh.enable = true;
+  environment.shells = with pkgs; [ zsh ];
+  users.defaultUserShell = pkgs.zsh;
+
+  ##### Audio / Sound
+  security.rtkit.enable = true; # PulseAudio uses this for scheduling priority
+  services.pipewire = {
+    enable = true;
+    # TODO: Enable these if there are audio issues
+    # alsa.enable = true; # Drivers and interfaces? Might not be required
+    # alsa.support32Bit = true;
+    # pulse.enable = true;
+    # jack.enable = true;
+  };
+
+  ###### Yubikey configuration
+  # TODO: Register keys declaratively
+  security.pam.u2f = {
+    enable = true;
+    debug = false; # Enable for logging
+    control = "sufficient"; # Do not ask for password if available
+    cue = true;
+  };
+  services.pcscd.enable = true; # Read yubikey certificates as smartcard. Required to get 30s 2fa keys
+
+  # Display Manager
+  programs.sway.enable = true; # Register with dm. Configured in HM
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    theme = "catppuccin-mocha";
+    package = pkgs.kdePackages.sddm;
+  };
+
+  ##### Misc security
+  # SSH is defered to home-manager
+
+  security.polkit.enable = true; # Allow raising privileges
+
+  # gpg encryption agent
+  programs.gnupg.agent = { 
+    enable = true;
+    # ssh support is disabled, as it requires using gpg subkeys instead of ssh keys
+    # and interferes with pcscd, which may be used for smart card integration
+  };
+
+  ##### Packages required by above configuration
+
+  environment.systemPackages = with pkgs; [
+    ###### Yubikey
+    yubioath-flutter # 2FA gui for getting keys
+    pam_u2f # General purpose pam u2f. Enough for yubikey 2fa
+
+    ##### Display Manager
+    ( # catpucchin theme for sddm
+      catppuccin-sddm.override {
+       flavor = "mocha";
+       font  = "Noto Sans";
+       fontSize = "9";
+       # background = "${./wallpaper.png}";
+       background = null; # Set to a path to add background
+       loginBackground = true;
+     }
+   )
+  ];
+
+
+
+
+
+  ##### Default configuration
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -16,10 +90,6 @@
 
   networking.hostName = "zenbook"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -43,9 +113,8 @@
   };
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "dk";
-    xkbVariant = "";
   };
 
   # Configure console keymap
@@ -62,13 +131,12 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  hardware = {
+    graphics.enable = true;
+  };
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    neovim
-    git
-  ];
-
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
