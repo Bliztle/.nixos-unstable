@@ -37,14 +37,14 @@
   };
   services.pcscd.enable = true; # Read yubikey certificates as smartcard. Required to get 30s 2fa keys
 
-  # Display Manager
-  programs.sway.enable = true; # Register with dm. Configured in HM
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-    theme = "catppuccin-mocha";
-    package = pkgs.kdePackages.sddm;
-  };
+  # # Display Manager
+  # programs.sway.enable = true; # Register with dm. Configured in HM
+  # services.displayManager.sddm = {
+  #   enable = true;
+  #   wayland.enable = true;
+  #   theme = "catppuccin-mocha";
+  #   package = pkgs.kdePackages.sddm;
+  # };
 
   ##### Misc security
   # SSH is defered to home-manager
@@ -66,16 +66,16 @@
     pam_u2f # General purpose pam u2f. Enough for yubikey 2fa
 
     ##### Display Manager
-    ( # catpucchin theme for sddm
-      catppuccin-sddm.override {
-       flavor = "mocha";
-       font  = "Noto Sans";
-       fontSize = "9";
-       # background = "${./wallpaper.png}";
-       background = null; # Set to a path to add background
-       loginBackground = true;
-     }
-   )
+   #  ( # catpucchin theme for sddm
+   #    catppuccin-sddm.override {
+   #     flavor = "mocha";
+   #     font  = "Noto Sans";
+   #     fontSize = "9";
+   #     # background = "${./wallpaper.png}";
+   #     background = null; # Set to a path to add background
+   #     loginBackground = true;
+   #   }
+   # )
   ];
 
 
