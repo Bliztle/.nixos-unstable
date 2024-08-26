@@ -33,6 +33,9 @@
     tldr
     unzip
     swww # Wallpaper engine
+
+    # Work
+    teams-for-linux
   ];
 
   home.sessionVariables = {
