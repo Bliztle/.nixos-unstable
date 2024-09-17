@@ -8,6 +8,7 @@
   imports =
     [
       ./hardware-configuration.nix
+      ./modules/games.nix
     ];
 
   ##### Shell
@@ -21,9 +22,10 @@
   services.pipewire = {
     enable = true;
     # TODO: Enable these if there are audio issues
-    # alsa.enable = true; # Drivers and interfaces? Might not be required
-    # alsa.support32Bit = true;
-    # pulse.enable = true;
+    # Pipewire docs recommended enabling the top 3
+    alsa.enable = true; # Drivers and interfaces? Might not be required
+    alsa.support32Bit = true;
+    pulse.enable = true;
     # jack.enable = true;
   };
 
@@ -31,9 +33,11 @@
   # TODO: Register keys declaratively
   security.pam.u2f = {
     enable = true;
-    debug = false; # Enable for logging
     control = "sufficient"; # Do not ask for password if available
-    cue = true;
+    settings = {
+      debug = false; # Enable for logging
+      cue = true;
+    };
   };
   services.pcscd.enable = true; # Read yubikey certificates as smartcard. Required to get 30s 2fa keys
 
@@ -46,6 +50,18 @@
   #   package = pkgs.kdePackages.sddm;
   # };
 
+  ##### Window Manager
+  # Some configuration is handled outside home-manager
+  programs.light.enable = true;
+  programs.sway.enable = true;
+
+  ##### Firewall
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [ 5173 ];
+  };
+
+
   ##### Misc security
   # SSH is defered to home-manager
 
@@ -57,6 +73,9 @@
     # ssh support is disabled, as it requires using gpg subkeys instead of ssh keys
     # and interferes with pcscd, which may be used for smart card integration
   };
+
+  ##### Misc
+  virtualisation.docker.enable = true;
 
   ##### Packages required by above configuration
 
@@ -124,7 +143,8 @@
   users.users.bliztle = {
     isNormalUser = true;
     description = "Bliztle";
-    extraGroups = [ "networkmanager" "wheel" ];
+    # "video" is required to control laptop brightness
+    extraGroups = [ "networkmanager" "wheel" "video" ];
     packages = with pkgs; [];
   };
 

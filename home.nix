@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./modules/dev.nix
     ./modules/git.nix
     ./modules/kitty.nix
     ./modules/neovim
@@ -26,6 +27,10 @@
     obsidian # No overrides needed anymore
     wdisplays
     protonmail-desktop
+    discord
+    wl-mirror
+    libreoffice-qt
+    pavucontrol
 
     # CLI Tools
     wl-clipboard
@@ -33,10 +38,13 @@
     tldr
     unzip
     swww # Wallpaper engine
+    slurp # Screenshot dependency
+    grim # Screenshot dependency
 
     # Work
     teams-for-linux
   ];
+  programs.joplin-desktop.enable = true;
 
   home.sessionVariables = {
     EDITOR = "nvim";
