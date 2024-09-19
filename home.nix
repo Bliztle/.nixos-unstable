@@ -8,7 +8,7 @@
     ./modules/neovim
     ./modules/scripts
     ./modules/shell
-    ./modules/sway.nix
+    ./modules/sway
     ./modules/wallpaper
     ./modules/zsh.nix
   ];
@@ -22,7 +22,6 @@
   home.packages = with pkgs; [
     # Applications
     firefox
-    nerdfonts
     spotify
     obsidian # No overrides needed anymore
     wdisplays
@@ -43,6 +42,11 @@
 
     # Work
     teams-for-linux
+    azure-cli
+
+    # Fonts
+    nerdfonts
+    font-awesome
   ];
   programs.joplin-desktop.enable = true;
 

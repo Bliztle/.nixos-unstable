@@ -7,6 +7,8 @@
       nix-direnv.enable = true;
     };
 
+    programs.vscode.enable = true;
+
     home.packages = with pkgs; [
       # Nix
       nil
@@ -21,6 +23,8 @@
       # nodePackages_latest.nodejs # Requirement for pnpm commands to work properly
       nodePackages_latest.pnpm
       nodePackages_latest.typescript-language-server
+      # Python
+      pyright
       # Rust
       rustc
       cargo

@@ -43,6 +43,8 @@ vim.g['prettier#autoformat_config_present'] = 1
 lspconfig.lua_ls.setup {}
 -- Nix
 lspconfig.nil_ls.setup {}
+-- Python
+lspconfig.pyright.setup {}
 -- Rust
 lspconfig.rust_analyzer.setup {
     settings = {
