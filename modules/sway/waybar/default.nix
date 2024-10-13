@@ -22,11 +22,14 @@
         "memory"
         "custom/separator"
         "network"
+        "custom/separator"
+        "temperature"
         "custom/recorder"
         "custom/audiorec"
       ];
 
-      modules-center = [ "tray" "mpd" ];
+      # modules-center = [ "custom/spotify" "tray" "mpd" ];
+      modules-center = [ "custom/spotify" ];
 
       modules-right = [
         "idle_inhibitor"
@@ -107,7 +110,7 @@
     cpu = {
         format = "   {usage}%";
         tooltip = false;
-        on-click = "kitty -e 'htop'";
+        on-click = "kitty -e '${pkgs.htop}/bin/htop'";
     };
 
     memory = {
@@ -140,8 +143,8 @@
         };
 
         format = "{icon}   {capacity}%";
-        format-charging = "&#8239;{capacity}%";
-        format-plugged = "&#8239;{capacity}%";
+        format-charging = "  {capacity}%";
+        format-plugged = "  {capacity}%";
         format-alt = "{icon}  {time}";
         # "format-good": "", // An empty format will hide the module
         # "format-full": "",
@@ -179,16 +182,20 @@
       on-click = "pavucontrol";
     };
     
-    # "custom/spotify" = let
-    #   pythonWithDeps = pkgs.python3.withPackages (p: with p; [
-    #     pygobject3
-    #   ]);
+    "custom/spotify" = let
+      # pythonWithDeps = pkgs.python3.withPackages (p: with p; [
+      #   pygobject3
+      # ]);
+      # pythonWithDeps = "nix-shell -p 'python3.withPackages (python-pkgs: [python-pkgs.pygobject3])' -p playerctl -p gobject-introspection --command";
+      pythonWithDeps = "nix-shell -p 'python3.withPackages (python-pkgs: [python-pkgs.pygobject3])' -p playerctl -p gobject-introspection --command";
+      playerctl = "${pkgs.playerctl}/bin/playerctl";
       # script = toString (pkgs.writeShellScript "mediaplayer.py" ./scripts/mediaplayer.py);
-      # script = pkgs.writeShellScriptBin "mediaplayer.py" ''
+      # script = pkgs.writeShellScriptBin "waybar-mediaplayer" ''
       # #!/usr/bin/env bash
-      # export PATH=${pkgs.playerctl}/bin:$PATH
-      # exec ${pythonWithDeps}/bin/python3 ${./scripts/mediaplayer.py} --player spotify
+      # export PATH=${pkgs.playerctl}/bin:${pkgs.gobject-introspection}:$PATH
+      # ${pythonWithDeps}/bin/python3 ${./scripts/mediaplayer.py} --player spotify
       # '';
+      # exec ${pythonWithDeps}/bin/python3 ${./scripts/mediaplayer.py} --player spotify
       # Provide Playerctl introspection and other dependencies like GLib
   # script = pkgs.buildFHSUserEnvBubblewrap {
   #   name = "mediaplayer-env";
@@ -205,16 +212,23 @@
   #     #!/usr/bin/env bash
   #     exec ${pythonWithDeps}/bin/python3 ${./scripts/mediaplayer.py} --player spotify
   #   '';
+      script = pkgs.writeShellScriptBin "mediaplayer-from-shell" ''
+        #!/usr/bin/env bash
+        python3 ${./scripts/mediaplayer.py} --player spotify
+      '';
   # };
-  #   in {
-  #       # exec = "${pythonWithDeps}/bin/python3 ${script} --player spotify";
-  #       exec = "${script}";
-  #       format = "{}  ";
-  #       return-type = "json";
-  #       on-click = "playerctl play-pause";
-  #       on-scroll-up = "playerctl next";
-  #       on-scroll-down = "playerctl previous";
-  #   };
+    in {
+        # exec = "${pythonWithDeps}/bin/python3 ${script} --player spotify";
+        # exec = "${script}";
+        # exec = "${pythonWithDeps} ${script}";
+        # exec = "${pythonWithDeps} python3 ${./scripts/mediaplayer.py} --player spotify";
+        exec = "${pythonWithDeps} 'python ${./scripts/mediaplayer.py} --player spotify'";
+        format = "{}  ";
+        return-type = "json";
+        on-click = "${playerctl} play-pause";
+        on-scroll-up = "${playerctl} next";
+        on-scroll-down = "${playerctl} previous";
+    };
 
     "custom/recorder" = {
       format = "\uf03d Rec";

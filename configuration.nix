@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports =
@@ -43,12 +43,41 @@
 
   # # Display Manager
   # programs.sway.enable = true; # Register with dm. Configured in HM
-  # services.displayManager.sddm = {
-  #   enable = true;
-  #   wayland.enable = true;
-  #   theme = "catppuccin-mocha";
-  #   package = pkgs.kdePackages.sddm;
-  # };
+  # services.greetd.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+    theme = "catppuccin-mocha";
+    package = pkgs.kdePackages.sddm;
+  };
+  
+  ##### Bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
+  services.blueman.enable = true;
+
+  ##### Battery Optimisation
+  programs.auto-cpufreq = {
+    enable = true;
+    settings = {
+      charger = {
+        governor = "performance";
+        turbo = "auto";
+      };
+      battery = {
+        governor = "powersave";
+        turbo = "auto";
+      };
+    };
+    # governor = "schedutil";
+    # governor = "powersave";
+    # governor = "performance";
+    # governor = "ondemand";
+    # governor = "conservative";
+    # governor = "userspace
+  };
 
   ##### Window Manager
   # Some configuration is handled outside home-manager
@@ -76,6 +105,10 @@
 
   ##### Misc
   virtualisation.docker.enable = true;
+  programs.nix-ld.enable = true; # Allow dynamic linking of nix packages
+  security.pki.certificateFiles = [
+    /etc/ssl/localcerts/localhost.crt
+  ];
 
   ##### Packages required by above configuration
 
@@ -85,16 +118,16 @@
     pam_u2f # General purpose pam u2f. Enough for yubikey 2fa
 
     ##### Display Manager
-   #  ( # catpucchin theme for sddm
-   #    catppuccin-sddm.override {
-   #     flavor = "mocha";
-   #     font  = "Noto Sans";
-   #     fontSize = "9";
-   #     # background = "${./wallpaper.png}";
-   #     background = null; # Set to a path to add background
-   #     loginBackground = true;
-   #   }
-   # )
+    ( # catpucchin theme for sddm
+      catppuccin-sddm.override {
+       flavor = "mocha";
+       font  = "Noto Sans";
+       fontSize = "9";
+       # background = "${./wallpaper.png}";
+       background = null; # Set to a path to add background
+       loginBackground = true;
+     }
+   )
   ];
 
 

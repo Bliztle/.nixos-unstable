@@ -30,6 +30,7 @@
     wl-mirror
     libreoffice-qt
     pavucontrol
+    postman
 
     # CLI Tools
     wl-clipboard
@@ -39,6 +40,9 @@
     swww # Wallpaper engine
     slurp # Screenshot dependency
     grim # Screenshot dependency
+    wireguard-tools
+    openvpn
+    easyrsa
 
     # Work
     teams-for-linux

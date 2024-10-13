@@ -34,5 +34,6 @@
       rust-analyzer
     ];
 
+    # Add node as alias to avoid adding npm to the path
     programs.zsh.shellAliases.node = "${pkgs.nodejs}/bin/node";
 }
