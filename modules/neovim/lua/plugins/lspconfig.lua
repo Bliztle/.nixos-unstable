@@ -29,7 +29,7 @@ lspconfig.omnisharp.setup {
     enable_import_completion = true
 }
 -- Haskell
-lspconfig.hsl.setup {
+lspconfig.hls.setup {
     filetypes = { 'haskell', 'lhaskell', 'cabal' }, -- Cabal isn't added by default
 }
 -- JavaScript / Typescript
