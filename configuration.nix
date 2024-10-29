@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   imports =
@@ -42,12 +42,15 @@
   services.pcscd.enable = true; # Read yubikey certificates as smartcard. Required to get 30s 2fa keys
 
   # # Display Manager
-  # programs.sway.enable = true; # Register with dm. Configured in HM
+  programs.sway.enable = true; # Register with dm. Configured in HM
   # services.greetd.enable = true;
-  services.displayManager.sddm = {
+  
+  services.xserver.enable = true;
+  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm = lib.mkDefault {
     enable = true;
     wayland.enable = true;
-    theme = "catppuccin-mocha";
+    # theme = "catppuccin-mocha";
     package = pkgs.kdePackages.sddm;
   };
   
@@ -79,10 +82,7 @@
     # governor = "userspace
   };
 
-  ##### Window Manager
-  # Some configuration is handled outside home-manager
   programs.light.enable = true;
-  programs.sway.enable = true;
 
   ##### Firewall
   networking.firewall = {
@@ -118,16 +118,16 @@
     pam_u2f # General purpose pam u2f. Enough for yubikey 2fa
 
     ##### Display Manager
-    ( # catpucchin theme for sddm
-      catppuccin-sddm.override {
-       flavor = "mocha";
-       font  = "Noto Sans";
-       fontSize = "9";
-       # background = "${./wallpaper.png}";
-       background = null; # Set to a path to add background
-       loginBackground = true;
-     }
-   )
+   #  ( # catpucchin theme for sddm
+   #    catppuccin-sddm.override {
+   #     flavor = "mocha";
+   #     font  = "Noto Sans";
+   #     fontSize = "9";
+   #     # background = "${./wallpaper.png}";
+   #     background = null; # Set to a path to add background
+   #     loginBackground = true;
+   #   }
+   # )
   ];
 
 

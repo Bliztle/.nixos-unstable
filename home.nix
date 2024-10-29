@@ -43,6 +43,7 @@
     wireguard-tools
     openvpn
     easyrsa
+    whois
 
     # Work
     teams-for-linux

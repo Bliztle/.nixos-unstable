@@ -30,12 +30,14 @@ lspconfig.omnisharp.setup {
 }
 -- Haskell
 lspconfig.hsl.setup {
-    cmd = { 'haskell-language-server-wrapper', '--lsp' }
+    filetypes = { 'haskell', 'lhaskell', 'cabal' }, -- Cabal isn't added by default
 }
 -- JavaScript / Typescript
-lspconfig.tsserver.setup {}
+lspconfig.ts_ls.setup {}
 lspconfig.eslint.setup {}
 lspconfig.svelte.setup {}
+lspconfig.tailwindcss.setup {}
+lspconfig.emmet_language_server.setup {}
 vim.g['prettier#autoformat'] = 0
 vim.g['prettier#autoformat_require_pragma'] = 0
 vim.g['prettier#autoformat_config_present'] = 1
@@ -92,7 +94,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>f', function()
             vim.lsp.buf.format { async = true }
         end, opts)
-        if client.server_capabilities.document_highlight then
+        if client.server_capabilities.documentHighlightProvider then
             vim.api.nvim_exec([[
                 hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646
                 hi LspReferenceText cterm=bold ctermbg=red guibg=#464646

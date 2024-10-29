@@ -31,8 +31,10 @@
           vim-sleuth # Auto detect tabs
           clangd_extensions-nvim # c/c++ integration
           copilot-vim
-          comment-nvim
+          comment-nvim # Comments based on treesitter's commentstring
+          nvim-ts-context-commentstring # Comments for where file extension is not enough (jsx, svelte, etc.)
           markdown-preview-nvim
+          barbar-nvim # Tabline
 
           # Git integration
           vim-fugitive
@@ -52,11 +54,27 @@
           nvim-dap # Debugger
           nvim-dap-ui # UI for Debugger
           vim-prettier # Prettier integration
-          qmk-nvim # QMK integration
       ];
 
       extraPackages = with pkgs; [
       	gcc # Supposedly needed for treesitter
+
+        # Language Servers
+        # C#
+        omnisharp-roslyn
+        # Haskell
+        haskell-language-server
+        # JS / TS
+        vscode-langservers-extracted
+        nodePackages_latest.typescript-language-server
+        tailwindcss-language-server # Tailwind CSS
+        emmet-language-server # Emmet, HTML/CSS abbreviations like div.container>div.row>div.col#id*2
+        # Lua
+        lua-language-server
+        # Nix
+        nil
+        # Python
+        pyright
       ];
 
       extraLuaConfig = builtins.concatStringsSep "\n" ((map lib.strings.fileContents (import ./lua)) ++ []);

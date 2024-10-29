@@ -11,7 +11,8 @@ let
     };
   };
   inputs = {
-    corne = "7504:24926:ZMK_Project_Corne42k_Keyboard";
+    corne_wired = "7504:24926:ZMK_Project_Corne42k_Keyboard";
+    corne_bluetooth = "7504:24926:Corne42k_Keyboard";
     portable_touch = "1267:12113:ELAN_Touchscreen";
     portable_stylus = "1267:12113:ELAN_Touchscreen_Stylus";
   };
@@ -29,25 +30,24 @@ in
       # defaultWorkspace = "1: media";
 
       # Inputs
-      input = {
+      input = let 
+        corne_settings = {
+          xkb_layout = "us";
+        };
+        touch_settings = {
+          tap = "enabled";
+          natural_scroll = "enabled";
+          map_to_output = "'${outputs.builtin}'";
+          scroll_method = "two_finger";
+        };
+      in {
         "type:keyboard" = {
           xkb_layout = "dk";
         };
-        "${inputs.corne}" = {
-          xkb_layout = "us";
-        };
-        "${inputs.portable_touch}" = {
-          tap = "enabled";
-          natural_scroll = "enabled";
-          map_to_output = "'${outputs.portable}'";
-          scroll_method = "two_finger";
-        };
-        "${inputs.portable_stylus}" = {
-          tap = "enabled";
-          natural_scroll = "enabled";
-          map_to_output = "'${outputs.portable}'";
-          scroll_method = "two_finger";
-        };
+        "${inputs.corne_wired}" = corne_settings;
+        "${inputs.corne_bluetooth}" = corne_settings;
+        "${inputs.portable_touch}" = touch_settings;
+        "${inputs.portable_stylus}" = touch_settings;
       };
 
       # Outputs
@@ -96,12 +96,12 @@ in
         border = 0;
         titlebar = false;
         commands = [
-          {
-            criteria = {
-              app_id = "kitty";
-            };
-            command = "opacity 0.85";
-          }
+          # {
+          #   criteria = {
+          #     app_id = "kitty";
+          #   };
+          #   command = "opacity 0.75";
+          # }
           {
             criteria = {
               app_id = "firefox";
@@ -113,7 +113,14 @@ in
             criteria = {
               app_id = "pavucontrol";
             };
-            command = "floating enable, sticky enable";
+            command = "floating enable";
+            # command = "floating enable, sticky enable";
+          }
+          {
+            criteria = {
+              class = "steam_app";
+            };
+            command = "floating enable";
           }
         ];
       };
@@ -281,11 +288,11 @@ in
           # Rotate backgrounds
           command = "swww init && swww-rotate";
         }
-        {
-          # Autotiling
-          always = true;
-          command = "${pkgs.autotiling}/bin/autotiling";
-        }
+        # {
+        #   # Autotiling
+        #   always = true;
+        #   command = "${pkgs.autotiling}/bin/autotiling";
+        # }
       ];
     };
   };

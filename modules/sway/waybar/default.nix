@@ -222,8 +222,13 @@
         # exec = "${script}";
         # exec = "${pythonWithDeps} ${script}";
         # exec = "${pythonWithDeps} python3 ${./scripts/mediaplayer.py} --player spotify";
-        exec = "${pythonWithDeps} 'python ${./scripts/mediaplayer.py} --player spotify'";
-        format = "{}  ";
+        # exec = "${pythonWithDeps} 'python ${./scripts/mediaplayer.py} --player spotify'";
+        # exec = "echo '{\"class\": \"spotify\", \"text\": \"Spotify\"}'";
+        # exec = "echo '{\"text\": \"\uf144 One Direction - Story of My Life\", \"class\": \"custom-spotify\", \"alt\": \"spotify\"}'";
+        # exec = "echo '{\"text\": \"\uf144 One Direction - Story of My Life\", \"class\": \"custom-spotify\", \"alt\": \"spotify\"}' && ${pythonWithDeps} 'python ${./scripts/mediaplayer.py} --player spotify'";
+        # exec = "nix-shell -p 'python3.withPackages (python-pkgs: [python-pkgs.pygobject3])' -p playerctl -p gobject-introspection --command 'python /home/bliztle/dev/nixos/modules/home-manager/waybar/scripts/mediaplayer.py --player spotify'";
+        # format = "{}  ";
+        format = "Spotify  ";
         return-type = "json";
         on-click = "${playerctl} play-pause";
         on-scroll-up = "${playerctl} next";
