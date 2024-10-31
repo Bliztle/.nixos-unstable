@@ -31,7 +31,7 @@
           comment-nvim # Comments based on treesitter's commentstring
           nvim-ts-context-commentstring # Comments for where file extension is not enough (jsx, svelte, etc.)
           markdown-preview-nvim
-          barbar-nvim # Tabline
+          bufferline-nvim # Display buffers in top statusline
           leap-nvim # Extra movement commands
           rainbow-delimiters-nvim # Rainbow brackets
 

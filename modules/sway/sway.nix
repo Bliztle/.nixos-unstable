@@ -67,7 +67,7 @@ in
         # Omen
         "${outputs.omen}"= {
           pos = "0 360";
-          mode = "1920x1080@60Hz";
+          mode = "1920x1080@144Hz";
         };
         
         # Wide AOC
@@ -79,7 +79,7 @@ in
         # Vertical AOC 
         "${outputs.vertical}"= {
           pos = "5360 0";
-          mode = "1920x1080@60Hz";
+          mode = "1920x1080@144Hz";
           transform = "270";
         };
 
@@ -218,39 +218,19 @@ in
       # Widgets
 
       # Assigns
-      # assigns = {
-      #   "1: media" = [
-      #     {
-      #       class = "firefox";
-      #     }
-      #     {
-      #       class = "Spotify";
-      #     }
-      #   ];
-      #   "2: research" = [
-      #     {
-      #       class = "firefox";
-      #     }
-      #   ];
-      #   "3: work" = [
-      #     {
-      #       class = "kitty";
-      #     }
-      #   ];
-      #   "4: communication" = [
-      #     {
-      #       class = "teams-for-linux";
-      #     }
-      #     {
-      #       class = "discord";
-      #     }
-      #   ];
-      #   "0: mirror" = [
-      #     {
-      #       class = "kitty";
-      #     }
-      #   ];
-      # };
+      assigns = {
+        "4" = [ # Communication
+          {
+            class = "teams-for-linux";
+          }
+          {
+            class = "discord";
+          }
+          {
+            class = "Proton Mail";
+          }
+        ];
+      };
 
       # Binds
       keybindings = let
@@ -288,11 +268,6 @@ in
           # Rotate backgrounds
           command = "swww init && swww-rotate";
         }
-        # {
-        #   # Autotiling
-        #   always = true;
-        #   command = "${pkgs.autotiling}/bin/autotiling";
-        # }
       ];
     };
   };
