@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
     programs.direnv = {
@@ -10,6 +10,8 @@
     programs.vscode.enable = true;
 
     home.packages = with pkgs; [
+      jetbrains.pycharm-professional
+
       # C
       gcc
       # C#

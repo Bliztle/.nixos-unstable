@@ -44,6 +44,8 @@
     openvpn
     easyrsa
     whois
+    nmap
+    # sshfs # Mount remote filesystems via ssh
 
     # Work
     teams-for-linux

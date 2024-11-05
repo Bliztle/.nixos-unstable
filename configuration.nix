@@ -90,6 +90,10 @@
     allowedTCPPorts = [ 5173 ];
   };
 
+  networking.extraHosts = ''
+  192.168.215.10 pi
+  '';
+
 
   ##### Misc security
   # SSH is defered to home-manager
@@ -116,6 +120,7 @@
     ###### Yubikey
     yubioath-flutter # 2FA gui for getting keys
     pam_u2f # General purpose pam u2f. Enough for yubikey 2fa
+    yubikey-manager # Yubikey management tool - ykman
 
     ##### Display Manager
    #  ( # catpucchin theme for sddm

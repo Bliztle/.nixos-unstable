@@ -51,13 +51,9 @@ lspconfig.pyright.setup {}
 lspconfig.rust_analyzer.setup {
     settings = {
         ['rust-analyzer'] = {
-            -- checkOnSave = {
-            --     command = "cargo clippy -- -Wclippy::pedantic"
-            -- }
             check = {
                 command = "clippy",
                 extraArgs = { "--", "-W", "clippy::pedantic" }
-                -- command = "clippy -- -W clippy::pedantic"
             }
         },
     },
@@ -65,8 +61,22 @@ lspconfig.rust_analyzer.setup {
 
 -- Global mappings
 vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>dn', vim.diagnostic.open_float)
-vim.keymap.set('n', '<leader>dN', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>de',
+    function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR, wrap = true, float = true }) end)
+vim.keymap.set('n', '<leader>dE',
+    function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.ERROR, wrap = true, float = true }) end)
+vim.keymap.set('n', '<leader>dw',
+    function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.WARN, wrap = true, float = true }) end)
+vim.keymap.set('n', '<leader>dW',
+    function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.WARN, wrap = true, float = true }) end)
+vim.keymap.set('n', '<leader>dh',
+    function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.INFO, wrap = true, float = true }) end)
+vim.keymap.set('n', '<leader>dH',
+    function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.INFO, wrap = true, float = true }) end)
+vim.keymap.set('n', '<leader>di',
+    function() vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.HINT, wrap = true, float = true }) end)
+vim.keymap.set('n', '<leader>dI',
+    function() vim.diagnostic.goto_prev({ severity = vim.diagnostic.severity.HINT, wrap = true, float = true }) end)
 
 -- Auto format on save
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]

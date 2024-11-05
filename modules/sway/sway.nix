@@ -79,7 +79,7 @@ in
         # Vertical AOC 
         "${outputs.vertical}"= {
           pos = "5360 0";
-          mode = "1920x1080@144Hz";
+          mode = "1920x1080@60Hz";
           transform = "270";
         };
 
@@ -213,12 +213,25 @@ in
           "Shift+k" = "resize shrink height 100 px";
           "Shift+l" = "resize grow width 100 px";
         };
+
+        power = {
+          Escape = "mode default";
+          Return = "mode default";
+          s = "exec shutdown now";
+          r = "exec reboot";
+          l = "exec swaylock";
+        };
       };
 
       # Widgets
 
       # Assigns
       assigns = {
+        "1" = [ # Media 
+          {
+            class = "spotify";
+          }
+        ];
         "4" = [ # Communication
           {
             class = "teams-for-linux";
