@@ -256,10 +256,11 @@ in
         "${modifier}+d" = "exec ${menu}";
 
         # Screenshot
-        "${modifier}+Print" = "exec sway-screenshot -m window"; # Window
-        "Print" = "exec sway-screenshot -m output"; # 
-        # "${modifier}+Shift+Print" = "exec sway-screenshot -m region";
+        # "${modifier}+Print" = "exec sway-screenshot -m window"; # Window
+        # "Print" = "exec sway-screenshot -m output"; # 
         "${modifier}+Shift+Print" = "exec ${pkgs.sway-contrib.grimshot}/bin/grimshot copy area";
+
+        "${modifier}+Shift+s" = "mode power";
 
         # Media control
         "XF86MonBrightnessDown" = "exec light -U 10";
@@ -282,6 +283,11 @@ in
           command = "swww init && swww-rotate";
         }
       ];
+
     };
+
+    extraConfig = ''
+    output '${outputs.omen}' enable
+    '';
   };
 }

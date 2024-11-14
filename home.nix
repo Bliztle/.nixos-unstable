@@ -31,6 +31,9 @@
     libreoffice-qt
     pavucontrol
     postman
+    
+    # Games
+    wowup-cf # Wow addon manager
 
     # CLI Tools
     wl-clipboard
