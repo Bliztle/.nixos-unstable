@@ -37,7 +37,7 @@ in
         touch_settings = {
           tap = "enabled";
           natural_scroll = "enabled";
-          map_to_output = "'${outputs.builtin}'";
+          map_to_output = "'${outputs.portable}'";
           scroll_method = "two_finger";
         };
       in {
@@ -124,17 +124,6 @@ in
           }
         ];
       };
-
-      # floating = {
-      #   criteria = [
-      #     {
-      #       class = "Pavucontrol";
-      #     }
-      #     {
-      #       class = "Picture-in-Picture";
-      #     }
-      #   ];
-      # };
 
       gaps = {
         inner = 10;
