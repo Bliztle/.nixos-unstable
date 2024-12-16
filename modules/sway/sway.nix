@@ -42,7 +42,8 @@ in
         };
       in {
         "type:keyboard" = {
-          xkb_layout = "dk";
+          xkb_layout = "dk,us(colemak_dh)";
+          xkb_options = "grp:alt_shift_toggle";
         };
         "${inputs.corne_wired}" = corne_settings;
         "${inputs.corne_bluetooth}" = corne_settings;

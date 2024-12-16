@@ -29,9 +29,9 @@ lspconfig.omnisharp.setup {
     enable_import_completion = true
 }
 -- Haskell
-lspconfig.hls.setup {
-    filetypes = { 'haskell', 'lhaskell', 'cabal' }, -- Cabal isn't added by default
-}
+-- lspconfig.hls.setup {
+--     filetypes = { 'haskell', 'lhaskell', 'cabal' }, -- Cabal isn't added by default
+-- }
 -- JavaScript / Typescript
 lspconfig.ts_ls.setup {}
 lspconfig.eslint.setup {}
@@ -45,6 +45,8 @@ vim.g['prettier#autoformat_config_present'] = 1
 lspconfig.lua_ls.setup {}
 -- Nix
 lspconfig.nil_ls.setup {}
+-- OCaml
+lspconfig.ocamllsp.setup {}
 -- Python
 lspconfig.pyright.setup {}
 -- Rust

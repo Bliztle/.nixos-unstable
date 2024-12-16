@@ -16,8 +16,21 @@
       gcc
       # C#
       dotnet-sdk_8
+      # Haskell
+      # (haskellPackages.ghcWithPackages (pkgs: with pkgs; [ 
+      #   stack 
+      #   cabal-install
+      # ]))
+
       # Javascript / Typescript
       nodePackages_latest.pnpm
+      # OCaml - `ocaml` and `merlin` are installed and managed by opam
+      # ocaml
+      # dune_3
+      # opam
+      # ocamlPackages.merlin
+      # ocamlPackages.utop
+      # ocamlPackages.odoc
       # Python
       python3
       uv

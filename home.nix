@@ -36,6 +36,7 @@
     wowup-cf # Wow addon manager
 
     # CLI Tools
+    ripgrep
     wl-clipboard
     sl
     tldr

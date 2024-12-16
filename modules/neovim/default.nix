@@ -24,10 +24,9 @@
           cheatsheet-nvim # :Cheatsheet to pull up a list of keybinds
           neo-tree-nvim
           which-key-nvim
-          catppuccin-nvim # Color scheme 
           vim-sleuth # Auto detect tabs
           clangd_extensions-nvim # c/c++ integration
-          copilot-vim
+          # copilot-vim
           comment-nvim # Comments based on treesitter's commentstring
           nvim-ts-context-commentstring # Comments for where file extension is not enough (jsx, svelte, etc.)
           markdown-preview-nvim
@@ -40,6 +39,14 @@
           vim-rhubarb # Github integration for issues / :GBrowse
                       # Azure integration is not in the nixos store. See https://github.com/cedarbaum/fugitive-azure-devops.vim
           gitsigns-nvim # Line annotations
+
+          # Language specific plugins
+          haskell-tools-nvim
+
+          # Color schemes
+          catppuccin-nvim
+          # vscode-nvim
+
 
           # Libs
           nui-nvim # nvim ui components used by neo-tree-nvim
@@ -66,7 +73,8 @@
         # C#
         omnisharp-roslyn
         # Haskell
-        haskell-language-server
+        # haskell-language-server
+        # haskellPackages.hoogle # Haskell documentation
         # JS / TS
         vscode-langservers-extracted
         nodePackages_latest.typescript-language-server
@@ -76,6 +84,9 @@
         lua-language-server
         # Nix
         nil
+        # OCaml
+        ocamlPackages.ocaml-lsp
+        ocamlPackages.ocamlformat
         # Python
         pyright
       ];

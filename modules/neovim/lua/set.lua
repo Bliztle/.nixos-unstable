@@ -1,7 +1,9 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.opt.clipboard = "unnamedplus"
+
 vim.cmd.colorscheme "catppuccin-mocha"
+-- vim.cmd.colorscheme "vscode"
 
 vim.keymap.set('i', 'jk', '<esc>', {})
 

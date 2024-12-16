@@ -2,3 +2,4 @@
 FLAKE_ROOT="/home/bliztle/.nixos-unstable"
 git -C $FLAKE_ROOT add -A
 sudo nixos-rebuild test --flake $FLAKE_ROOT
+sudo chown bliztle ~/.nixos-unstable
