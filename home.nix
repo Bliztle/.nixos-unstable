@@ -46,7 +46,7 @@
     grim # Screenshot dependency
     wireguard-tools
     openvpn
-    easyrsa
+    expressvpn
     whois
     nmap
     # sshfs # Mount remote filesystems via ssh

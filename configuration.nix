@@ -43,14 +43,12 @@
 
   # # Display Manager
   programs.sway.enable = true; # Register with dm. Configured in HM
-  # services.greetd.enable = true;
   
   services.xserver.enable = true;
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm = lib.mkDefault {
     enable = true;
     wayland.enable = true;
-    # theme = "catppuccin-mocha";
     package = pkgs.kdePackages.sddm;
   };
   
@@ -74,12 +72,6 @@
         turbo = "auto";
       };
     };
-    # governor = "schedutil";
-    # governor = "powersave";
-    # governor = "performance";
-    # governor = "ondemand";
-    # governor = "conservative";
-    # governor = "userspace
   };
 
   programs.light.enable = true;
@@ -89,11 +81,6 @@
     enable = true;
     allowedTCPPorts = [ 5173 ];
   };
-
-  networking.extraHosts = ''
-  192.168.215.10 pi
-  '';
-
 
   ##### Misc security
   # SSH is defered to home-manager
@@ -113,6 +100,7 @@
   security.pki.certificateFiles = [
     /etc/ssl/localcerts/localhost.crt
   ];
+  services.expressvpn.enable = true;
 
   ##### Packages required by above configuration
 
@@ -121,18 +109,6 @@
     yubioath-flutter # 2FA gui for getting keys
     pam_u2f # General purpose pam u2f. Enough for yubikey 2fa
     yubikey-manager # Yubikey management tool - ykman
-
-    ##### Display Manager
-   #  ( # catpucchin theme for sddm
-   #    catppuccin-sddm.override {
-   #     flavor = "mocha";
-   #     font  = "Noto Sans";
-   #     fontSize = "9";
-   #     # background = "${./wallpaper.png}";
-   #     background = null; # Set to a path to add background
-   #     loginBackground = true;
-   #   }
-   # )
   ];
 
 
@@ -212,12 +188,6 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
