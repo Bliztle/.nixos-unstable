@@ -79,6 +79,9 @@ in
         pull = {
           rebase = "true";
         };
+        push = {
+          followTags = "true";
+        };
         core = {
           editor = "nvim";
         };
