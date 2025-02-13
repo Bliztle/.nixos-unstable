@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [
@@ -46,7 +46,7 @@
     grim # Screenshot dependency
     wireguard-tools
     openvpn
-    expressvpn
+    # expressvpn
     whois
     nmap
     # sshfs # Mount remote filesystems via ssh
@@ -56,7 +56,7 @@
     azure-cli
 
     # Fonts
-    nerdfonts
+    # nerdfonts
     font-awesome
   ];
   programs.joplin-desktop.enable = true;

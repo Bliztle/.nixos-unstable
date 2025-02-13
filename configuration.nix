@@ -60,6 +60,7 @@
   services.blueman.enable = true;
 
   ##### Battery Optimisation
+  services.power-profiles-daemon.enable = false; # Some DE's enable this
   programs.auto-cpufreq = {
     enable = true;
     settings = {
@@ -97,10 +98,12 @@
   ##### Misc
   virtualisation.docker.enable = true;
   programs.nix-ld.enable = true; # Allow dynamic linking of nix packages
-  security.pki.certificateFiles = [
-    /etc/ssl/localcerts/localhost.crt
-  ];
-  services.expressvpn.enable = true;
+  # security.pki.certificateFiles = [ # TODO: Why did this stop working?
+  #   /etc/ssl/localcerts/localhost.crt
+  # ];
+  # services.expressvpn.enable = true;
+  # Nerdfonts changed. This is now the way according to the error message???
+  fonts.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   ##### Packages required by above configuration
 
@@ -153,12 +156,10 @@
   # Configure console keymap
   console.keyMap = "dk-latin1";
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.bliztle = {
     isNormalUser = true;
     description = "Bliztle";
-    # "video" is required to control laptop brightness
-    extraGroups = [ "networkmanager" "wheel" "video" ];
+    extraGroups = [ "networkmanager" "wheel" "video" ]; # "video" is required to control laptop brightness
     packages = with pkgs; [];
   };
 
@@ -183,11 +184,6 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
