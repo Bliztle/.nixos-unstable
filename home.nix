@@ -60,6 +60,10 @@
     font-awesome
   ];
   programs.joplin-desktop.enable = true;
+  programs.yazi = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   home.sessionVariables = {
     EDITOR = "nvim";
