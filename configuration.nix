@@ -84,14 +84,15 @@
   };
 
   ##### Misc security
-  # SSH is defered to home-manager
+  # SSH config is deferred to home-manager
+  programs.ssh.startAgent = true;
 
   security.polkit.enable = true; # Allow raising privileges
 
   # gpg encryption agent
   programs.gnupg.agent = { 
     enable = true;
-    # ssh support is disabled, as it requires using gpg subkeys instead of ssh keys
+    # ssh support is disabled, as it does not support _SK (fido2) keys
     # and interferes with pcscd, which may be used for smart card integration
   };
 

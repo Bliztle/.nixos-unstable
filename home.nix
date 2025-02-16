@@ -8,6 +8,7 @@
     ./modules/neovim
     ./modules/scripts
     ./modules/shell
+    ./modules/ssh.nix
     ./modules/sway
     ./modules/wallpaper
     ./modules/zsh.nix
@@ -50,6 +51,7 @@
     whois
     nmap
     # sshfs # Mount remote filesystems via ssh
+    # x11_ssh_askpass
 
     # Work
     teams-for-linux
