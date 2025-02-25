@@ -32,6 +32,8 @@
     libreoffice-qt
     pavucontrol
     postman
+    qbittorrent
+    vlc
     
     # Games
     wowup-cf # Wow addon manager
@@ -51,7 +53,9 @@
     whois
     nmap
     # sshfs # Mount remote filesystems via ssh
-    # x11_ssh_askpass
+    traceroute
+    dig
+    sops
 
     # Work
     teams-for-linux

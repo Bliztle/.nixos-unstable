@@ -9,6 +9,18 @@
     addKeysToAgent = "confirm";
 
     matchBlocks = {
+      "gateway.home" = { # lenovo.home from outside the house
+        hostname = "home.bliztle.com";
+        user = "nixos";
+        forwardAgent = true;
+        # port = 12172;
+      };
+      "gateway2.home" = { # lenovo.home from outside the house
+        hostname = "home-bliztle.dynamic-dns.net";
+        user = "nixos";
+        forwardAgent = true;
+        # port = 12172;
+      };
       "lenovo.home" = {
         hostname = "10.0.0.7";
         user = "nixos";

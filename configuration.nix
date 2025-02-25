@@ -2,13 +2,15 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, pkgs, ... }:
+{ lib, pkgs, sops-nix, ... }:
 
 {
   imports =
     [
       ./hardware-configuration.nix
       ./modules/games.nix
+      ./modules/sops.nix
+      # ./modules/vpn.nix
     ];
 
   ##### Shell
@@ -86,12 +88,21 @@
   ##### Misc security
   # SSH config is deferred to home-manager
   programs.ssh.startAgent = true;
+  services.openssh = {
+    enable = true;
+    openFirewall = false;
+    settings = {
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
+    };
+  };
 
   security.polkit.enable = true; # Allow raising privileges
 
   # gpg encryption agent
   programs.gnupg.agent = { 
     enable = true;
+    enableExtraSocket = true; # Needed for sudo to access keys
     # ssh support is disabled, as it does not support _SK (fido2) keys
     # and interferes with pcscd, which may be used for smart card integration
   };
