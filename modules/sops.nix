@@ -9,6 +9,11 @@
       path = "/home/bliztle/.config/Yubico/u2f_keys";
     };
 
+    secrets.k3s_config = {
+      mode = "0466"; # Allow access
+      path = "/home/bliztle/.kube/config";
+    };
+
     secrets.wg0_public = {};
     secrets.wg0_private = {};
     secrets.wg0_conf = {

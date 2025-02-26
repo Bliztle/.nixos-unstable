@@ -5,7 +5,6 @@
     ./modules/dev.nix
     ./modules/git.nix
     ./modules/kitty.nix
-    # ./modules/k3s.nix
     ./modules/neovim
     ./modules/scripts
     ./modules/shell
