@@ -10,7 +10,7 @@
       ./hardware-configuration.nix
       ./modules/games.nix
       ./modules/sops.nix
-      # ./modules/vpn.nix
+      ./modules/vpn.nix
     ];
 
   ##### Shell
