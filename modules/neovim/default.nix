@@ -23,6 +23,7 @@
           telescope-fzf-native-nvim
           cheatsheet-nvim # :Cheatsheet to pull up a list of keybinds
           neo-tree-nvim
+          oil-nvim # Another file explorer which is handy for some bulk operations
           which-key-nvim
           vim-sleuth # Auto detect tabs
           clangd_extensions-nvim # c/c++ integration
@@ -46,6 +47,19 @@
           # Color schemes
           catppuccin-nvim
           # vscode-nvim
+          
+          # Uni extensions
+          # PDDL
+          (pkgs.vimUtils.buildVimPlugin {
+            pname = "pddl.vim";
+            version = "latest";
+            src = pkgs.fetchFromGitHub {
+              owner = "PontusHanssen";
+              repo = "pddl.vim";
+              rev = "master";
+              sha256 = "sha256-ph/LqZrV6trpATkTtibJgawBQo5jndPFpdU5pbuGfjg="; # Replace with the correct hash
+            };
+          })
 
 
           # Libs

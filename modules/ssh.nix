@@ -31,6 +31,10 @@
         user = "nixos";
         forwardAgent = true;
       };
+      "lenovo.nas.home" = {
+        hostname = "10.0.0.13";
+        user = "lenovo";
+      };
     };
   };
 }

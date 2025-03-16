@@ -34,11 +34,14 @@
     postman
     qbittorrent
     vlc
+    rnote
+    jellyfin-media-player
     
     # Games
     wowup-cf # Wow addon manager
 
     # CLI Tools
+    inetutils # ftp and more
     ripgrep
     wl-clipboard
     sl
@@ -66,6 +69,7 @@
     # nerdfonts
     font-awesome
   ];
+  services.dunst.enable = true;
   programs.joplin-desktop.enable = true;
   programs.yazi = {
     enable = true;

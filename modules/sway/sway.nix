@@ -244,6 +244,7 @@ in
       in lib.mkOptionDefault { # mkOptionDefault handles merging with default settings
         "${modifier}+space" = "exec ${menu}";
         "${modifier}+d" = "exec ${menu}";
+        "${modifier}+Return" = "exec kitty-cwd &";
 
         # Screenshot
         # "${modifier}+Print" = "exec sway-screenshot -m window"; # Window

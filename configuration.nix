@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       ./modules/games.nix
       ./modules/sops.nix
+      ./modules/storage.nix
       ./modules/vpn.nix
     ];
 
@@ -108,6 +109,7 @@
   };
 
   ##### Misc
+  programs.wireshark.enable = true;
   virtualisation.docker.enable = true;
   programs.nix-ld.enable = true; # Allow dynamic linking of nix packages
   # security.pki.certificateFiles = [ # TODO: Why did this stop working?
@@ -124,6 +126,7 @@
     yubioath-flutter # 2FA gui for getting keys
     pam_u2f # General purpose pam u2f. Enough for yubikey 2fa
     yubikey-manager # Yubikey management tool - ykman
+    wireshark
   ];
 
 

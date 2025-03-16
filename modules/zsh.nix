@@ -22,6 +22,7 @@
       c = "clear";
       g = "git";
       n = "nvim";
+      k = "kubectl";
       p = "${pkgs.python3}/bin/python3";
       cat = "${pkgs.bat}/bin/bat";
       grep = "${pkgs.ripgrep}/bin/rg";

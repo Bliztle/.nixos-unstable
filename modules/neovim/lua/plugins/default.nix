@@ -4,6 +4,7 @@
     ./dap.lua
     ./enable.lua
     ./git.lua
+    ./icons.lua
     ./lspconfig.lua
     ./lualine.lua
     ./telescope.lua
