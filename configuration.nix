@@ -2,13 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, pkgs, sops-nix, ... }:
+{ lib, pkgs, ... }:
 
 {
   imports =
     [
       ./hardware-configuration.nix
       ./modules/games.nix
+      ./modules/hypr/hypr.nix
       ./modules/sops.nix
       ./modules/storage.nix
       ./modules/vpn.nix
@@ -46,6 +47,7 @@
 
   # # Display Manager
   programs.sway.enable = true; # Register with dm. Configured in HM
+  # programs.hyprland.enable = true; # Register with dm. Configured in HM
   
   services.xserver.enable = true;
   services.desktopManager.plasma6.enable = true;

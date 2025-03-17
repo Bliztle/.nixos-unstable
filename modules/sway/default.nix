@@ -4,6 +4,6 @@
   imports = [
     ./sway.nix
     ./wofi
-    ./waybar
+    # ./waybar
   ];
 }

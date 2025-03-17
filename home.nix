@@ -1,9 +1,10 @@
-{ pkgs, lib, ... }:
+{ pkgs, inputs, lib, ... }:
 
 {
   imports = [
     ./modules/dev.nix
     ./modules/git.nix
+    ./modules/hypr/home.nix
     ./modules/kitty.nix
     ./modules/neovim
     ./modules/scripts
@@ -11,6 +12,7 @@
     ./modules/ssh.nix
     ./modules/sway
     ./modules/wallpaper
+    ./modules/waybar
     ./modules/zsh.nix
   ];
 
@@ -60,6 +62,9 @@
     dig
     sops
     kubectl
+    playerctl
+    hyprlock
+    rofi
 
     # Work
     teams-for-linux
@@ -79,6 +84,16 @@
   home.sessionVariables = {
     EDITOR = "nvim";
   };
+
+  # add ./modules/config/* to ~/.config
+  home.file = builtins.listToAttrs (map (name: {
+    name = ".config/${name}";
+    value = {
+      source = ./modules/config + "/${name}";
+      recursive = true;
+      force = true;
+    };
+  }) (builtins.attrNames (builtins.readDir ./modules/config)));
 
   home.stateVersion = "24.05";
 }
