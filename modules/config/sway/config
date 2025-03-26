@@ -1,0 +1,215 @@
+# vim:ft=swayconfig
+
+include ./config.d/*
+
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term kitty
+set $menu wofi --show drun
+
+### Startup ###
+exec swww init && sway-rotate
+
+### Inputs ###
+input type:keyboard {
+    xkb_layout dk,us(colemak_dh)
+    xkb_options grp:alt_shift_toggle,caps:swapescape
+}
+
+input 7504:24926:ZMK_Project_Corne42k_Keyboard {
+    xkb_layout us
+    xkb_options ""
+}
+
+input 7504:24926:Corne42k_Keyboard {
+    xkb_layout us
+    xkb_options ""
+}
+
+input 1267:12113:ELAN_Touchscreen {
+    tap enabled
+    natural_scroll enabled
+    map_to_output 'ASUSTek COMPUTER INC ASUS MB14AHD R2LMTF057922'
+    scroll_method two_finger
+}
+
+input 1267:12113:ELAN_Touchscreen_Stylus {
+    tap enabled
+    natural_scroll enabled
+    map_to_output 'ASUSTek COMPUTER INC ASUS MB14AHD R2LMTF057922'
+    scroll_method two_finger
+}
+
+### Outputs ###
+# Builtin
+output 'AU Optronics 0xA48F Unknown' {
+    pos 2694 1440
+    res 1920x1080
+}
+
+# Portable
+output 'ASUSTek COMPUTER INC ASUS MB14AHD R2LMTF057922' {
+    pos 4614 1440
+    res 1920x1080
+}
+
+# Omen
+output 'HP Inc. OMEN by HP 25 3CQ80417Q9' {
+    pos 0 360
+    # mode 1920x1080@144Hz
+    mode 1920x1080@60Hz
+}
+
+# Wide AOC
+output 'AOC U34G2G4R3 0x00001E0D' {
+    pos 1920 0
+    mode 3440x1440@120Hz
+}
+
+# Vertical AOC
+output 'AOC 27G2G4 GYGM3HA335541' {
+    pos 5360 0
+    mode 1920x1080@60Hz
+    transform 270
+}
+
+### Workspace Assignments ###
+# Home
+workspace 1 output 'AU Optronics 0xA48F Unknown'
+workspace 2 output 'HP Inc. OMEN by HP 25 3CQ80417Q9'
+workspace 3 output 'AOC U34G2G4R3 0x00001E0D'
+workspace 4 output 'AOC 27G2G4 GYGM3HA335541'
+# Portable
+workspace 1 output 'AU Optronics 0xA48F Unknown'
+workspace 2 output 'AU Optronics 0xA48F Unknown'
+workspace 3 output 'ASUSTek COMPUTER INC ASUS MB14AHD R2LMTF057922'
+workspace 4 output 'ASUSTek COMPUTER INC ASUS MB14AHD R2LMTF057922'
+
+### Application Assignments ###
+assign [class="spotify"] workspace "1"   # Media
+assign [class="teams-for-linux"] workspace "4"   # Communication
+assign [class="discord"] workspace "4"   # Communication
+assign [class="Proton Mail"] workspace "4"   # Communication
+
+### Application Styling ###
+
+
+### Bars ###
+bar {
+    swaybar_command waybar
+}
+
+### Windows ###
+floating_modifier $mod normal
+
+### Modes ###
+mode resize {
+    bindsym Escape mode default
+    bindsym Return mode default
+    bindsym Down resize grow height 10 px
+    bindsym Left resize shrink width 10 px
+    bindsym Right resize grow width 10 px
+    bindsym Up resize shrink height 10 px
+    bindsym h resize shrink width 10 px
+    bindsym j resize grow height 10 px
+    bindsym k resize shrink height 10 px
+    bindsym l resize grow width 10 px
+    bindsym Shift+Down resize grow height 100 px
+    bindsym Shift+Left resize shrink width 100 px
+    bindsym Shift+Right resize grow width 100 px
+    bindsym Shift+Up resize shrink height 100 px
+    bindsym Shift+h resize shrink width 100 px
+    bindsym Shift+j resize grow height 100 px
+    bindsym Shift+k resize shrink height 100 px
+    bindsym Shift+l resize grow width 100 px
+}
+
+mode power {
+    bindsym Escape mode default
+    bindsym Return mode default
+    bindsym s exec shutdown now
+    bindsym r exec reboot
+    bindsym l exec swaylock
+}
+
+### Keybindings ###
+bindsym $mod+space exec $menu
+bindsym $mod+d exec $menu
+bindsym $mod+Return exec kitty-cwd &
+bindsym $mod+Shift+q kill
+bindsym $mod+Shift+s mode power
+bindsym $mod+r mode resize
+bindsym $mod+Shift+Print exec grimshot copy area
+bindsym $mod+Shift+c reload
+
+bindsym XF86MonBrightnessDown exec light -U 10
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# Toggle the current focus between tiling and floating mode
+# bindsym $mod+Shift+space floating toggle
+# Swap focus between the tiling area and the floating area
+# bindsym $mod+space focus mode_toggle
+
+### Default Keybindings ###
+# Move
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+# Move Workspace
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+# Move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+bindsym $mod+b splith
+bindsym $mod+v splitv
+# Switch the current container between different layout styles
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+# Make the current focus fullscreen
+bindsym $mod+f fullscreen
+# Move focus to the parent container
+bindsym $mod+a focus parent
+### Extra Config ###
+output 'HP Inc. OMEN by HP 25 3CQ80417Q9' enable

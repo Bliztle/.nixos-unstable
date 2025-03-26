@@ -14,6 +14,7 @@
 
       # C
       gcc
+      libclang
       # C#
       dotnet-sdk_8
       # Haskell

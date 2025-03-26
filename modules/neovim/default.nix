@@ -34,6 +34,7 @@
           bufferline-nvim # Display buffers in top statusline
           leap-nvim # Extra movement commands
           rainbow-delimiters-nvim # Rainbow brackets
+          nvim-highlight-colors # Highlight hex, rgb, etc.
 
           # Git integration
           vim-fugitive

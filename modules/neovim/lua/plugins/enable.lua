@@ -3,3 +3,4 @@ require("Comment").setup { pre_hook = require("ts_context_commentstring.integrat
 require("nvim-surround").setup {}
 require("ts_context_commentstring").setup {}
 require("oil").setup {}
+require('nvim-highlight-colors').setup {}

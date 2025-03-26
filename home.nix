@@ -5,13 +5,12 @@
     ./modules/dev.nix
     ./modules/git.nix
     ./modules/hypr/home.nix
-    ./modules/kitty.nix
     ./modules/neovim
     ./modules/scripts
     ./modules/shell
     ./modules/ssh.nix
     ./modules/sway
-    ./modules/wallpaper
+    ./modules/uni.nix
     ./modules/waybar
     ./modules/zsh.nix
   ];
@@ -40,7 +39,7 @@
     jellyfin-media-player
     
     # Games
-    wowup-cf # Wow addon manager
+    # wowup-cf # Wow addon manager
 
     # CLI Tools
     inetutils # ftp and more
@@ -65,6 +64,7 @@
     playerctl
     hyprlock
     rofi
+    sway-contrib.grimshot
 
     # Work
     teams-for-linux
@@ -74,6 +74,7 @@
     # nerdfonts
     font-awesome
   ];
+  programs.kitty.enable = true;
   services.dunst.enable = true;
   programs.joplin-desktop.enable = true;
   programs.yazi = {
@@ -83,6 +84,15 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
+  };
+
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = "firefox.desktop";
+      "application/pdf" = "firefox.desktop";
+      "x-scheme-handler/msteams" = "teams-for-linux.desktop";
+    };
   };
 
   # add ./modules/config/* to ~/.config
