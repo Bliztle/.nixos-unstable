@@ -7,4 +7,6 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
+
+  services.flatpak.enable = true;
 }

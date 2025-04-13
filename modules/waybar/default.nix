@@ -136,14 +136,17 @@
 
         battery = {
           tooltip = false;
-          full-at = 99;
+          full-at = 98;
           states = {
+            good = 95;
+            warning = 30;
             critical = 15;
           };
           format = "{icon} {capacity}%";
-          format-charging = "󰂄 {capacity}%";
+          format-charging = "󱐋 {capacity}%";
           format-plugged = "󰚥 {capacity}%";
-          format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󱐋" ];
+          format-alt = "{icon}  {time}";
+          format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
         };
 
         pulseaudio = {

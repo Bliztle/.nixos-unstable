@@ -15,6 +15,14 @@
       ./modules/vpn.nix
     ];
 
+  ##### Optimisation
+  nix.optimise.automatic = true; # Automatically optimise /nix/store once a day (possibly only on rebuilds)
+  nix.gc = { # Automatically clean out old generations
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
+
   ##### Shell
   # It is 3 lines to enable zsh
   programs.zsh.enable = true;
@@ -30,6 +38,7 @@
     alsa.enable = true; # Drivers and interfaces? Might not be required
     alsa.support32Bit = true;
     pulse.enable = true;
+    # wireplumber.enable # TODO: Look into this
     # jack.enable = true;
   };
 
