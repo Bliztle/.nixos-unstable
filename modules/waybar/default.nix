@@ -13,7 +13,7 @@
 
         modules-left = [ "hyprland/workspaces" "sway/workspaces" "sway/mode" "temperature" "cpu" "memory" "disk" ];
         modules-center = [ "custom/music" ];
-        modules-right = [ "tray" "backlight" "pulseaudio" "network" "battery" "clock" ];
+        modules-right = [ "tray" "backlight" "pulseaudio" "network" "custom/expressvpn" "battery" "clock" ];
 
         "hyprland/workspaces" = {
           # active-only = false;
@@ -126,6 +126,12 @@
           exec = "playerctl metadata --format='{{ title }}'";
           on-click = "playerctl play-pause";
           max-length = 40;
+        };
+
+        "custom/expressvpn" = {
+          format = "󰒃 {}";
+          interval = 10;
+          exec = "waybar-expressvpn-status";
         };
 
         clock = {

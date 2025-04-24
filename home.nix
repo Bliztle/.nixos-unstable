@@ -42,6 +42,8 @@
     # wowup-cf # Wow addon manager
 
     # CLI Tools
+    rpPPPoE
+    ppp
     inetutils # ftp and more
     ripgrep
     wl-clipboard
@@ -53,7 +55,7 @@
     grim # Screenshot dependency
     wireguard-tools
     openvpn
-    # expressvpn
+    expressvpn
     whois
     nmap
     # sshfs # Mount remote filesystems via ssh

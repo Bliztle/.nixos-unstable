@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+status=$(expressvpn status | sed 's/\x1b\[[0-9;]*m//g') # Remove ansi color codes
+
+if [[ "$status" == *"Connected to"* ]]; then
+    country=$(echo "$status" | grep "Connected to" | sed 's/Connected to //')
+    echo $country
+    # echo "{\"text\": \"🔒 $country\", \"tooltip\": \"$status\"}"
+else
+    echo "No VPN"
+    # echo "{\"text\": \"🔓 No VPN\", \"tooltip\": \"$status\"}"
+fi

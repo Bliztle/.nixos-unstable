@@ -20,14 +20,16 @@
 
 	specialArgs = { inherit inputs; };
 	modules = [
+	  ./options.nix
 	  ./hardware-configuration.nix
 	  ./configuration.nix
-	  home-manager.nixosModules.default {
-            home-manager.useGlobalPkgs = true;
-	    home-manager.useUserPackages = true;
-	    home-manager.users.bliztle = import ./home.nix;
-	    home-manager.extraSpecialArgs = { inherit inputs; };
-	  }
+	  ./hm.nix
+	  # ({ config, ... }: (home-manager.nixosModules.default {
+   #          home-manager.useGlobalPkgs = true;
+	  #   home-manager.useUserPackages = true;
+	  #   home-manager.users.bliztle = import ./home.nix;
+	  #   home-manager.extraSpecialArgs = { inherit inputs; cfg = config; };
+	  # }))
 	  auto-cpufreq.nixosModules.default
 	  sops-nix.nixosModules.sops
 	];

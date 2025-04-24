@@ -91,10 +91,17 @@
 
   programs.light.enable = true;
 
-  ##### Firewall
+  ##### Networking
+  # Firewall
   networking.firewall = {
     enable = true;
     allowedTCPPorts = [ 5173 ];
+  };
+
+  # DNS
+  services.resolved = {
+    enable = true;
+    domains = [ "home" "local" ]; # TLDs to use if none is specified in a URI
   };
 
   ##### Misc security
@@ -126,7 +133,7 @@
   # security.pki.certificateFiles = [ # TODO: Why did this stop working?
   #   /etc/ssl/localcerts/localhost.crt
   # ];
-  # services.expressvpn.enable = true;
+  services.expressvpn.enable = true;
   # Nerdfonts changed. This is now the way according to the error message???
   fonts.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
@@ -138,6 +145,7 @@
     pam_u2f # General purpose pam u2f. Enough for yubikey 2fa
     yubikey-manager # Yubikey management tool - ykman
     wireshark
+    yubikey-personalization
   ];
 
 

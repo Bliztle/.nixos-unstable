@@ -42,6 +42,7 @@
 #network,
 #custom-pacman,
 #custom-music,
+#custom-expressvpn,
 #tray,
 #backlight,
 #clock,
@@ -151,6 +152,10 @@
   color: @orange;
   /* border-radius: 1rem 0px 0px 1rem; */
   margin-left: 1rem;
+}
+
+#custom-expressvpn {
+  color: @red;
 }
 
 #clock {
