@@ -1,11 +1,9 @@
-{ pkgs, inputs, lib, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./modules/dev.nix
     ./modules/git.nix
     ./modules/hypr/home.nix
-    ./modules/neovim
+    ./modules/nvf
     ./modules/scripts
     ./modules/shell
     ./modules/ssh.nix
@@ -37,7 +35,7 @@
     vlc
     rnote
     jellyfin-media-player
-    
+
     # Games
     # wowup-cf # Wow addon manager
 

@@ -11,9 +11,9 @@
         # modules-center = [ "custom/left" "custom/music" "custom/right" ];
         # modules-right = [ "custom/left" "tray" "custom/right" "custom/left" "backlight" "pulseaudio" "network" "battery" "clock" "custom/right" ];
 
-        modules-left = [ "hyprland/workspaces" "sway/workspaces" "sway/mode" "temperature" "cpu" "memory" "disk" ];
-        modules-center = [ "custom/music" ];
-        modules-right = [ "tray" "backlight" "pulseaudio" "network" "custom/expressvpn" "battery" "clock" ];
+        modules-left = [ "hyprland/workspaces" "sway/workspaces" "sway/mode" "temperature" "cpu" "memory" "disk" "tray" "backlight" "pulseaudio" "network" "custom/expressvpn" "battery" "clock" "custom/music" ];
+        # modules-center = [ "custom/music" ];
+        # modules-right = [ "tray" "backlight" "pulseaudio" "network" "custom/expressvpn" "battery" "clock" ];
 
         "hyprland/workspaces" = {
           # active-only = false;

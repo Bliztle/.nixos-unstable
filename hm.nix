@@ -6,8 +6,12 @@
 
   home-manager.extraSpecialArgs = {
     inherit inputs;
-    cfg = config; # Now this works, because `config` is available!
+    cfg = config;
   };
+  
+  home-manager.sharedModules = [
+    inputs.nvf.homeManagerModules.default
+  ];
 
   home-manager.users.bliztle = import ./home.nix;
 }

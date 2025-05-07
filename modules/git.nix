@@ -1,9 +1,11 @@
-{ pkgs, lib, config, ... }:
-
-let
-  cfg-path = ".config/git";
-in
 {
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
+  cfg-path = ".config/git";
+in {
   options = {};
   config = {
     # Normal git configuration
@@ -42,8 +44,8 @@ in
         caamn = "!git add -A && git commit --amend --no-edit";
         caamnp = "!git add -A && git commit --amend --no-edit && git push";
         caamnpf = "!git add -A && git commit --amend --no-edit && git push --force-with-lease";
-        co = "checkout";
-        cob = "checkout -b";
+        ch = "checkout";
+        chb = "checkout -b";
         d = "diff";
         dh = "diff HEAD";
         dm = "diff main";
@@ -94,7 +96,7 @@ in
       };
 
       includes = [
-        { 
+        {
           path = "~/${cfg-path}/caretaker.gitconfig";
           condition = "gitdir:~/work/caretaker/";
         }
