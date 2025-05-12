@@ -20,13 +20,15 @@ input type:keyboard {
     xkb_options grp:alt_shift_toggle,caps:swapescape
 }
 
+# Wired corne
 input 7504:24926:ZMK_Project_Corne42k_Keyboard {
-    xkb_layout us
+    xkb_layout us(altgr-intl)
     xkb_options ""
 }
 
+# Wireless corne
 input 7504:24926:Corne42k_Keyboard {
-    xkb_layout us
+    xkb_layout us(altgr-intl)
     xkb_options ""
 }
 

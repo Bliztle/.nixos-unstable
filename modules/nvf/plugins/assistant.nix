@@ -11,8 +11,10 @@
         enabled = false;
         layout.position = "right";
       };
-      auto_trigger = true;
-      debounce = 75;
+      suggestion = {
+        auto_trigger = true;
+        debounce = 75;
+      };
     };
   };
 }
