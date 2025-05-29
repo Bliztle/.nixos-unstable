@@ -8,7 +8,6 @@
     ./modules/shell
     ./modules/ssh.nix
     ./modules/sway
-    ./modules/uni.nix
     ./modules/waybar
     ./modules/zsh.nix
   ];
@@ -35,13 +34,12 @@
     vlc
     rnote
     jellyfin-media-player
+    speedcrunch
 
     # Games
     # wowup-cf # Wow addon manager
 
     # CLI Tools
-    rpPPPoE
-    ppp
     inetutils # ftp and more
     ripgrep
     wl-clipboard
