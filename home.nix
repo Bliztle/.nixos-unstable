@@ -8,6 +8,7 @@
     ./modules/shell
     ./modules/ssh.nix
     ./modules/sway
+    # ./modules/uni.nix
     ./modules/waybar
     ./modules/zsh.nix
   ];
