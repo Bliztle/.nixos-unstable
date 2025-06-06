@@ -16,8 +16,14 @@ exec swww init && sway-rotate
 
 ### Inputs ###
 input type:keyboard {
-    xkb_layout dk,us(colemak_dh)
+    xkb_layout us(altgr-intl),dk,us(colemak_dh)
     xkb_options grp:alt_shift_toggle,caps:swapescape
+}
+
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+    scroll_method two_finger
 }
 
 # Wired corne
@@ -47,10 +53,17 @@ input 1267:12113:ELAN_Touchscreen_Stylus {
 }
 
 ### Outputs ###
-# Builtin
+# Builtin Zenbook
 output 'AU Optronics 0xA48F Unknown' {
     pos 2694 1440
     res 1920x1080
+}
+
+# Builtin Zenbook
+output 'BOE NE135A1M-NY1 Unknown' {
+    pos 2694 1440
+    res 2880x1920@120Hz
+    scale 1.5
 }
 
 # Portable
@@ -82,12 +95,15 @@ output 'AOC 27G2G4 GYGM3HA335541' {
 ### Workspace Assignments ###
 # Home
 workspace 1 output 'AU Optronics 0xA48F Unknown'
+workspace 1 output 'BOE NE135A1M-NY1 Unknown'
 workspace 2 output 'HP Inc. OMEN by HP 25 3CQ80417Q9'
 workspace 3 output 'AOC U34G2G4R3 0x00001E0D'
 workspace 4 output 'AOC 27G2G4 GYGM3HA335541'
 # Portable
 workspace 1 output 'AU Optronics 0xA48F Unknown'
 workspace 2 output 'AU Optronics 0xA48F Unknown'
+workspace 1 output 'BOE NE135A1M-NY1 Unknown'
+workspace 2 output 'BOE NE135A1M-NY1 Unknown'
 workspace 3 output 'ASUSTek COMPUTER INC ASUS MB14AHD R2LMTF057922'
 workspace 4 output 'ASUSTek COMPUTER INC ASUS MB14AHD R2LMTF057922'
 
@@ -136,6 +152,7 @@ mode power {
     bindsym s exec shutdown now
     bindsym r exec reboot
     bindsym l exec swaylock
+    bindsym o exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 }
 
 ### Keybindings ###

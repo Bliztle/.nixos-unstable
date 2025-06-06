@@ -1,7 +1,7 @@
 keys:
   - &yubikey E6028682743BF174D2E5B3AF92810374E3AC1EE1
-  # - &zenbook age10rudlss6y2u08ufrangsu25v8e6ue42x9ygl63jz7hje8ccetuts22367p
   - &zenbook age16dtszcmd8thqphvm2tr4vutq2va65qkhap7pt7d3402gknkr4dfswhgemd
+  - &framework age1m8lwm02q3xxhqt0lzz4xfxrlx398vg6pdfe9hemrmjy2mgx0h4pqjx6u4z
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
@@ -9,3 +9,4 @@ creation_rules:
         - *yubikey # This is used to edit file on new hosts
         age:
         - *zenbook # This is used during build, as sudo cannot access yubikey gpg keys
+        - *framework

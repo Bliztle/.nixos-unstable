@@ -7,13 +7,10 @@
         layer = "top";
         position = "top";
 
-        # modules-left = [ "custom/left" "hyprland/workspaces" "custom/right" "custom/left" "sway/workspaces" "sway/mode" "temperature" "cpu" "memory" "disk" "custom/right" ];
-        # modules-center = [ "custom/left" "custom/music" "custom/right" ];
-        # modules-right = [ "custom/left" "tray" "custom/right" "custom/left" "backlight" "pulseaudio" "network" "battery" "clock" "custom/right" ];
-
-        modules-left = [ "hyprland/workspaces" "sway/workspaces" "sway/mode" "temperature" "cpu" "memory" "disk" "tray" "backlight" "pulseaudio" "network" "custom/expressvpn" "battery" "clock" "custom/music" ];
-        # modules-center = [ "custom/music" ];
-        # modules-right = [ "tray" "backlight" "pulseaudio" "network" "custom/expressvpn" "battery" "clock" ];
+        # modules-left = [ "hyprland/workspaces" "sway/workspaces" "sway/mode" "temperature" "cpu" "memory" "disk" "tray" "backlight" "pulseaudio" "network" "custom/expressvpn" "battery" "clock" "custom/music" ];
+        modules-left = ["hyprland/workspaces" "sway/workspaces" "sway/mode" "temperature" "cpu" "memory" "disk"];
+        modules-center = ["custom/music"];
+        modules-right = ["tray" "backlight" "pulseaudio" "network" "custom/expressvpn" "battery" "clock"];
 
         "hyprland/workspaces" = {
           # active-only = false;
@@ -38,18 +35,18 @@
           all-outputs = false;
           format = "{icon}";
           format-icons = {
-              "1" = "";
-              "2" = "";
-              "3" = "";
-              "4" = "";
-              "5" = "";
-              "6" = "";
-              "7" = "";
-              "8" = "";
-              "9" = "";
-              "urgent" = "";
-              "focused" = "";
-              "default" = "";
+            "1" = "";
+            "2" = "";
+            "3" = "";
+            "4" = "";
+            "5" = "";
+            "6" = "";
+            "7" = "";
+            "8" = "";
+            "9" = "";
+            "urgent" = "";
+            "focused" = "";
+            "default" = "";
           };
         };
 
@@ -62,20 +59,20 @@
           critical-threshold = 80;
           format-critical = "{icon} {temperatureC}°";
           format = "{icon} {temperatureC}°";
-          format-icons = [ "󱃃" "󱩿" "󰸁" ];
+          format-icons = ["󱃃" "󱩿" "󰸁"];
         };
 
         cpu.format = "󰻠 {usage}%";
         memory.format = "󰍛 {}%";
 
         network = {
-            # "interface": "wlp2*", // (Optional) To force the use of this interface
-            format-wifi = "   ({signalStrength}%)";
-            format-ethernet = "&#8239;{ifname}: {ipaddr}/{cidr}";
-            format-linked = "&#8239;{ifname} (No IP)";
-            format-disconnected = "✈&#8239;Disconnected";
-            format-alt = "{ifname}: {ipaddr}/{cidr}";
-            tooltip-format = "{essid}: {ipaddr}";
+          # "interface": "wlp2*", // (Optional) To force the use of this interface
+          format-wifi = "   ({signalStrength}%)";
+          format-ethernet = "&#8239;{ifname}: {ipaddr}/{cidr}";
+          format-linked = "&#8239;{ifname} (No IP)";
+          format-disconnected = "✈&#8239;Disconnected";
+          format-alt = "{ifname}: {ipaddr}/{cidr}";
+          tooltip-format = "{essid}: {ipaddr}";
         };
 
         # network = {
@@ -94,7 +91,7 @@
 
         backlight = {
           format = "{icon}&#8239;{percent}%";
-          format-icons = [ "󱩎" "󱩏" "󱩐" "󱩑" "󱩒" "󱩓" "󱩔" "󱩕" "󱩖" "󰛨" ];
+          format-icons = ["󱩎" "󱩏" "󱩐" "󱩑" "󱩒" "󱩓" "󱩔" "󱩕" "󱩖" "󰛨"];
           on-scroll-down = "brightnessctl -c backlight set 1%-";
           on-scroll-up = "brightnessctl -c backlight set +1%";
         };
@@ -152,7 +149,7 @@
           format-charging = "󱐋 {capacity}%";
           format-plugged = "󰚥 {capacity}%";
           format-alt = "{icon}  {time}";
-          format-icons = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+          format-icons = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
         };
 
         pulseaudio = {

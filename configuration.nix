@@ -7,7 +7,6 @@
 {
   imports =
     [
-      ./hardware-configuration.nix
       ./modules/games.nix
       ./modules/hypr/hypr.nix
       ./modules/sops.nix
@@ -158,7 +157,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "zenbook"; # Define your hostname.
+  networking.hostName = "framework"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking

@@ -1,4 +1,4 @@
-{
+	{
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
@@ -33,7 +33,20 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./options.nix
-          ./hardware-configuration.nix
+          ./hosts/zenbook/hardware-configuration.nix
+          ./configuration.nix
+          ./hm.nix
+          auto-cpufreq.nixosModules.default
+          sops-nix.nixosModules.sops
+        ];
+      };
+      framework = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./options.nix
+          ./hosts/framework/hardware-configuration.nix
           ./configuration.nix
           ./hm.nix
           auto-cpufreq.nixosModules.default

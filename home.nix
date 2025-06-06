@@ -8,7 +8,7 @@
     ./modules/shell
     ./modules/ssh.nix
     ./modules/sway
-    # ./modules/uni.nix
+    ./modules/uni.nix
     ./modules/waybar
     ./modules/zsh.nix
   ];
@@ -41,6 +41,7 @@
     # wowup-cf # Wow addon manager
 
     # CLI Tools
+    poppler-utils # pdf tools
     inetutils # ftp and more
     ripgrep
     wl-clipboard
