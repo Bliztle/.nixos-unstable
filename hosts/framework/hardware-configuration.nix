@@ -22,9 +22,17 @@
   };
 
   boot.initrd.luks.devices = {
-    "luks-ff667def-f72b-4c52-82c4-d1c34b78d678".device = "/dev/disk/by-uuid/ff667def-f72b-4c52-82c4-d1c34b78d678";
+    # Root partition
+    "luks-ff667def-f72b-4c52-82c4-d1c34b78d678" = {
+      device = "/dev/disk/by-uuid/ff667def-f72b-4c52-82c4-d1c34b78d678";
+      # TODO
+      # gpgCard = {
+      #   encryptedPass = ./path/to/gpg/card/encryptedPass.gpg;
+      #   publicKey = ./path/to/gpg/card/publicKey.asc;
+      # };
+    };
+    # Swap partition
     "luks-swap" = {
-      # Swap partition
       device = "/dev/disk/by-uuid/adfe86ed-6c17-4a2d-a812-cd4da570d2eb";
       # keyFile = "none"; # Encrypt with a new key each boot (confirm this is true)
       # allowDiscards = true;

@@ -1,22 +1,23 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ lib, pkgs, ... }:
-
 {
-  imports =
-    [
-      ./modules/games.nix
-      ./modules/hypr/hypr.nix
-      ./modules/sops.nix
-      ./modules/storage.nix
-      ./modules/vpn.nix
-    ];
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./modules/games.nix
+    ./modules/hypr/hypr.nix
+    ./modules/sops.nix
+    ./modules/storage.nix
+    ./modules/vpn.nix
+  ];
 
   ##### Optimisation
   nix.optimise.automatic = true; # Automatically optimise /nix/store once a day (possibly only on rebuilds)
-  nix.gc = { # Automatically clean out old generations
+  nix.gc = {
+    # Automatically clean out old generations
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 14d";
@@ -25,7 +26,7 @@
   ##### Shell
   # It is 3 lines to enable zsh
   programs.zsh.enable = true;
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [zsh];
   users.defaultUserShell = pkgs.zsh;
 
   ##### Audio / Sound
@@ -41,7 +42,7 @@
     # jack.enable = true;
   };
 
-  ###### Yubikey configuration
+  ###### PAM / Yubikey configuration
   # TODO: Register keys declaratively
   security.pam.u2f = {
     enable = true;
@@ -52,11 +53,17 @@
     };
   };
   services.pcscd.enable = true; # Read yubikey certificates as smartcard. Required to get 30s 2fa keys
+  security.pam.services = {
+    login.fprintAuth = true; # Enable fingerprint authentication
+    sudo.fprintAuth = true;
+  };
+  # enable fprintd for fingerprint readers
+  services.fprintd.enable = true;
 
   # # Display Manager
   programs.sway.enable = true; # Register with dm. Configured in HM
   # programs.hyprland.enable = true; # Register with dm. Configured in HM
-  
+
   services.xserver.enable = true;
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm = lib.mkDefault {
@@ -64,7 +71,7 @@
     wayland.enable = true;
     package = pkgs.kdePackages.sddm;
   };
-  
+
   ##### Bluetooth
   hardware.bluetooth = {
     enable = true;
@@ -94,13 +101,13 @@
   # Firewall
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 5173 ];
+    allowedTCPPorts = [5173];
   };
 
   # DNS
   services.resolved = {
     enable = true;
-    domains = [ "home" "local" ]; # TLDs to use if none is specified in a URI
+    domains = ["home" "local"]; # TLDs to use if none is specified in a URI
   };
 
   ##### Misc security
@@ -118,7 +125,7 @@
   security.polkit.enable = true; # Allow raising privileges
 
   # gpg encryption agent
-  programs.gnupg.agent = { 
+  programs.gnupg.agent = {
     enable = true;
     enableExtraSocket = true; # Needed for sudo to access keys
     # ssh support is disabled, as it does not support _SK (fido2) keys
@@ -146,10 +153,6 @@
     wireshark
     yubikey-personalization
   ];
-
-
-
-
 
   ##### Default configuration
 
@@ -183,7 +186,7 @@
 
   # Configure keymap in X11
   services.xserver.xkb = {
-    layout = "dk";
+    layout = "us";
   };
 
   # Configure console keymap
@@ -192,7 +195,7 @@
   users.users.bliztle = {
     isNormalUser = true;
     description = "Bliztle";
-    extraGroups = [ "networkmanager" "wheel" "video" ]; # "video" is required to control laptop brightness
+    extraGroups = ["networkmanager" "wheel" "video"]; # "video" is required to control laptop brightness
     packages = with pkgs; [];
   };
 
@@ -225,5 +228,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }

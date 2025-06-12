@@ -41,30 +41,31 @@
     # wowup-cf # Wow addon manager
 
     # CLI Tools
-    poppler-utils # pdf tools
-    inetutils # ftp and more
-    ripgrep
-    wl-clipboard
-    sl
-    tldr
-    unzip
-    swww # Wallpaper engine
-    slurp # Screenshot dependency
-    grim # Screenshot dependency
-    wireguard-tools
-    openvpn
-    expressvpn
-    whois
-    nmap
-    # sshfs # Mount remote filesystems via ssh
-    traceroute
     dig
-    sops
-    kubectl
-    playerctl
-    hyprlock
-    rofi
+    expressvpn
+    grim # Screenshot dependency
     sway-contrib.grimshot
+    hyprlock
+    inetutils # ftp and more
+    kubectl
+    nmap
+    openvpn
+    playerctl
+    poppler-utils # pdf tools
+    ripgrep
+    rofi
+    sl
+    slurp # Screenshot dependency
+    sops
+    # sshfs # Mount remote filesystems via ssh
+    swww # Wallpaper engine
+    tldr
+    traceroute
+    unzip
+    usbutils # usb device management, lsusb
+    whois
+    wireguard-tools
+    wl-clipboard
 
     # Work
     teams-for-linux
@@ -74,8 +75,9 @@
     # nerdfonts
     font-awesome
   ];
-  programs.kitty.enable = true;
+  programs.btop.enable = true;
   services.dunst.enable = true;
+  programs.kitty.enable = true;
   programs.joplin-desktop.enable = true;
   programs.yazi = {
     enable = true;

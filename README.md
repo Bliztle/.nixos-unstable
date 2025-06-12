@@ -11,3 +11,17 @@ The secrets file should then be re-encrypted with the updated keys, before the f
 nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age'
 sops updatekeys secrets/secrets.yaml
 ```
+
+## Yubikey
+
+Yubikey identifiers are specific to each machine, so they need to be regenerated after a new install.
+
+```sh
+mkdir -p ~/.config/Yubico
+# First key
+pamu2fcfg > ~/.config/Yubico/u2f_keys
+# Second key
+pamu2fcfg >> ~/.config/Yubico/u2f_keys
+```
+
+      path = "/home/bliztle/.config/Yubico/u2f_keys";

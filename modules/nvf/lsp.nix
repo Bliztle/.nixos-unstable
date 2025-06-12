@@ -57,6 +57,7 @@
         enable = true;
         extensions.ts-error-translator.enable = true;
       };
+      typst.enable = true;
       yaml.enable = true;
     };
   };

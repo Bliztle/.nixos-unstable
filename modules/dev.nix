@@ -41,6 +41,8 @@
     clippy
     evcxr # REPL and Jupyter kernel
     rust-analyzer
+    # Typst
+    typst
   ];
 
   # Add node as alias to avoid adding npm to the path
