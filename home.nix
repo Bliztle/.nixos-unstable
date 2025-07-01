@@ -21,21 +21,22 @@
 
   home.packages = with pkgs; [
     # Applications
-    firefox
-    spotify
-    obsidian # No overrides needed anymore
-    wdisplays
-    protonmail-desktop
     discord
-    wl-mirror
+    firefox
+    jellyfin-media-player
     libreoffice-qt
+    obsidian # No overrides needed anymore
     pavucontrol
     postman
+    protonmail-desktop
     qbittorrent
-    vlc
     rnote
-    jellyfin-media-player
     speedcrunch
+    spotify
+    vlc
+    wdisplays
+    wl-mirror
+    zathura
 
     # Games
     # wowup-cf # Wow addon manager
