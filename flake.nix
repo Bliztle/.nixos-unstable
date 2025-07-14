@@ -51,6 +51,19 @@
           sops-nix.nixosModules.sops
         ];
       };
+      omen = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./options.nix
+          ./hosts/omen
+          ./configuration
+          ./home-manager
+          auto-cpufreq.nixosModules.default
+          sops-nix.nixosModules.sops
+        ];
+      };
     };
   };
 }

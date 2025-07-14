@@ -3,6 +3,7 @@
 {
   programs.gamescope = {
     enable = true;
+    # TODO: Parameterise this for Omen resolution
     args = [
       "-f"
       "-W 2880"

@@ -19,6 +19,7 @@
     # Automatically clean out old generations
     automatic = true;
     dates = "weekly";
+    # TODO: Make 28d
     options = "--delete-older-than 14d";
   };
 
@@ -53,6 +54,7 @@
   };
   services.pcscd.enable = true; # Read yubikey certificates as smartcard. Required to get 30s 2fa keys
   security.pam.services = {
+    # TODO: Find out if these should be options for hosts without fingerprint readers
     login.fprintAuth = true; # Enable fingerprint authentication
     sudo.fprintAuth = true;
   };
@@ -61,7 +63,6 @@
 
   # # Display Manager
   programs.sway.enable = true; # Register with dm. Configured in HM
-  # programs.hyprland.enable = true; # Register with dm. Configured in HM
 
   services.xserver.enable = true;
   services.desktopManager.plasma6.enable = true;
@@ -79,6 +80,7 @@
   services.blueman.enable = true;
 
   ##### Battery Optimisation
+  # TODO: Find out if this affects desktop performance
   services.power-profiles-daemon.enable = false; # Some DE's enable this
   programs.auto-cpufreq = {
     enable = true;
