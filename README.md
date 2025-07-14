@@ -39,6 +39,11 @@ It is technically possible to continue without this step, but I do not recommend
 sudo nixos-rebuild switch --flake .#<hostname>
 ```
 
+> [!WARN]
+> `nixos-rebuild` will report an error regarding sops age keys.
+> This is fixed in step 3 of this guide.
+> The rest of the system should still work however.
+
 ### 2) Yubikey Setup
 
 Yubikey identifiers are specific to each machine, so they need to be regenerated after a new install.
@@ -61,7 +66,8 @@ gpg --import pubkey.asc
 
 And trust the key
 ```sh
-gpg --edit-key 92810374E3AC1EE1 # Replace this with your key id
+# Replace this with your key id
+gpg --edit-key 92810374E3AC1EE1 
 ```
 - 
 
@@ -69,11 +75,11 @@ gpg --edit-key 92810374E3AC1EE1 # Replace this with your key id
 ### 3) Add Sops Key
 
 > [!NOTE]
-> The following step requires a yubikey already registered with sops. 
-> This additionally requires that GPG keys have already been imported.
+> The following step requires a yubikey already registered with sops, to edit the registered keys.
+> The current setup edits sops files with the yubikey's GPG key, 
+> and uses the age key registered in the steps below to read the secrets at build time.
+> It thus requires the GPG key to already be imported, as outlined in step 2.
 > If you are reading this as inspiration for your own setup, this can safely be ignored.
-
-#### 3.1) Yubikey Setup
 
 First check if an ssh host key already exists. Look for `/etc/ssh/ssh_host_<key type>` 
 and `/etc/ssh/ssh_host_<key type>.pub`. If none exists, generate a new one:
