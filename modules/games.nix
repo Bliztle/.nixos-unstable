@@ -1,4 +1,4 @@
-{...}:
+{pkgs, ...}:
 # Nixos module, not HM
 {
   programs.gamescope = {
@@ -15,7 +15,8 @@
     enable = true;
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
+    extraCompatPackages = with pkgs; [
+      proton-ge-bin
+    ];
   };
-
-  services.flatpak.enable = true;
 }
