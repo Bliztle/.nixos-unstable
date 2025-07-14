@@ -1,8 +1,6 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   networking.firewall = {
-    allowedUDPPorts = [ 51820 ]; # WG: Clients and peers can use the same port, see listenport
+    allowedUDPPorts = [51820]; # WG: Clients and peers can use the same port, see listenport
   };
 
   # Manual openvpn solution for express. Works more reliably than expressvpn cli, but is awkward when switching countries
@@ -14,7 +12,8 @@
   #   };
 
   # ExpressVPN systemd service to automatically activate on boot. CLI is too unreliable by itself.
-  systemd.services.expressvpn-auto-activate = let 
+  # TODO: This doesn't actually work. The activation command does not correctly read the input
+  systemd.services.expressvpn-auto-activate = let
     activationScript = pkgs.writeShellScript "expressvpn-auto-activate.sh" ''
       ACTIVATION_CODE=$(cat /run/secrets/expressvpn_activation_code)
 
@@ -36,14 +35,13 @@
     '';
   in {
     description = "Ensure ExpressVPN is activated on boot";
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = ["multi-user.target"];
     # 🔐 Ensure the secret is available before this service runs
-    requires = [ "sops-nix.service" ];
-    after = [ "network.target" "sops-nix.service" ];
+    requires = ["sops-nix.service"];
+    after = ["network.target" "sops-nix.service"];
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${activationScript}";
     };
-
   };
 }

@@ -1,7 +1,4 @@
-{ pkgs, lib, config, ... }:
-
-{
-  # All configuration is done in program.zsh
+{pkgs, ...}: {
   programs.zsh = {
     enable = true;
     enableCompletion = true;

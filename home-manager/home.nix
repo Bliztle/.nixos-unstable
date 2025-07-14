@@ -1,16 +1,15 @@
 {pkgs, ...}: {
   imports = [
-    ./modules/dev.nix
-    ./modules/git.nix
-    ./modules/hypr/home.nix
-    ./modules/nvf
-    ./modules/scripts
-    ./modules/shell
-    ./modules/ssh.nix
-    ./modules/sway
-    ./modules/uni.nix
-    ./modules/waybar
-    ./modules/zsh.nix
+    ./dev.nix
+    ./git.nix
+    ./nvf
+    ./scripts
+    ./shell
+    ./ssh.nix
+    ./sway
+    ./uni.nix
+    ./waybar
+    ./zsh.nix
   ];
 
   home.username = "bliztle";
@@ -102,11 +101,11 @@
   home.file = builtins.listToAttrs (map (name: {
     name = ".config/${name}";
     value = {
-      source = ./modules/config + "/${name}";
+      source = ./config + "/${name}";
       recursive = true;
       force = true;
     };
-  }) (builtins.attrNames (builtins.readDir ./modules/config)));
+  }) (builtins.attrNames (builtins.readDir ./config)));
 
   home.stateVersion = "24.05";
 }

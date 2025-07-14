@@ -1,14 +1,19 @@
-{ config, inputs, ... }: {
-  imports = [ inputs.home-manager.nixosModules.default ];
+{
+  config,
+  inputs,
+  ...
+}: {
+  imports = [inputs.home-manager.nixosModules.default];
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
 
   home-manager.extraSpecialArgs = {
     inherit inputs;
+    # Make NixOs configuration available to home-manager modules
     cfg = config;
   };
-  
+
   home-manager.sharedModules = [
     inputs.nvf.homeManagerModules.default
   ];

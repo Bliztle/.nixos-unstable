@@ -1,4 +1,4 @@
-	{
+{
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
@@ -6,14 +6,12 @@
     hyprland.url = "github:hyprwm/Hyprland";
     hy3.url = "github:outfoxxed/hy3";
     sops-nix.url = "github:Mic92/sops-nix";
-    # nvf.url = "github:notashelf/nvf";
     nvf.url = "github:Bliztle/nvf/emmet-language-server";
 
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     hy3.inputs.hyprland.follows = "hyprland";
-    # nvf.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -33,9 +31,9 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./options.nix
-          ./hosts/zenbook/hardware-configuration.nix
-          ./configuration.nix
-          ./hm.nix
+          ./hosts/zenbook
+          ./configuration
+          ./home-manager
           auto-cpufreq.nixosModules.default
           sops-nix.nixosModules.sops
         ];
@@ -46,9 +44,9 @@
         specialArgs = {inherit inputs;};
         modules = [
           ./options.nix
-          ./hosts/framework/hardware-configuration.nix
-          ./configuration.nix
-          ./hm.nix
+          ./hosts/framework
+          ./configuration
+          ./home-manager
           auto-cpufreq.nixosModules.default
           sops-nix.nixosModules.sops
         ];

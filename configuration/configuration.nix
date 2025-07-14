@@ -7,11 +7,10 @@
   ...
 }: {
   imports = [
-    ./modules/games.nix
-    ./modules/hypr/hypr.nix
-    ./modules/sops.nix
-    ./modules/storage.nix
-    ./modules/vpn.nix
+    ./games.nix
+    ./sops.nix
+    ./storage.nix
+    ./vpn.nix
   ];
 
   ##### Optimisation
