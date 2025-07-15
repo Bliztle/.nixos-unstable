@@ -12,6 +12,7 @@
     ./sops.nix
     ./storage.nix
     ./vpn.nix
+    ./display.nix
   ];
 
   ##### Optimisation
@@ -61,17 +62,6 @@
   };
   # enable fprintd for fingerprint readers
   services.fprintd.enable = true;
-
-  # # Display Manager
-  programs.sway.enable = true; # Register with dm. Configured in HM
-
-  services.xserver.enable = true;
-  services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm = lib.mkDefault {
-    enable = true;
-    wayland.enable = true;
-    package = pkgs.kdePackages.sddm;
-  };
 
   ##### Bluetooth
   hardware.bluetooth = {

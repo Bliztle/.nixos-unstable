@@ -9,6 +9,7 @@
     ./sway
     ./uni.nix
     ./waybar
+    ./wofi
     ./zsh.nix
   ];
 

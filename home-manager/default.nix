@@ -11,7 +11,7 @@
   home-manager.extraSpecialArgs = {
     inherit inputs;
     # Make NixOs configuration available to home-manager modules
-    cfg = config;
+    conf = config;
   };
 
   home-manager.sharedModules = [

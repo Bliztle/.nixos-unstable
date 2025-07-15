@@ -7,10 +7,17 @@
         layer = "top";
         position = "top";
 
-        # modules-left = [ "hyprland/workspaces" "sway/workspaces" "sway/mode" "temperature" "cpu" "memory" "disk" "tray" "backlight" "pulseaudio" "network" "custom/expressvpn" "battery" "clock" "custom/music" ];
         modules-left = ["hyprland/workspaces" "sway/workspaces" "sway/mode" "temperature" "cpu" "memory" "disk"];
         modules-center = ["custom/music"];
-        modules-right = ["tray" "backlight" "pulseaudio" "network" "custom/expressvpn" "battery" "clock"];
+        modules-right = [
+          "tray"
+          "backlight"
+          "pulseaudio"
+          "network"
+          "custom/expressvpn"
+          "battery"
+          "clock"
+        ];
 
         "hyprland/workspaces" = {
           # active-only = false;

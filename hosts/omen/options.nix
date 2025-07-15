@@ -1,5 +1,7 @@
 {...}: {
   custom = {
-    hostname = "omen"; # Default hostname.
+    hostname = "omen";
+    desktop = true;
+    nvidia.enable = true;
   };
 }
