@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+STACK_FILE="${XDG_RUNTIME_DIR:-/tmp}/sway_scratch_stack"
+
+cmd="$1"
+
+# Ensure stack file exists
+touch "$STACK_FILE"
+curr=$(cat "$STACK_FILE")
+if [[ ! -f "$STACK_FILE" ]]; then
+    curr=0
+fi
+
+if [[ "$cmd" == "push" ]]; then
+    next=$((curr + 1))
+    swaymsg mark "$next"
+    swaymsg move scratchpad
+    echo "$next" >"$STACK_FILE"
+
+elif [[ "$cmd" == "pop" ]]; then
+    if ((curr > 0)); then
+        swaymsg "[con_mark=\"$curr\"] scratchpad show"
+        swaymsg "[con_mark=\"$curr\"] move to workspace current"
+        swaymsg "[con_mark=\"$curr\"] floating disable"
+        swaymsg "[con_mark=\"$curr\"] scratchpad hide"
+        swaymsg "[con_mark=\"$curr\"] focus"
+        swaymsg "[con_mark=\"$curr\"] unmark"
+        echo $((curr - 1)) >"$STACK_FILE"
+    else
+        echo "No windows in stack to pop."
+        exit 1
+    fi
+
+elif [[ "$cmd" == "clear" ]]; then
+    echo 0 >"$STACK_FILE"
+else
+    echo "Usage: $0 push|pop|clear"
+    exit 1
+fi

@@ -29,7 +29,7 @@
     modesetting.enable = true; # something something better with wayland
     nvidiaSettings = true; # config menu `nvidia-settings`
   };
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = lib.mkIf config.custom.nvidia.enable ["nvidia"];
   # Enable Sway with unsupported GPU
   services.displayManager.sessionPackages = let
     swayUnsupportedDesktopItem = pkgs.makeDesktopItem {
