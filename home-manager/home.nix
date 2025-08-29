@@ -49,6 +49,7 @@
     hyprlock
     inetutils # ftp and more
     kubectl
+    fluxcd
     nmap
     openvpn
     playerctl
