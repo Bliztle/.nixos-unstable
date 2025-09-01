@@ -15,5 +15,8 @@
     nvidia = {
       enable = lib.mkEnableOption "nvidia";
     };
+    ollama = {
+      enable = lib.mkEnableOption "ollama";
+    };
   };
 }

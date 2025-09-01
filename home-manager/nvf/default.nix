@@ -6,7 +6,7 @@
   ];
 
   programs.nvf = {
-    enable = true;
+    # enable = true;
     enableManpages = true;
     settings.vim = {
       options = {

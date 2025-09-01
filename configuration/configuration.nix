@@ -13,6 +13,7 @@
     ./storage.nix
     ./vpn.nix
     ./display.nix
+    ./ollama.nix
   ];
 
   ##### Optimisation

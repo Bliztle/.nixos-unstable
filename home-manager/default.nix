@@ -16,6 +16,7 @@
 
   home-manager.sharedModules = [
     inputs.nvf.homeManagerModules.default
+    inputs.nixvim.homeManagerModules.default
   ];
 
   home-manager.users.bliztle = import ./home.nix;
