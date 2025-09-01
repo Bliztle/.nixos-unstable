@@ -16,10 +16,11 @@
     # C#
     dotnet-sdk_8
     # Haskell
-    # (haskellPackages.ghcWithPackages (pkgs: with pkgs; [
-    #   stack
-    #   cabal-install
-    # ]))
+    (haskellPackages.ghcWithPackages (pkgs:
+      with pkgs; [
+        stack
+        cabal-install
+      ]))
     # Java
     jdk17
     # Javascript / Typescript

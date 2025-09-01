@@ -24,14 +24,18 @@
       lsp = {
         enable = true;
         servers = {
-          nil_ls.enable = true;
-          ts_ls.enable = true;
-          eslint.enable = true;
-          emmet_language_server.enable = true;
-          tailwindcss.enable = true;
-          html.enable = true;
-          cssls.enable = true;
-          tinymist.enable = true;
+          nil_ls.enable = true; # Lua
+          ts_ls.enable = true; # Typescript
+          eslint.enable = true; # Eslint
+          emmet_language_server.enable = true; # Emmet (div.class#id)
+          tailwindcss.enable = true; # Tailwindcss
+          html.enable = true; # HTML
+          cssls.enable = true; # CSS
+          tinymist.enable = true; # Typst
+          hls = {
+            enable = true; # Haskell
+            installGhc = false;
+          };
         };
         keymaps = {
           silent = true;
