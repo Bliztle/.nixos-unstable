@@ -16,8 +16,8 @@
       avante = {
         enable = true;
         settings = {
-          # provider = "copilot";
-          provider = "ollama";
+          provider = "copilot";
+          # provider = "ollama";
           ollama = {
             endpoint = "http://localhost:11434";
             model = "qwen2.5-coder:latest";

@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./dev.nix
     ./git.nix
@@ -24,7 +25,7 @@
     # Applications
     discord
     firefox
-    jellyfin-media-player
+    # jellyfin-media-player # Temporarily removed, as it depends on qtwebengine 5, which is unmaintained and has security issues
     libreoffice-qt
     obsidian # No overrides needed anymore
     pavucontrol
@@ -101,14 +102,16 @@
   };
 
   # add ./modules/config/* to ~/.config
-  home.file = builtins.listToAttrs (map (name: {
-    name = ".config/${name}";
-    value = {
-      source = ./config + "/${name}";
-      recursive = true;
-      force = true;
-    };
-  }) (builtins.attrNames (builtins.readDir ./config)));
+  home.file = builtins.listToAttrs (
+    map (name: {
+      name = ".config/${name}";
+      value = {
+        source = ./config + "/${name}";
+        recursive = true;
+        force = true;
+      };
+    }) (builtins.attrNames (builtins.readDir ./config))
+  );
 
   home.stateVersion = "24.05";
 }

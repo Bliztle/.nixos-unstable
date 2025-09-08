@@ -74,8 +74,9 @@
   ##### Battery Optimisation
   # TODO: Find out if this affects desktop performance
   services.power-profiles-daemon.enable = false; # Some DE's enable this
-  programs.auto-cpufreq = {
-    enable = true;
+  services.auto-cpufreq = {
+    # programs.auto-cpufreq = {
+    enable = false;
     settings = {
       charger = {
         governor = "performance";
