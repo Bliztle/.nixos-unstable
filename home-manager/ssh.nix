@@ -1,12 +1,16 @@
-{...}:
+{ ... }:
 # Agent needs to be started from configuration.nix
 # Enabling services.ssh-agent in HM does not play well with _SK keys
 {
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "confirm";
-
+    enableDefaultConfig = false;
     matchBlocks = {
+      "*" = {
+        addKeysToAgent = "yes";
+        # addKeysToAgent = "confirm";
+        forwardAgent = true;
+      };
       "gateway.home" = {
         # lenovo.home from outside the house
         hostname = "home.bliztle.com";
