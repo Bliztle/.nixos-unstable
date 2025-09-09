@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   programs.nixvim = {
     plugins = {
       copilot-lua = {
@@ -18,7 +19,7 @@
         settings = {
           provider = "copilot";
           # provider = "ollama";
-          ollama = {
+          providers.ollama = {
             endpoint = "http://localhost:11434";
             model = "qwen2.5-coder:latest";
           };

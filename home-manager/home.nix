@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./dev.nix
     ./git.nix
@@ -62,7 +61,6 @@
     slurp # Screenshot dependency
     sops
     # sshfs # Mount remote filesystems via ssh
-    swww # Wallpaper engine
     tldr
     traceroute
     unzip
@@ -81,6 +79,7 @@
   ];
   programs.btop.enable = true;
   services.dunst.enable = true;
+  services.swww.enable = true;
   programs.kitty.enable = true;
   programs.joplin-desktop.enable = true;
   programs.yazi = {

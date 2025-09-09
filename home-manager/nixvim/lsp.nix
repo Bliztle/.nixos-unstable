@@ -16,7 +16,6 @@
       dap-ui.enable = true;
       lint.enable = true;
       luasnip.enable = true;
-      # lsp-lines.enable = true;
       lsp-lines = {
         enable = true;
         luaConfig.content = "vim.diagnostic.config({ virtual_lines = true, virtual_text = false })";
@@ -51,10 +50,10 @@
           html.enable = true; # HTML
           cssls.enable = true; # CSS
           tinymist.enable = true; # Typst
-          hls = {
-            enable = true; # Haskell
-            installGhc = false;
-          };
+          # hls = {
+          #   enable = true; # Haskell
+          #   installGhc = false;
+          # };
         };
         keymaps = {
           silent = true;
@@ -131,5 +130,28 @@
         ];
       };
     };
+    extraPlugins = with pkgs.vimPlugins; [
+      haskell-tools-nvim
+    ];
+    keymaps = [
+      {
+        key = "<leader>hs";
+        mode = "n";
+        action = ":lua require('haskell-tools').hoogle.hoogle_signature()<CR>";
+      }
+      {
+        key = "<leader>he";
+        mode = "n";
+        action = ":lua require('haskell-tools').lsp.buf_eval_all()<CR>";
+      }
+      {
+        key = "<leader>hr";
+        mode = "n";
+        action = ":lua require('haskell-tools').repl.toggle()<CR>";
+      }
+    ];
   };
+  home.packages = with pkgs; [
+    haskellPackages.haskell-language-server
+  ];
 }
