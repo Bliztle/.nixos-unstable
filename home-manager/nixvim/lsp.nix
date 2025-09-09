@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     plugins = {
       treesitter = {
@@ -21,6 +22,24 @@
         luaConfig.content = "vim.diagnostic.config({ virtual_lines = true, virtual_text = false })";
       };
       lsp-format.enable = true;
+      none-ls = {
+        # Active null-ls fork. Used to add non-LSP sources to LSP
+        enable = true;
+        sources.formatting = {
+          prettier = {
+            enable = true;
+            disableTsServerFormatter = true;
+            settings.filetypes = [
+              "javascript"
+              "javascriptreact"
+              "typescript"
+              "typescriptreact"
+              "css"
+              "html"
+            ];
+          };
+        };
+      };
       lsp = {
         enable = true;
         servers = {
