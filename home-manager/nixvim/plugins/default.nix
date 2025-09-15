@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     ./telescope.nix
     ./llm.nix
@@ -18,7 +19,16 @@
       rainbow-delimiters.enable = true;
       highlight-colors.enable = true;
       nvim-lightbulb.enable = true;
-      render-markdown.enable = true;
+      render-markdown = {
+        enable = true;
+        settings.render_modes = [
+          "n"
+          "c"
+          "t"
+          "i"
+          "v"
+        ];
+      };
     };
   };
 }
