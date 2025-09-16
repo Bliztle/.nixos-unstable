@@ -45,15 +45,17 @@
           nil_ls.enable = true; # Lua
           ts_ls.enable = true; # Typescript
           eslint.enable = true; # Eslint
-          emmet_language_server.enable = true; # Emmet (div.class#id)
+          emmet_language_server.enable = true; # Emmet
           tailwindcss.enable = true; # Tailwindcss
           html.enable = true; # HTML
           cssls.enable = true; # CSS
           tinymist.enable = true; # Typst
-          # hls = {
-          #   enable = true; # Haskell
-          #   installGhc = false;
-          # };
+          basedpyright.enable = true; # Python
+          rust_analyzer = {
+            enable = true;
+            installCargo = false;
+            installRustc = false;
+          }; # Rust
         };
         keymaps = {
           silent = true;

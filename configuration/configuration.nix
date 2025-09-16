@@ -6,7 +6,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./games.nix
     ./sops.nix
@@ -29,7 +30,7 @@
   ##### Shell
   # It is 3 lines to enable zsh
   programs.zsh.enable = true;
-  environment.shells = with pkgs; [zsh];
+  environment.shells = with pkgs; [ zsh ];
   users.defaultUserShell = pkgs.zsh;
 
   ##### Audio / Sound
@@ -76,7 +77,7 @@
   services.power-profiles-daemon.enable = false; # Some DE's enable this
   services.auto-cpufreq = {
     # programs.auto-cpufreq = {
-    enable = false;
+    enable = true;
     settings = {
       charger = {
         governor = "performance";
@@ -95,13 +96,16 @@
   # Firewall
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [5173];
+    allowedTCPPorts = [ 5173 ];
   };
 
   # DNS
   services.resolved = {
     enable = true;
-    domains = ["home" "local"]; # TLDs to use if none is specified in a URI
+    domains = [
+      "home"
+      "local"
+    ]; # TLDs to use if none is specified in a URI
   };
 
   ##### Misc security
@@ -189,8 +193,12 @@
   users.users.bliztle = {
     isNormalUser = true;
     description = "Bliztle";
-    extraGroups = ["networkmanager" "wheel" "video"]; # "video" is required to control laptop brightness
-    packages = with pkgs; [];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "video"
+    ]; # "video" is required to control laptop brightness
+    packages = with pkgs; [ ];
   };
 
   # Allow unfree packages

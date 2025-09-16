@@ -6,6 +6,7 @@
     ./git.nix
     ./harpoon.nix
     ./neotest.nix
+    ./notebook.nix
   ];
 
   programs.nixvim = {
@@ -21,13 +22,19 @@
       nvim-lightbulb.enable = true;
       render-markdown = {
         enable = true;
-        settings.render_modes = [
-          "n"
-          "c"
-          "t"
-          "i"
-          "v"
-        ];
+        settings = {
+          file_types = [
+            "markdown"
+            "quarto"
+          ];
+          render_modes = [
+            "n"
+            "c"
+            "t"
+            "i"
+            "v"
+          ];
+        };
       };
     };
   };
