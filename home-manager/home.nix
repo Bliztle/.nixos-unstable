@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./dev.nix
     ./git.nix
@@ -51,6 +52,7 @@
     inetutils # ftp and more
     kubectl
     fluxcd
+    jq
     nmap
     openvpn
     playerctl
@@ -60,6 +62,7 @@
     sl
     slurp # Screenshot dependency
     sops
+    swaycwd
     # sshfs # Mount remote filesystems via ssh
     tldr
     traceroute

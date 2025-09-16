@@ -1,21 +1,26 @@
 #!/usr/bin/env bash
 
-# Get the focused window's PID
-pid=$(swaymsg -t get_tree | jq -r '.. | select(.focused? == true) | .pid')
+# get PID of the focused window
+tree=$(swaymsg -t get_tree | jq '.. | select(.focused? == true)')
+pid=$(swaymsg -t get_tree | jq '.. | select(.focused? == true).pid')
 
-# Check if we got a PID
-if [[ -z "$pid" || "$pid" == "null" ]]; then
-    kitty
-    exit 0
+echo "TREE: $tree"
+echo "PID: $pid"
+
+# fallback dir = $HOME
+dir=$HOME
+
+if [ -n "$pid" ]; then
+    # climb up the process tree until we find a process with a cwd
+    while [ "$pid" -ne 1 ]; do
+        if [ -d "/proc/$pid/cwd" ]; then
+            dir=$(readlink -f "/proc/$pid/cwd")
+            break
+        fi
+        pid=$(ps -o ppid= -p "$pid")
+    done
 fi
 
-# Get the working directory from /proc/<pid>/cwd
-cwd=$(readlink -f /proc/$pid/cwd 2>/dev/null)
+echo "DIR: $dir"
 
-# Fallback to $HOME if the directory isn't accessible
-if [[ -z "$cwd" || ! -d "$cwd" ]]; then
-    cwd="$HOME"
-fi
-
-# Launch kitty in that directory
-exec kitty --directory "$cwd"
+exec kitty --directory "$dir"
