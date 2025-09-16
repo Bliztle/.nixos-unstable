@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     ./plugins
     ./keymaps.nix
@@ -25,6 +26,9 @@
       ignorecase = true;
       smarttab = true;
       smartcase = true;
+      foldmethod = "expr";
+      foldexpr = "nvim_treesitter#foldexpr()";
+      foldenable = false;
     };
     clipboard.register = "unnamedplus";
     plugins = {
