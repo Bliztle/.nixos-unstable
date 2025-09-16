@@ -3,10 +3,12 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg-path = ".config/git";
-in {
-  options = {};
+in
+{
+  options = { };
   config = {
     # Normal git configuration
     programs.git = {
@@ -29,6 +31,7 @@ in {
         swc = "switch -c";
         swd = "!git switch `git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@'`";
         st = "stash";
+        std = "stash drop";
         stp = "stash pop";
         c = "commit -m";
         ca = "!git add -A && git commit -m";
@@ -68,6 +71,7 @@ in {
         lg1 = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all";
         lg2 = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'";
         lg = "lg1";
+        lgs = "lg1 -n 10";
 
         sub = "submodule";
         sub-pull = "submodule foreach git pull";
