@@ -25,6 +25,9 @@
     ))
     # Java
     jdk17
+    glib
+    gtk4
+    gtk3-x11
     # Javascript / Typescript
     nodePackages_latest.pnpm
     # OCaml - `ocaml` and `merlin` are installed and managed by opam

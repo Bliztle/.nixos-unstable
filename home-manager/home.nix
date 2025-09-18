@@ -13,6 +13,7 @@
     ./waybar
     ./wofi
     ./zsh.nix
+    ./syncthing.nix
   ];
 
   home.username = "bliztle";

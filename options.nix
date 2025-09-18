@@ -1,4 +1,5 @@
-{lib, ...}: {
+{ lib, ... }:
+{
   options.custom = {
     desktop = lib.mkOption {
       type = lib.types.bool;
@@ -17,6 +18,9 @@
     };
     ollama = {
       enable = lib.mkEnableOption "ollama";
+    };
+    syncthing = {
+      enable = lib.mkEnableOption "syncthing";
     };
   };
 }
