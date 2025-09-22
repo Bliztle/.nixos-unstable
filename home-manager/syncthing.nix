@@ -15,12 +15,12 @@ lib.mkIf conf.custom.syncthing.enable {
       };
 
       devices.framework = {
-        id = "7VE4AEN-CYY4UKI-R7GH3BB-PJOVQEB-JE5EDRT-L2JPWSB-RT3VEWT-ZOFYVQA"; # Replace with actual device ID
+        id = "7VE4AEN-CYY4UKI-R7GH3BB-PJOVQEB-JE5EDRT-L2JPWSB-RT3VEWT-ZOFYVQA";
         compression = "metadata";
       };
 
       devices.omen = {
-        id = "MXOAWAD-CX3FCZK-RRVNVZZ-PJYAJAS-NH3FRPQ-NJGEO3X-XG6KWWY-26G6YAC"; # Replace with actual device ID
+        id = "MXOAWAD-CX3FCZK-RRVNVZZ-PJYAJAS-NH3FRPQ-NJGEO3X-XG6KWWY-26G6YAC";
         compression = "metadata";
       };
 
