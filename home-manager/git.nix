@@ -1,7 +1,4 @@
 {
-  pkgs,
-  lib,
-  config,
   ...
 }:
 let
@@ -26,6 +23,7 @@ in
       aliases = {
         a = "add";
         aa = "add -A";
+        ap = "add -p";
         s = "status";
         sw = "switch";
         swc = "switch -c";

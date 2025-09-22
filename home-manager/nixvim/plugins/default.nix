@@ -20,6 +20,7 @@
       rainbow-delimiters.enable = true;
       highlight-colors.enable = true;
       nvim-lightbulb.enable = true;
+      typst-preview.enable = true;
       render-markdown = {
         enable = true;
         settings = {
