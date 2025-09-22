@@ -23,7 +23,6 @@
     # Automatically clean out old generations
     automatic = true;
     dates = "weekly";
-    # TODO: Make 28d
     options = "--delete-older-than 14d";
   };
 
@@ -37,7 +36,6 @@
   security.rtkit.enable = true; # PulseAudio uses this for scheduling priority
   services.pipewire = {
     enable = true;
-    # TODO: Enable these if there are audio issues
     # Pipewire docs recommended enabling the top 3
     alsa.enable = true; # Drivers and interfaces? Might not be required
     alsa.support32Bit = true;
@@ -47,7 +45,6 @@
   };
 
   ###### PAM / Yubikey configuration
-  # TODO: Register keys declaratively
   security.pam.u2f = {
     enable = true;
     control = "sufficient"; # Do not ask for password if available
@@ -58,7 +55,6 @@
   };
   services.pcscd.enable = true; # Read yubikey certificates as smartcard. Required to get 30s 2fa keys
   security.pam.services = {
-    # TODO: Find out if these should be options for hosts without fingerprint readers
     login.fprintAuth = true; # Enable fingerprint authentication
     sudo.fprintAuth = true;
   };
@@ -134,11 +130,8 @@
   programs.wireshark.enable = true;
   virtualisation.docker.enable = true;
   programs.nix-ld.enable = true; # Allow dynamic linking of nix packages
-  # security.pki.certificateFiles = [ # TODO: Why did this stop working?
-  #   /etc/ssl/localcerts/localhost.crt
-  # ];
   services.expressvpn.enable = true;
-  # Nerdfonts changed. This is now the way according to the error message???
+  # Nerdfonts is imported like this now
   fonts.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   ##### Packages required by above configuration
@@ -198,7 +191,7 @@
       "wheel"
       "video"
     ]; # "video" is required to control laptop brightness
-    packages = with pkgs; [ ];
+    # packages = with pkgs; [ ];
   };
 
   # Allow unfree packages

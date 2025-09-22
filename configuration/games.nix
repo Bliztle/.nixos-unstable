@@ -1,14 +1,13 @@
-{pkgs, ...}:
+{ pkgs, config, ... }:
 # Nixos module, not HM
 {
   programs.gamescope = {
-    enable = true;
-    # TODO: Parameterise this for Omen resolution
+    enable = config.custom.gaming.gamescope.enable;
     args = [
       "-f"
-      "-W 2880"
-      "-H 1920"
-      "-r 120"
+      "-W ${toString config.custom.gaming.gamescope.width}"
+      "-H ${toString config.custom.gaming.gamescope.height}"
+      "-r ${toString config.custom.gaming.gamescope.refreshRate}"
     ];
   };
 

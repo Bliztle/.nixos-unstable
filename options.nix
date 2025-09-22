@@ -22,5 +22,22 @@
     syncthing = {
       enable = lib.mkEnableOption "syncthing";
     };
+    gaming = {
+      gamescope = {
+        enable = lib.mkEnableOption "gamescope";
+        width = lib.mkOption {
+          type = lib.types.int;
+          description = "The width for gamescope.";
+        };
+        height = lib.mkOption {
+          type = lib.types.int;
+          description = "The height for gamescope.";
+        };
+        refreshRate = lib.mkOption {
+          type = lib.types.int;
+          description = "The refresh rate for gamescope.";
+        };
+      };
+    };
   };
 }
