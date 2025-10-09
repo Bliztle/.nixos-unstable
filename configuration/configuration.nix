@@ -11,8 +11,6 @@
   imports = [
     ./games.nix
     ./sops.nix
-    ./storage.nix
-    ./vpn.nix
     ./display.nix
     ./ollama.nix
   ];
@@ -43,6 +41,9 @@
     # wireplumber.enable # TODO: Look into this
     # jack.enable = true;
   };
+
+  ##### Disk Mounting
+  services.udisks2.enable = true; # Automounting of external drives
 
   ###### PAM / Yubikey configuration
   security.pam.u2f = {
@@ -128,7 +129,7 @@
 
   ##### Misc
   programs.wireshark.enable = true;
-  virtualisation.docker.enable = true;
+  # virtualisation.docker.enable = true;
   programs.nix-ld.enable = true; # Allow dynamic linking of nix packages
   services.expressvpn.enable = true;
   # Nerdfonts is imported like this now

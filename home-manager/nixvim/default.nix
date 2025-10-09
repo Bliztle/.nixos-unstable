@@ -31,9 +31,5 @@
       foldenable = false;
     };
     clipboard.register = "unnamedplus";
-    plugins = {
-      lualine.enable = true;
-      web-devicons.enable = true;
-    };
   };
 }

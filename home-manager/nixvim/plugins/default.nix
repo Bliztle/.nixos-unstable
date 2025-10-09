@@ -21,6 +21,10 @@
       highlight-colors.enable = true;
       nvim-lightbulb.enable = true;
       typst-preview.enable = true;
+      lualine.enable = true;
+      web-devicons.enable = true;
+      rustaceanvim.enable = true;
+      tailwind-tools.enable = true;
       render-markdown = {
         enable = true;
         settings = {

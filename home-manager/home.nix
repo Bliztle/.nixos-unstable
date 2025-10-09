@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   imports = [
     ./dev.nix
@@ -40,13 +40,13 @@
     wdisplays
     wl-mirror
     zathura
+    zotero
 
     # Games
     # wowup-cf # Wow addon manager
 
     # CLI Tools
     dig
-    expressvpn
     grim # Screenshot dependency
     sway-contrib.grimshot
     hyprlock
@@ -55,9 +55,9 @@
     fluxcd
     jq
     nmap
-    openvpn
     playerctl
     poppler-utils # pdf tools
+    quickemu
     ripgrep
     rofi
     sl
@@ -84,11 +84,17 @@
   programs.btop.enable = true;
   services.dunst.enable = true;
   services.swww.enable = true;
+  services.udiskie.enable = true;
   programs.kitty.enable = true;
   programs.joplin-desktop.enable = true;
   programs.yazi = {
     enable = true;
     enableZshIntegration = true;
+  };
+
+  programs.nh = {
+    enable = true;
+    flake = /home/bliztle/.nixos-unstable;
   };
 
   home.sessionVariables = {
@@ -104,17 +110,21 @@
     };
   };
 
-  # add ./modules/config/* to ~/.config
-  home.file = builtins.listToAttrs (
-    map (name: {
-      name = ".config/${name}";
-      value = {
-        source = ./config + "/${name}";
-        recursive = true;
-        force = true;
-      };
-    }) (builtins.attrNames (builtins.readDir ./config))
-  );
+  home.file =
+    # add ./modules/config/* to ~/.config
+    builtins.listToAttrs (
+      map (name: {
+        name = ".config/${name}";
+        value = {
+          source = ./config + "/${name}";
+          recursive = true;
+          force = true;
+        };
+      }) (builtins.attrNames (builtins.readDir ./config))
+    )
+    // {
+      mnt.source = config.lib.file.mkOutOfStoreSymlink "/run/media/bliztle";
+    };
 
   home.stateVersion = "24.05";
 }

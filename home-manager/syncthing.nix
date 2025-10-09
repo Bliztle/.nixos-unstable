@@ -23,15 +23,25 @@ lib.mkIf conf.custom.syncthing.enable {
         id = "MXOAWAD-CX3FCZK-RRVNVZZ-PJYAJAS-NH3FRPQ-NJGEO3X-XG6KWWY-26G6YAC";
         compression = "metadata";
       };
-
-      folders."uni" = {
-        devices = [
-          "zenbook"
-          "framework"
-          "omen"
-        ];
-        versioning.type = "trashcan";
-        path = "~/uni";
+      folders = {
+        "uni" = {
+          devices = [
+            "zenbook"
+            "framework"
+            "omen"
+          ];
+          versioning.type = "trashcan";
+          path = "~/uni";
+        };
+        "synced" = {
+          devices = [
+            "zenbook"
+            "framework"
+            "omen"
+          ];
+          versioning.type = "trashcan";
+          path = "~/.synced";
+        };
       };
       options.urAccepted = -1;
     };

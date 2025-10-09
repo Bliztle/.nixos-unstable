@@ -1,5 +1,11 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
-    # uppaal
+    (pkgs.postgresql18Packages.postgis.overrideAttrs (
+      final: prev: {
+        configureFlags = prev.configureFlags ++ [ "--with-gui" ];
+        buildInputs = prev.buildInputs ++ [ pkgs.gtk2 ];
+      }
+    ))
   ];
 }

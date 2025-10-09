@@ -51,11 +51,11 @@
           cssls.enable = true; # CSS
           tinymist.enable = true; # Typst
           basedpyright.enable = true; # Python
-          rust_analyzer = {
-            enable = true;
-            installCargo = false;
-            installRustc = false;
-          }; # Rust
+          # rust_analyzer = {
+          #   enable = true;
+          #   installCargo = false;
+          #   installRustc = false;
+          # }; # Rust
         };
         keymaps = {
           silent = true;
