@@ -73,8 +73,7 @@
   # TODO: Find out if this affects desktop performance
   services.power-profiles-daemon.enable = false; # Some DE's enable this
   services.auto-cpufreq = {
-    # programs.auto-cpufreq = {
-    enable = true;
+    enable = false;
     settings = {
       charger = {
         governor = "performance";
