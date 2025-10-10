@@ -49,6 +49,11 @@
           tailwindcss.enable = true; # Tailwindcss
           html.enable = true; # HTML
           cssls.enable = true; # CSS
+          svelte = {
+            # Svelte
+            enable = true;
+            rootMarkers = [ "svelte.config.js" ];
+          };
           tinymist.enable = true; # Typst
           basedpyright.enable = true; # Python
           # rust_analyzer = {
