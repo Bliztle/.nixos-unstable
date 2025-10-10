@@ -24,15 +24,15 @@ lib.mkIf conf.custom.syncthing.enable {
         compression = "metadata";
       };
       folders = {
-        "uni" = {
-          devices = [
-            "zenbook"
-            "framework"
-            "omen"
-          ];
-          versioning.type = "trashcan";
-          path = "~/uni";
-        };
+        # "uni" = {
+        #   devices = [
+        #     "zenbook"
+        #     "framework"
+        #     "omen"
+        #   ];
+        #   versioning.type = "trashcan";
+        #   path = "~/uni";
+        # };
         "synced" = {
           devices = [
             "zenbook"
