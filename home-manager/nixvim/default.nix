@@ -6,7 +6,7 @@
     ./lsp.nix
   ];
   programs.nixvim = {
-    enable = true;
+    enable = false;
     colorschemes.catppuccin = {
       enable = true;
       settings.flavour = "mocha";

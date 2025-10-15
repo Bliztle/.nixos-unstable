@@ -1,6 +1,6 @@
 {...}: {
   programs.nvf.settings.vim.tabline.nvimBufferline = {
-    enable = true;
+    enable = false;
     mappings = {
       closeCurrent = "<M-q>";
       cycleNext = "<M-l>";

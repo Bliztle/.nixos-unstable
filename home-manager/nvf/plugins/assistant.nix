@@ -1,6 +1,6 @@
 {...}: {
   programs.nvf.settings.vim.assistant.copilot = {
-    enable = true;
+    enable = false;
     cmp.enable = false;
     mappings.suggestion = {
       accept = "<C-CR>";

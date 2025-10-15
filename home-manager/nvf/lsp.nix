@@ -1,9 +1,12 @@
-{...}: {
+{pkgs, ...}: {
   programs.nvf.settings.vim = {
     treesitter = {
       enable = true;
       context.enable = true;
       fold = false;
+      grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+        typescript
+      ];
     };
 
     lsp = {
@@ -52,6 +55,7 @@
         enable = true;
         crates.enable = true;
       };
+      svelte.enable = true;
       tailwind.enable = true;
       ts = {
         enable = true;
