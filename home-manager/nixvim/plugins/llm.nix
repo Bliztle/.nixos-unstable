@@ -3,7 +3,7 @@
   programs.nixvim = {
     plugins = {
       copilot-lua = {
-        enable = true;
+        enable = false;
         settings = {
           panel.enabled = false;
           suggestion = {
