@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
@@ -18,10 +17,11 @@
     dotnet-sdk_8
     # Haskell
     (haskellPackages.ghcWithPackages (
-      pkgs: with pkgs; [
-        stack
-        cabal-install
-      ]
+      pkgs:
+        with pkgs; [
+          stack
+          cabal-install
+        ]
     ))
     # Java
     jdk17
@@ -29,6 +29,7 @@
     gtk4
     gtk3-x11
     # Javascript / Typescript
+    nodePackages_latest.npm
     nodePackages_latest.pnpm
     # OCaml - `ocaml` and `merlin` are installed and managed by opam
     # ocaml
@@ -54,7 +55,4 @@
   ];
 
   programs.bacon.enable = true;
-
-  # Add node as alias to avoid adding npm to the path
-  programs.zsh.shellAliases.node = "${pkgs.nodejs}/bin/node";
 }
