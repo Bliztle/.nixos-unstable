@@ -6,8 +6,7 @@
   lib,
   pkgs,
   ...
-}:
-{
+}: {
   imports = [
     ./games.nix
     ./sops.nix
@@ -27,7 +26,7 @@
   ##### Shell
   # It is 3 lines to enable zsh
   programs.zsh.enable = true;
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [zsh];
   users.defaultUserShell = pkgs.zsh;
 
   ##### Audio / Sound
@@ -92,7 +91,7 @@
   # Firewall
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [ 5173 ];
+    allowedTCPPorts = [5173];
   };
 
   # DNS

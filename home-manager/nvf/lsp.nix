@@ -8,6 +8,13 @@
         typescript
       ];
     };
+    autocomplete.nvim-cmp = {
+      enable = true;
+      mappings = {
+        next = "Down";
+        previous = "Up";
+      };
+    };
 
     lsp = {
       enable = true;
@@ -35,6 +42,24 @@
       };
     };
 
+    keymaps = [
+      {
+        key = "<leader>hs";
+        mode = "n";
+        action = ":lua require('haskell-tools').hoogle.hoogle_signature()<CR>";
+      }
+      {
+        key = "<leader>he";
+        mode = "n";
+        action = ":lua require('haskell-tools').lsp.buf_eval_all()<CR>";
+      }
+      {
+        key = "<leader>hr";
+        mode = "n";
+        action = ":lua require('haskell-tools').repl.toggle()<CR>";
+      }
+    ];
+
     languages = {
       enableDAP = true;
       enableExtraDiagnostics = true;
@@ -50,6 +75,7 @@
       helm.enable = true;
       html.enable = true;
       nix.enable = true;
+      java.enable = true;
       python.enable = true;
       rust = {
         enable = true;
@@ -67,5 +93,8 @@
       };
       yaml.enable = true;
     };
+    # extraPlugins = {
+    #   emmet-vim.package = pkgs.vimPluging.emmet-vim;
+    # };
   };
 }

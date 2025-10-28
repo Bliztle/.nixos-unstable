@@ -1,5 +1,8 @@
-{ pkgs, config, ... }:
 {
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
     ./dev.nix
     ./git.nix
@@ -52,6 +55,7 @@
     hyprlock
     inetutils # ftp and more
     kubectl
+    kubelogin
     fluxcd
     jq
     nmap

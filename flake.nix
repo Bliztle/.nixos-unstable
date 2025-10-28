@@ -7,8 +7,10 @@
     hy3.url = "github:outfoxxed/hy3";
     sops-nix.url = "github:Mic92/sops-nix";
     nvf.url = "github:Bliztle/nvf/emmet-language-server";
+    # nvf.url = "github:NotAShelf/nvf";
     nixvim.url = "github:nix-community/nixvim";
 
+    # nvf.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";

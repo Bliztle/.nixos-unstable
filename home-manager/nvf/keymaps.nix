@@ -69,6 +69,11 @@
         mode = "n";
         action = "gdzzzv";
       }
+      {
+        key = "<C-/>";
+        mode = "n";
+        action = "gcc";
+      }
     ];
   };
 }
