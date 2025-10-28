@@ -70,7 +70,6 @@
       # Languages
       bash.enable = true;
       css.enable = true;
-      emmet.enable = true;
       haskell.enable = true;
       helm.enable = true;
       html.enable = true;
@@ -93,8 +92,8 @@
       };
       yaml.enable = true;
     };
-    # extraPlugins = {
-    #   emmet-vim.package = pkgs.vimPluging.emmet-vim;
-    # };
+    extraPlugins = {
+      emmet-vim.package = pkgs.vimPlugins.emmet-vim;
+    };
   };
 }

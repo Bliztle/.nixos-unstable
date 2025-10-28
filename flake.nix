@@ -10,7 +10,7 @@
     # nvf.url = "github:NotAShelf/nvf";
     nixvim.url = "github:nix-community/nixvim";
 
-    # nvf.inputs.nixpkgs.follows = "nixpkgs";
+    nvf.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
