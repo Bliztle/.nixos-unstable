@@ -132,6 +132,13 @@
   services.expressvpn.enable = true;
   # Nerdfonts is imported like this now
   fonts.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  # Run app images
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
+  # Connect to apple devices
+  services.usbmuxd.enable = true;
 
   ##### Packages required by above configuration
 

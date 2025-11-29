@@ -35,6 +35,7 @@
     pavucontrol
     postman
     protonmail-desktop
+    protonvpn-gui
     qbittorrent
     rnote
     speedcrunch

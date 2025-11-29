@@ -9,6 +9,8 @@
 
   home.packages = with pkgs; [
     jetbrains.pycharm-professional
+    android-studio
+    android-tools
 
     # C
     gcc
@@ -50,6 +52,9 @@
     clippy
     evcxr # REPL and Jupyter kernel
     rust-analyzer
+    # Swift
+    swift
+    usbmuxd
     # Typst
     typst
   ];

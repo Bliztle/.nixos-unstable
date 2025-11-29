@@ -20,7 +20,10 @@
       theme.enable = true;
       theme.name = "catppuccin";
       theme.style = "mocha";
-      useSystemClipboard = true;
+      clipboard = {
+        enable = true;
+        registers = "unnamedplus";
+      };
     };
   };
 }

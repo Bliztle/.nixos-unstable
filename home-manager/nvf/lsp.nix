@@ -4,6 +4,7 @@
       enable = true;
       context.enable = true;
       fold = false;
+      autotagHtml = true;
       grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
         typescript
       ];
@@ -64,13 +65,16 @@
       enableDAP = true;
       enableExtraDiagnostics = true;
       enableFormat = true;
-      enableLSP = true;
       enableTreesitter = true;
 
       # Languages
       bash.enable = true;
       css.enable = true;
-      haskell.enable = true;
+      emmet.enable = true;
+      haskell = {
+        enable = true;
+        dap.enable = false;
+      };
       helm.enable = true;
       html.enable = true;
       nix.enable = true;
@@ -78,6 +82,13 @@
       python.enable = true;
       rust = {
         enable = true;
+        lsp.opts = ''
+          ['rust-analyzer'] = {
+            check = {
+              allTargets = false,
+            },
+          },
+        '';
         crates.enable = true;
       };
       svelte.enable = true;
@@ -92,8 +103,12 @@
       };
       yaml.enable = true;
     };
-    extraPlugins = {
-      emmet-vim.package = pkgs.vimPlugins.emmet-vim;
+
+    lazy = {
+      enable = true;
     };
+    # extraPlugins = {
+    #   emmet-vim.package = pkgs.vimPlugins.emmet-vim;
+    # };
   };
 }
