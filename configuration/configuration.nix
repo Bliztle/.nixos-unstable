@@ -40,6 +40,7 @@
     # wireplumber.enable # TODO: Look into this
     # jack.enable = true;
   };
+  # hardware.bluetooth.hsphfpd.enable = true;
 
   ##### Disk Mounting
   services.udisks2.enable = true; # Automounting of external drives
@@ -127,7 +128,10 @@
 
   ##### Misc
   programs.wireshark.enable = true;
-  # virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = false; # DNS settings not fixed on eduroam yet
+    daemon.settings.dns = ["1.1.1.1" "8.8.8.8"];
+  };
   programs.nix-ld.enable = true; # Allow dynamic linking of nix packages
   services.expressvpn.enable = true;
   # Nerdfonts is imported like this now

@@ -20,13 +20,8 @@
 
   outputs = {
     nixpkgs,
-    home-manager,
     auto-cpufreq,
-    hyprland,
-    hy3,
     sops-nix,
-    nvf,
-    nixvim,
     ...
   } @ inputs: {
     nixosConfigurations = let

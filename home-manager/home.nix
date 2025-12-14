@@ -45,6 +45,7 @@
     wl-mirror
     zathura
     zotero
+    signal-desktop
 
     # Games
     # wowup-cf # Wow addon manager
