@@ -1,4 +1,4 @@
-{ ... }:
+{...}:
 # Agent needs to be started from configuration.nix
 # Enabling services.ssh-agent in HM does not play well with _SK keys
 {
