@@ -26,8 +26,9 @@
   ##### Shell
   # It is 3 lines to enable zsh
   programs.zsh.enable = true;
-  environment.shells = with pkgs; [zsh];
-  users.defaultUserShell = pkgs.zsh;
+  environment.shells = with pkgs; [zsh nushell];
+  # users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.nushell;
 
   ##### Audio / Sound
   security.rtkit.enable = true; # PulseAudio uses this for scheduling priority
@@ -196,6 +197,7 @@
   users.users.bliztle = {
     isNormalUser = true;
     description = "Bliztle";
+    shell = pkgs.nushell;
     extraGroups = [
       "networkmanager"
       "wheel"

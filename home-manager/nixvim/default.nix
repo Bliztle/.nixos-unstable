@@ -1,12 +1,11 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./plugins
     ./keymaps.nix
     ./lsp.nix
   ];
   programs.nixvim = {
-    enable = false;
+    enable = true;
     colorschemes.catppuccin = {
       enable = true;
       settings.flavour = "mocha";

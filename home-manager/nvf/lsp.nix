@@ -36,7 +36,7 @@
         # Diagnostics
         openDiagnosticFloat = "<leader>k";
         nextDiagnostic = "<leader>dn";
-        previousDiagnostic = "<leader>dn";
+        previousDiagnostic = "<leader>dN";
         # Info
         hover = "K";
         signatureHelp = "<leader>K";
@@ -69,6 +69,7 @@
 
       # Languages
       bash.enable = true;
+      nu.enable = true;
       css.enable = true;
       emmet.enable = true;
       haskell = {

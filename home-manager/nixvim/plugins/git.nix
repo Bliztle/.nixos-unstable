@@ -9,6 +9,7 @@
         };
       };
     };
+    plugins.octo.enable = true;
     keymaps = [
       {
         key = "gtw";

@@ -15,7 +15,6 @@
     ./uni.nix
     ./waybar
     ./wofi
-    ./zsh.nix
     ./syncthing.nix
   ];
 
@@ -65,12 +64,14 @@
     poppler-utils # pdf tools
     quickemu
     ripgrep
+    bat
+    fd
+    eza
     rofi
     sl
     slurp # Screenshot dependency
     sops
     swaycwd
-    # sshfs # Mount remote filesystems via ssh
     tldr
     traceroute
     unzip
