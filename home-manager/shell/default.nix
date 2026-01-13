@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./starship.nix
   ];
@@ -71,6 +72,8 @@
     '';
     envFile.text = ''
       $env.PATH ++= ['~/.config/scripts']
+      $env.EDITOR = 'nvim'
+      source-env ~/.config/nushell/env.secret.nu
     '';
   };
 
