@@ -5,14 +5,25 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
-}: {
+}:
+{
   imports = [
     ./games.nix
     ./sops.nix
     ./display.nix
     ./ollama.nix
   ];
+
+  programs.hyprland = {
+    enable = true;
+    # set the flake package
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    # make sure to also set the portal package, so that they are in sync
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
 
   ##### Optimisation
   nix.optimise.automatic = true; # Automatically optimise /nix/store once a day (possibly only on rebuilds)
@@ -26,7 +37,10 @@
   ##### Shell
   # It is 3 lines to enable zsh
   programs.zsh.enable = true;
-  environment.shells = with pkgs; [zsh nushell];
+  environment.shells = with pkgs; [
+    zsh
+    nushell
+  ];
   # users.defaultUserShell = pkgs.zsh;
   users.defaultUserShell = pkgs.nushell;
 
@@ -93,16 +107,7 @@
   # Firewall
   networking.firewall = {
     enable = true;
-    allowedTCPPorts = [5173];
-  };
-
-  # DNS
-  services.resolved = {
-    enable = true;
-    domains = [
-      "home"
-      "local"
-    ]; # TLDs to use if none is specified in a URI
+    allowedTCPPorts = [ 5173 ];
   };
 
   ##### Misc security
@@ -131,7 +136,10 @@
   programs.wireshark.enable = true;
   virtualisation.docker = {
     enable = false; # DNS settings not fixed on eduroam yet
-    daemon.settings.dns = ["1.1.1.1" "8.8.8.8"];
+    daemon.settings.dns = [
+      "1.1.1.1"
+      "8.8.8.8"
+    ];
   };
   programs.nix-ld.enable = true; # Allow dynamic linking of nix packages
   services.expressvpn.enable = true;

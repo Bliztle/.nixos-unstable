@@ -24,7 +24,7 @@
       lualine.enable = true;
       web-devicons.enable = true;
       rustaceanvim.enable = true;
-      tailwind-tools.enable = true;
+      # tailwind-tools.enable = true;
       render-markdown = {
         enable = true;
         settings = {

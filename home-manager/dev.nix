@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
@@ -9,7 +10,6 @@
   programs.vscode.enable = true;
 
   home.packages = with pkgs; [
-    jetbrains.pycharm-professional
     android-studio
     android-tools
 
@@ -20,11 +20,10 @@
     dotnet-sdk_8
     # Haskell
     (haskellPackages.ghcWithPackages (
-      pkgs:
-        with pkgs; [
-          stack
-          cabal-install
-        ]
+      pkgs: with pkgs; [
+        stack
+        cabal-install
+      ]
     ))
     # Java
     jdk17
@@ -54,7 +53,7 @@
     evcxr # REPL and Jupyter kernel
     rust-analyzer
     # Swift
-    swift
+    # swift
     usbmuxd
     # Typst
     typst

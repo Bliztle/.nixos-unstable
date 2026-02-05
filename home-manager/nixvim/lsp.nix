@@ -8,7 +8,7 @@
           highlight.enable = true;
           indent.enable = true;
         };
-        folding = false;
+        folding.enable = false;
         grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars;
       };
       treesitter-context.enable = true;
@@ -17,7 +17,7 @@
       lint.enable = true;
       luasnip.enable = true;
       lsp-lines = {
-        enable = true;
+        enable = false;
         luaConfig.content = "vim.diagnostic.config({ virtual_lines = true, virtual_text = false })";
       };
       lsp-format.enable = true;

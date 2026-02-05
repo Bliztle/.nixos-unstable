@@ -71,7 +71,7 @@
       bash.enable = true;
       nu.enable = true;
       css.enable = true;
-      emmet.enable = true;
+      # emmet.enable = true;
       haskell = {
         enable = true;
         dap.enable = false;

@@ -53,7 +53,7 @@
     enable = true;
     plugins = with pkgs.nushellPlugins; [
       query
-      highlight
+      # highlight
     ];
     settings = {
       buffer_editor = "nvim";

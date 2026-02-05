@@ -6,9 +6,11 @@
     hyprland.url = "github:hyprwm/Hyprland";
     hy3.url = "github:outfoxxed/hy3";
     sops-nix.url = "github:Mic92/sops-nix";
-    nvf.url = "github:Bliztle/nvf/emmet-language-server";
-    # nvf.url = "github:NotAShelf/nvf";
+    # nvf.url = "github:Bliztle/nvf/emmet-language-server";
+    nvf.url = "github:NotAShelf/nvf";
     nixvim.url = "github:nix-community/nixvim";
+
+    tapaal.url = "github:bliztle/tapaal-nix";
 
     nvf.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -18,51 +20,49 @@
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {
-    nixpkgs,
-    auto-cpufreq,
-    sops-nix,
-    ...
-  } @ inputs: {
-    nixosConfigurations = let
-      sharedModules = [
-        ./options.nix
-        ./configuration
-        ./home-manager
-        auto-cpufreq.nixosModules.default
-        sops-nix.nixosModules.sops
-      ];
-    in {
-      zenbook = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-
-        specialArgs = {inherit inputs;};
-        modules =
-          sharedModules
-          ++ [
-            ./hosts/zenbook
+  outputs =
+    {
+      nixpkgs,
+      auto-cpufreq,
+      sops-nix,
+      ...
+    }@inputs:
+    {
+      nixosConfigurations =
+        let
+          sharedModules = [
+            ./options.nix
+            ./configuration
+            ./home-manager
+            auto-cpufreq.nixosModules.default
+            sops-nix.nixosModules.sops
           ];
-      };
-      framework = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        in
+        {
+          zenbook = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
 
-        specialArgs = {inherit inputs;};
-        modules =
-          sharedModules
-          ++ [
-            ./hosts/framework
-          ];
-      };
-      omen = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+            specialArgs = { inherit inputs; };
+            modules = sharedModules ++ [
+              ./hosts/zenbook
+            ];
+          };
+          framework = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
 
-        specialArgs = {inherit inputs;};
-        modules =
-          sharedModules
-          ++ [
-            ./hosts/omen
-          ];
-      };
+            specialArgs = { inherit inputs; };
+            modules = sharedModules ++ [
+              ./hosts/framework
+            ];
+          };
+          omen = nixpkgs.lib.nixosSystem {
+            system = "x86_64-linux";
+
+            specialArgs = { inherit inputs; };
+            modules = sharedModules ++ [
+              ./hosts/omen
+            ];
+          };
+        };
     };
-  };
 }
