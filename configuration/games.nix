@@ -19,4 +19,16 @@
       proton-ge-bin
     ];
   };
+
+  environment.systemPackages = with pkgs; [
+    (lutris.override {
+      # Extra is for dependencies required by games, not by lutris itself
+      extraLibraries = pkgs: [
+        # List library dependencies here
+      ];
+      extraPkgs = pkgs: [
+        # List package dependencies here
+      ];
+    })
+  ];
 }

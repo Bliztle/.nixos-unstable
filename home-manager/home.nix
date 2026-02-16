@@ -7,7 +7,6 @@
   imports = [
     ./dev.nix
     ./git.nix
-    ./nvf
     ./nixvim
     ./scripts
     ./shell

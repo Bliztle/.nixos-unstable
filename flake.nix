@@ -3,20 +3,14 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";
-    hyprland.url = "github:hyprwm/Hyprland";
-    hy3.url = "github:outfoxxed/hy3";
     sops-nix.url = "github:Mic92/sops-nix";
-    # nvf.url = "github:Bliztle/nvf/emmet-language-server";
-    nvf.url = "github:NotAShelf/nvf";
     nixvim.url = "github:nix-community/nixvim";
 
     tapaal.url = "github:bliztle/tapaal-nix";
 
-    nvf.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-    hy3.inputs.hyprland.follows = "hyprland";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 

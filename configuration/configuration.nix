@@ -16,15 +16,6 @@
     ./ollama.nix
   ];
 
-  programs.hyprland = {
-    enable = true;
-    # set the flake package
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    # make sure to also set the portal package, so that they are in sync
-    portalPackage =
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  };
-
   ##### Optimisation
   nix.optimise.automatic = true; # Automatically optimise /nix/store once a day (possibly only on rebuilds)
   nix.gc = {
@@ -134,12 +125,13 @@
 
   ##### Misc
   programs.wireshark.enable = true;
+
+  services.resolved.enable = true;
   virtualisation.docker = {
     enable = false; # DNS settings not fixed on eduroam yet
-    daemon.settings.dns = [
-      "1.1.1.1"
-      "8.8.8.8"
-    ];
+    # daemon.settings.dns = [
+    #   "127.0.0.53" # Proxy DNS through systemd-resolved. Should force docker to use LAN DNS on eduroam
+    # ];
   };
   programs.nix-ld.enable = true; # Allow dynamic linking of nix packages
   services.expressvpn.enable = true;

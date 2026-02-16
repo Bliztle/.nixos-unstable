@@ -15,7 +15,6 @@
   };
 
   home-manager.sharedModules = [
-    inputs.nvf.homeManagerModules.default
     inputs.nixvim.homeModules.default
   ];
 

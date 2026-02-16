@@ -40,6 +40,8 @@
     # ocamlPackages.merlin
     # ocamlPackages.utop
     # ocamlPackages.odoc
+    # PostgreSQL
+    postgresql
     # Prolog
     swi-prolog
     # Python

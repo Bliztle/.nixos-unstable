@@ -19,6 +19,12 @@
 
   # Enable window managers and desktop environments to register with display manager
   programs.sway.enable = true;
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true; # recommended for most users
+    xwayland.enable = true; # Xwayland can be disabled.
+    # portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
   services.desktopManager.plasma6.enable = true;
   services.xserver.enable = true;
 
