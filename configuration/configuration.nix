@@ -125,13 +125,20 @@
 
   ##### Misc
   programs.wireshark.enable = true;
-
-  services.resolved.enable = true;
+  services.resolved = {
+    enable = true;
+  };
+  networking.dhcpcd.enable = false;
   virtualisation.docker = {
-    enable = false; # DNS settings not fixed on eduroam yet
-    # daemon.settings.dns = [
-    #   "127.0.0.53" # Proxy DNS through systemd-resolved. Should force docker to use LAN DNS on eduroam
-    # ];
+    enable = true; # DNS settings not fixed on eduroam yet
+    daemon.settings = {
+      default-address-pools = [
+        {
+          base = "10.200.0.0/16";
+          size = 24;
+        }
+      ];
+    };
   };
   programs.nix-ld.enable = true; # Allow dynamic linking of nix packages
   services.expressvpn.enable = true;
