@@ -84,6 +84,9 @@
     teams-for-linux
     azure-cli
 
+    # Other
+    cutter
+
     # Fonts
     # nerdfonts
     font-awesome
