@@ -143,7 +143,8 @@
   programs.nix-ld.enable = true; # Allow dynamic linking of nix packages
   services.expressvpn.enable = true;
   # Nerdfonts is imported like this now
-  fonts.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  # fonts.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
   # Run app images
   programs.appimage = {
     enable = true;

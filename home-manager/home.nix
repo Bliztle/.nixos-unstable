@@ -28,8 +28,8 @@
     # Applications
     discord
     firefox
-    # jellyfin-media-player # Temporarily removed, as it depends on qtwebengine 5, which is unmaintained and has security issues
-    libreoffice-qt
+    jellyfin-media-player
+    # libreoffice-qt # Temporarily removed as it could not build
     obsidian # No overrides needed anymore
     pavucontrol
     postman
@@ -85,7 +85,7 @@
     azure-cli
 
     # Other
-    cutter
+    cutter # Hydra but i like it more
 
     # Fonts
     # nerdfonts
