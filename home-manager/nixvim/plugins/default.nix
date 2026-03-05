@@ -11,7 +11,12 @@
 
   programs.nixvim = {
     plugins = {
-      neo-tree.enable = true;
+      neo-tree = {
+        enable = true;
+        settings.filesystem.filtered_items.always_show = [
+          ".env"
+        ];
+      };
       nvim-autopairs.enable = true;
       trouble.enable = true;
       illuminate.enable = true;

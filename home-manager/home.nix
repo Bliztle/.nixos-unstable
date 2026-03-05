@@ -50,6 +50,7 @@
     # wowup-cf # Wow addon manager
 
     # CLI Tools
+    devenv
     dig
     grim # Screenshot dependency
     sway-contrib.grimshot

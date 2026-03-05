@@ -47,6 +47,7 @@
     # Python
     python3
     uv
+    # jupyter
     # Rust
     rustc
     cargo
