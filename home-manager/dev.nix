@@ -26,7 +26,8 @@
       ]
     ))
     # Java
-    jdk17
+    # jdk17
+    jdk21
     glib
     gtk4
     gtk3-x11

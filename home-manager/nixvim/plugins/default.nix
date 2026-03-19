@@ -30,6 +30,7 @@
       web-devicons.enable = true;
       rustaceanvim.enable = true;
       # tailwind-tools.enable = true;
+      markdown-preview.enable = true;
       render-markdown = {
         enable = true;
         settings = {

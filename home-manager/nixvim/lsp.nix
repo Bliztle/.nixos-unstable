@@ -55,7 +55,8 @@
             rootMarkers = [ "svelte.config.js" ];
           };
           tinymist.enable = true; # Typst
-          basedpyright.enable = true; # Python
+          # basedpyright.enable = true; # Python
+          pyrefly.enable = true; # Python
           # rust_analyzer = {
           #   enable = true;
           #   installCargo = false;

@@ -29,7 +29,7 @@
     discord
     firefox
     jellyfin-media-player
-    # libreoffice-qt # Temporarily removed as it could not build
+    libreoffice-qt # Temporarily removed as it could not build
     obsidian # No overrides needed anymore
     pavucontrol
     postman
@@ -45,9 +45,14 @@
     zathura
     zotero
     signal-desktop
+    prismlauncher # Minecraft Launcher
 
     # Games
     # wowup-cf # Wow addon manager
+
+    protonmail-bridge
+    protonmail-bridge-gui
+    # gcr
 
     # CLI Tools
     devenv
@@ -92,6 +97,14 @@
     # nerdfonts
     font-awesome
   ];
+  # services.gnome-keyring.enable = true;
+  # services.protonmail-bridge = {
+  #   enable = true;
+  # };
+  programs.thunderbird = {
+    enable = true;
+    profiles = { }; # This is required to build
+  };
   programs.btop.enable = true;
   services.dunst.enable = true;
   services.swww.enable = true;
@@ -101,6 +114,7 @@
   programs.yazi = {
     enable = true;
     enableZshIntegration = true;
+    shellWrapperName = "y";
   };
 
   programs.nh = {

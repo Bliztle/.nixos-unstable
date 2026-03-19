@@ -16,6 +16,30 @@
     ./ollama.nix
   ];
 
+  # Protonmail bridge needs this
+  services.gnome.gnome-keyring.enable = true;
+  services.gnome.gcr-ssh-agent.enable = false;
+  # Saga Mail. Not yet working
+  services.davmail = {
+    enable = true;
+    config = {
+      davmail.server = true;
+      davmail.mode = "O365Modern"; # Change from "auto" to this
+      davmail.url = "https://outlook.office365.com/EWS/Exchange.asmx";
+      davmail.oauth.tenantId = "common"; # or your org's specific tenant ID
+
+      # Set ports that don't conflict with Proton Bridge
+      davmail.imapPort = 1144;
+      davmail.smtpPort = 1026;
+      davmail.caldavPort = 1081;
+      davmail.ldapPort = 1390;
+      davmail.popPort = 1111;
+    };
+  };
+
+  # Firmware
+  services.fwupd.enable = true;
+
   ##### Optimisation
   nix.optimise.automatic = true; # Automatically optimise /nix/store once a day (possibly only on rebuilds)
   nix.gc = {
@@ -92,7 +116,8 @@
     };
   };
 
-  programs.light.enable = true;
+  # TODO: Unmaintained, replace with brightnessctl or `hardware.acpilight`
+  # programs.light.enable = true;
 
   ##### Networking
   # Firewall
