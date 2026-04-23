@@ -15,6 +15,7 @@
         enable = true;
         settings.filesystem.filtered_items.always_show = [
           ".env"
+          ".env.*"
         ];
       };
       nvim-autopairs.enable = true;
