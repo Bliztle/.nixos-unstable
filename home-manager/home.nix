@@ -34,7 +34,7 @@
     pavucontrol
     postman
     protonmail-desktop
-    protonvpn-gui
+    proton-vpn
     qbittorrent
     rnote
     speedcrunch
@@ -107,7 +107,7 @@
   };
   programs.btop.enable = true;
   services.dunst.enable = true;
-  services.swww.enable = true;
+  services.awww.enable = true;
   services.udiskie.enable = true;
   programs.kitty.enable = true;
   programs.joplin-desktop.enable = true;

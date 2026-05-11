@@ -18,11 +18,6 @@
         enable = true;
         settings = {
           provider = "copilot";
-          # providers = {
-          #   copilot = {
-          #     model = "openai/gpt-3.5-turbo-0613";
-          #   };
-          # };
           behaviour = {
             auto_suggestions = false; # Experimental at time of writing. TODO: Try this as copilot replacement.
             # Start by auto approving a limited set of tools, as I have not found a full list yet.
@@ -39,6 +34,9 @@
               "create_dir"
               "web_search"
               "fetch"
+              "ls"
+              "view"
+              "grep"
             ];
           };
         };

@@ -19,7 +19,7 @@ while true; do
     selectedWallpaper="${wallpapers[$wallpaperIndex]}"
 
     # Update the wallpaper using the swww img command
-    swww img "$selectedWallpaper"
+    awww img "$selectedWallpaper"
 
     # Remove the selected wallpaper from the array
     unset "wallpapers[$wallpaperIndex]"

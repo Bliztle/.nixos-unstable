@@ -16,6 +16,8 @@
         settings.filesystem.filtered_items.always_show = [
           ".env"
           ".env.*"
+          ".nix"
+          ".github"
         ];
       };
       nvim-autopairs.enable = true;

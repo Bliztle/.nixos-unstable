@@ -32,8 +32,7 @@
     gtk4
     gtk3-x11
     # Javascript / Typescript
-    nodePackages_latest.npm
-    nodePackages_latest.pnpm
+    pnpm
     # OCaml - `ocaml` and `merlin` are installed and managed by opam
     # ocaml
     # dune_3
