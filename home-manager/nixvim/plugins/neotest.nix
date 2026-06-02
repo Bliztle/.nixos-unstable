@@ -1,11 +1,12 @@
-{...}: {
+{ ... }:
+{
   programs.nixvim = {
     plugins = {
       neotest = {
-        enable = true;
+        enable = false;
         adapters = {
           vitest = {
-            enable = true;
+            enable = false;
           };
         };
       };
