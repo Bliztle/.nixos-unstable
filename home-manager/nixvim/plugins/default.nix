@@ -16,6 +16,10 @@
         settings.filesystem.filtered_items.always_show = [
           ".env"
           ".env.*"
+          ".env.development"
+          ".env.development.local"
+          ".env.production"
+          ".env.production.local"
           ".nix"
           ".github"
         ];

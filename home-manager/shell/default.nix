@@ -28,13 +28,14 @@
 
   home.shellAliases = {
     c = "clear";
+    d = "sudo docker";
     g = "git";
     n = "nvim";
     k = "kubectl";
     p = "${pkgs.python3}/bin/python3";
-    cat = "${pkgs.bat}/bin/bat";
-    grep = "${pkgs.ripgrep}/bin/rg";
-    find = "${pkgs.fd}/bin/fd";
+    # cat = "${pkgs.bat}/bin/bat";
+    # grep = "${pkgs.ripgrep}/bin/rg";
+    # find = "${pkgs.fd}/bin/fd";
 
     sgit = "sudo git -c \"include.path=\${XDG_CONFIG_DIR:-$HOME/.config}/git/config\" -c \"include.path=$HOME/.gitconfig\"";
   };
