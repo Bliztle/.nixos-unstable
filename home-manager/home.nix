@@ -50,8 +50,8 @@
     # Games
     # wowup-cf # Wow addon manager
 
-    protonmail-bridge
-    protonmail-bridge-gui
+    # protonmail-bridge
+    # protonmail-bridge-gui
     # gcr
 
     # CLI Tools
