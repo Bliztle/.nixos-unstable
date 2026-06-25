@@ -14,14 +14,15 @@
       neo-tree = {
         enable = true;
         settings.filesystem.filtered_items.always_show = [
-          ".env"
-          ".env.*"
-          ".env.development"
-          ".env.development.local"
-          ".env.production"
-          ".env.production.local"
           ".nix"
           ".github"
+          ".env"
+          ".env.local"
+          ".env.development.local"
+          # Saga env
+          ".env.schema"
+          ".env.local-dev"
+          ".env.local-dev.local"
         ];
       };
       nvim-autopairs.enable = true;

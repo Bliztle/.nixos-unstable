@@ -62,6 +62,10 @@
           #   installCargo = false;
           #   installRustc = false;
           # }; # Rust
+          bicep = {
+            enable = true;
+            package = pkgs.bicep-lsp;
+          };
         };
         keymaps = {
           silent = true;
