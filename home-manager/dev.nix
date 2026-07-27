@@ -8,6 +8,7 @@
   };
 
   programs.vscode.enable = true;
+  programs.codex.enable = true;
 
   home.packages = with pkgs; [
     android-studio
@@ -33,6 +34,8 @@
     gtk3-x11
     # Javascript / Typescript
     pnpm
+    # Nix
+    mcp-nixos
     # OCaml - `ocaml` and `merlin` are installed and managed by opam
     # ocaml
     # dune_3

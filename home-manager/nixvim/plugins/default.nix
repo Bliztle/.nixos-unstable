@@ -29,6 +29,7 @@
       trouble.enable = true;
       illuminate.enable = true;
       sleuth.enable = true;
+      oil.enable = true;
       nvim-surround.enable = true;
       rainbow-delimiters.enable = true;
       highlight-colors.enable = true;

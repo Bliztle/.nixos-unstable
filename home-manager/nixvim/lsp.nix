@@ -20,7 +20,29 @@
         enable = false;
         luaConfig.content = "vim.diagnostic.config({ virtual_lines = true, virtual_text = false })";
       };
-      lsp-format.enable = true;
+      lsp-format = {
+        enable = true;
+        settings =
+          let
+            eslintFormat = {
+              order = [ "eslint" ];
+              sync = true;
+            };
+          in
+          {
+            javascript = eslintFormat;
+            javascriptreact = eslintFormat;
+            typescript = eslintFormat // {
+              exclude = [ "ts_ls" ];
+            };
+            typescriptreact = eslintFormat // {
+              exclude = [ "ts_ls" ];
+            };
+            svelte = eslintFormat // {
+              exclude = [ "svelte" ];
+            };
+          };
+      };
       none-ls = {
         # Active null-ls fork. Used to add non-LSP sources to LSP
         enable = true;
@@ -29,10 +51,6 @@
             enable = true;
             disableTsServerFormatter = true;
             settings.filetypes = [
-              "javascript"
-              "javascriptreact"
-              "typescript"
-              "typescriptreact"
               "css"
               "html"
             ];
@@ -44,7 +62,37 @@
         servers = {
           nil_ls.enable = true; # Lua
           ts_ls.enable = true; # Typescript
-          eslint.enable = true; # Eslint
+          eslint = {
+            enable = true; # Eslint
+            filetypes = [
+              "javascript"
+              "javascriptreact"
+              "typescript"
+              "typescriptreact"
+              "svelte"
+            ];
+            rootMarkers = [
+              "eslint.config.js"
+              "eslint.config.mjs"
+              "eslint.config.cjs"
+              "eslint.config.ts"
+              "package.json"
+              ".git"
+            ];
+            settings = {
+              format.enable = true;
+              packageManager = "pnpm";
+              useESLintClass = true;
+              workingDirectory.mode = "auto";
+              codeActionOnSave = {
+                enable = true;
+                mode = "all";
+              };
+            };
+            onAttach.function = ''
+              client.server_capabilities.documentFormattingProvider = true
+            '';
+          };
           emmet_language_server.enable = true; # Emmet
           tailwindcss.enable = true; # Tailwindcss
           html.enable = true; # HTML
@@ -53,6 +101,9 @@
             # Svelte
             enable = true;
             rootMarkers = [ "svelte.config.js" ];
+            onAttach.function = ''
+              client.server_capabilities.documentFormattingProvider = false
+            '';
           };
           tinymist.enable = true; # Typst
           # basedpyright.enable = true; # Python
@@ -69,6 +120,30 @@
         };
         keymaps = {
           silent = true;
+          extra = [
+            {
+              mode = "n";
+              key = "<leader>f";
+              action.__raw = ''
+                function()
+                  local eslint_filetypes = {
+                    javascript = true,
+                    javascriptreact = true,
+                    typescript = true,
+                    typescriptreact = true,
+                    svelte = true,
+                  }
+
+                  if eslint_filetypes[vim.bo.filetype] then
+                    vim.cmd("LspEslintFixAll")
+                  else
+                    vim.lsp.buf.format()
+                  end
+                end
+              '';
+              options.desc = "Format Document";
+            }
+          ];
           lspBuf = {
             gd = {
               action = "definition";
@@ -101,10 +176,6 @@
             "<leader>ca" = {
               action = "code_action";
               desc = "Code Action";
-            };
-            "<leader>f" = {
-              action = "format";
-              desc = "Format Document";
             };
           };
           diagnostic = {
