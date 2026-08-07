@@ -155,14 +155,19 @@
   };
   networking.dhcpcd.enable = false;
   virtualisation.docker = {
-    enable = true; # DNS settings not fixed on eduroam yet
-    daemon.settings = {
-      default-address-pools = [
-        {
-          base = "10.200.0.0/16";
-          size = 24;
-        }
-      ];
+    enable = false;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+      daemon.settings = {
+        # Avoid network conflicts on eduroam.
+        default-address-pools = [
+          {
+            base = "10.200.0.0/16";
+            size = 24;
+          }
+        ];
+      };
     };
   };
   programs.nix-ld.enable = true; # Allow dynamic linking of nix packages

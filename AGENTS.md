@@ -1,5 +1,6 @@
 # Repository guide
 This is the declarative nixos configuration for all my devices.
+Be aware that since this configuration controls the devices agents like you are run on, making mistakes may have fatal consequences.
 
 ## Architecture
 - This repository is a Nix flake.

@@ -28,7 +28,7 @@
 
   home.shellAliases = {
     c = "clear";
-    d = "sudo docker";
+    d = "docker";
     g = "git";
     n = "nvim";
     k = "kubectl";

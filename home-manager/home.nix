@@ -28,6 +28,7 @@
     # Applications
     discord
     firefox
+    herdr
     jellyfin-media-player
     libreoffice-qt # Temporarily removed as it could not build
     obsidian # No overrides needed anymore
