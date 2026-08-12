@@ -14,6 +14,11 @@
     android-studio
     android-tools
 
+    # MCPs
+    playwright-mcp
+    context7-mcp
+    mcp-nixos
+
     # C
     gcc
     libclang
