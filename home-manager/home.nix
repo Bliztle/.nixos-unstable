@@ -26,6 +26,7 @@
 
   home.packages = with pkgs; [
     # Applications
+    # chatgpt
     discord
     firefox
     herdr
