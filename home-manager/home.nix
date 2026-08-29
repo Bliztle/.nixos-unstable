@@ -65,6 +65,7 @@
     inetutils # ftp and more
     kubectl
     kubelogin
+    libnotify # notify-send for desktop notifications
     fluxcd
     jq
     nmap
@@ -84,6 +85,7 @@
     traceroute
     unzip
     usbutils # usb device management, lsusb
+    wf-recorder # Sway screen recording dependency
     whois
     wireguard-tools
     wl-clipboard

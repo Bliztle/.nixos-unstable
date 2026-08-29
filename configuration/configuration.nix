@@ -13,7 +13,6 @@
     ./games.nix
     ./sops.nix
     ./display.nix
-    ./ollama.nix
   ];
 
   # Protonmail bridge needs this

@@ -26,8 +26,8 @@
     xwayland.enable = true; # Xwayland can be disabled.
     # portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
-  services.desktopManager.plasma6.enable = true;
-  services.xserver.enable = true;
+  # services.desktopManager.plasma6.enable = true;
+  # services.xserver.enable = true;
 
   ##### NVidia support #####
   hardware.nvidia = lib.mkIf config.custom.nvidia.enable {

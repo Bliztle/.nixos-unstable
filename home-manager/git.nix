@@ -1,7 +1,9 @@
-{...}: let
+{ pkgs, ... }:
+let
   cfg-path = ".config/git";
-in {
-  options = {};
+in
+{
+  options = { };
   config = {
     programs.delta = {
       enable = true;
@@ -106,6 +108,9 @@ in {
     programs.gh = {
       enable = true;
       gitCredentialHelper.enable = false;
+      extensions = with pkgs; [
+        gh-stack
+      ];
     };
 
     # Gitdir included configuration

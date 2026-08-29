@@ -1,6 +1,17 @@
 { pkgs, ... }:
 {
   programs.nixvim = {
+    userCommands = {
+      LspRestart = {
+        command = "lsp restart <args>";
+        nargs = "*";
+        desc = "Restart LSP clients attached to the current buffer";
+      };
+      LspInfo = {
+        command = "checkhealth vim.lsp";
+        desc = "Show LSP configuration and client information";
+      };
+    };
     plugins = {
       treesitter = {
         enable = true;

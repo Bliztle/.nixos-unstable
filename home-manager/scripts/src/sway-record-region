@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+runtime_dir="${XDG_RUNTIME_DIR:?XDG_RUNTIME_DIR must be set}"
+state_file="$runtime_dir/sway-record-region.state"
+recordings_dir="$HOME/Videos/Recordings"
+
+notify() {
+    notify-send "$1" "$2"
+}
+
+if [[ -f "$state_file" ]]; then
+    mapfile -t state <"$state_file"
+    pid="${state[0]:-}"
+    output="${state[1]:-}"
+    command="$(ps -p "$pid" -o comm= 2>/dev/null | xargs || true)"
+
+    if [[ "$command" == "wf-recorder" ]]; then
+        kill -INT "$pid"
+        notify "Screen recording stopping" "Saving ${output}"
+
+        while kill -0 "$pid" 2>/dev/null; do
+            sleep 0.1
+        done
+
+        rm -f "$state_file"
+        notify "Screen recording saved" "$output"
+        exit 0
+    fi
+
+    rm -f "$state_file"
+fi
+
+geometry="$(slurp -d)" || {
+    notify "Screen recording cancelled" "No region was selected."
+    exit 0
+}
+
+mkdir -p "$recordings_dir"
+output="$recordings_dir/$(date +'%Y-%m-%d_%H-%M-%S').mp4"
+
+wf-recorder -g "$geometry" -f "$output" &
+pid=$!
+printf '%s\n%s\n' "$pid" "$output" >"$state_file"
+
+notify "Screen recording started" "Press Mod+Shift+R again to stop and save ${output}."
