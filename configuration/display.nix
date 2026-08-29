@@ -10,9 +10,13 @@
   services = {
     displayManager = {
       logToFile = true; # ~/xsession-errors
+      defaultSession = "sway";
       sddm = lib.mkDefault {
         enable = true;
-        wayland.enable = true;
+        wayland = {
+          enable = true;
+          compositor = "kwin";
+        };
         package = pkgs.kdePackages.sddm;
       };
     };
