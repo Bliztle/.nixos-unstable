@@ -18,9 +18,17 @@
           compositor = "kwin";
         };
         package = pkgs.kdePackages.sddm;
+        settings.Theme = {
+          CursorTheme = "breeze_cursors";
+          CursorSize = 24;
+        };
       };
     };
   };
+
+  # Plasma used to provide SDDM's cursor theme implicitly.
+  environment.systemPackages = [ pkgs.kdePackages.breeze ];
+  # xdg.icons.fallbackCursorThemes = [ "breeze_cursors" ];
 
   # Enable window managers and desktop environments to register with display manager
   programs.sway.enable = true;

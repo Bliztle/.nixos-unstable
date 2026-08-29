@@ -74,7 +74,7 @@
     envFile.text = ''
       $env.PATH ++= ['~/.config/scripts']
       $env.EDITOR = 'nvim'
-      source-env ~/.config/nushell/env.secret.nu
+      # source-env ~/.config/nushell/env.secret.nu
     '';
   };
 
