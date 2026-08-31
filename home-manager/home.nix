@@ -48,6 +48,7 @@
     zotero
     signal-desktop
     prismlauncher # Minecraft Launcher
+    bitwarden-desktop
 
     # Games
     # wowup-cf # Wow addon manager
@@ -139,21 +140,17 @@
     };
   };
 
-  home.file =
-    # add ./modules/config/* to ~/.config
-    builtins.listToAttrs (
-      map (name: {
-        name = ".config/${name}";
-        value = {
-          source = ./config + "/${name}";
-          recursive = true;
-          force = true;
-        };
-      }) (builtins.attrNames (builtins.readDir ./config))
-    )
-    // {
-      mnt.source = config.lib.file.mkOutOfStoreSymlink "/run/media/bliztle";
-    };
+  # add ./modules/config/* to ~/.config
+  home.file = builtins.listToAttrs (
+    map (name: {
+      name = ".config/${name}";
+      value = {
+        source = ./config + "/${name}";
+        recursive = true;
+        force = true;
+      };
+    }) (builtins.attrNames (builtins.readDir ./config))
+  );
 
-  home.stateVersion = "24.05";
+  home.stateVersion = "26.05";
 }
