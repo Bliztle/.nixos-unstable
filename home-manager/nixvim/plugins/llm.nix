@@ -10,12 +10,20 @@
             auto_trigger = true;
             keymap = {
               accept = "<C-CR>";
+              dismiss = "<ESC>";
+            };
+          };
+          news = {
+            enabled = true;
+            keymap = {
+              accept_and_goto = "<C-CR>";
+              dismiss = "<ESC>";
             };
           };
         };
       };
       avante = {
-        enable = true;
+        enable = false;
         settings = {
           provider = "copilot";
           behaviour = {
