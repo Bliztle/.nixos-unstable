@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   pkgs,
   lib,
   ...
@@ -10,7 +11,6 @@
   services = {
     displayManager = {
       logToFile = true; # ~/xsession-errors
-      defaultSession = "sway";
       sddm = lib.mkDefault {
         enable = true;
         wayland = {
@@ -32,11 +32,12 @@
 
   # Enable window managers and desktop environments to register with display manager
   programs.sway.enable = true;
-  programs.hyprland = {
+  programs.hyprland = lib.mkIf config.custom.hyprland.enable {
     enable = true;
-    withUWSM = true; # recommended for most users
-    xwayland.enable = true; # Xwayland can be disabled.
-    # portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    withUWSM = true;
+    xwayland.enable = true;
   };
   # services.desktopManager.plasma6.enable = true;
   # services.xserver.enable = true;

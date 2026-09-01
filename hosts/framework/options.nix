@@ -2,6 +2,7 @@
 {
   custom = {
     hostname = "framework"; # Default hostname.
+    hyprland.enable = true;
     syncthing.enable = true;
     gaming.gamescope = {
       enable = true;

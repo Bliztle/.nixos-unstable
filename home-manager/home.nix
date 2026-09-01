@@ -1,22 +1,26 @@
 {
   pkgs,
   config,
+  conf,
+  lib,
   ...
 }:
 {
-  imports = [
-    ./dev.nix
-    ./git.nix
-    ./nixvim
-    ./scripts
-    ./shell
-    ./ssh.nix
-    ./sway
-    ./uni.nix
-    ./waybar
-    ./wofi
-    ./syncthing.nix
-  ];
+  imports =
+    [
+      ./dev.nix
+      ./git.nix
+      ./nixvim
+      ./scripts
+      ./shell
+      ./ssh.nix
+      ./sway
+      ./uni.nix
+      ./waybar
+      ./wofi
+      ./syncthing.nix
+    ]
+    ++ lib.optionals conf.custom.hyprland.enable [ ./hyprland ];
 
   home.username = "bliztle";
   home.homeDirectory = "/home/bliztle";

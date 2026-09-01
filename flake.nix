@@ -5,6 +5,16 @@
     sops-nix.url = "github:Mic92/sops-nix";
     nixvim.url = "github:nix-community/nixvim";
 
+    hyprland.url = "github:hyprwm/Hyprland?submodules=1";
+    hy3 = {
+      url = "github:outfoxxed/hy3";
+      inputs.hyprland.follows = "hyprland";
+    };
+    hyprcapture = {
+      url = "github:gfhdhytghd/HyprCapture";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     tapaal.url = "github:bliztle/tapaal-nix";
 
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
