@@ -56,6 +56,13 @@ pamu2fcfg > ~/.config/Yubico/u2f_keys
 pamu2fcfg >> ~/.config/Yubico/u2f_keys
 ```
 
+Or in nushell:
+
+```sh
+mkdir ~/.config/Yubico
+pamu2fcfg out> ~/.config/Yubico/u2f_keys
+```
+
 #### 2.1) Importing GPG Keys
 
 From the root of this repository, import the GPG key used as follows:
