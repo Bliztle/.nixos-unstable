@@ -34,11 +34,9 @@
     libreoffice-qt # Temporarily removed as it could not build
     obsidian # No overrides needed anymore
     pavucontrol
-    postman
     protonmail-desktop
     proton-vpn
     qbittorrent
-    rnote
     speedcrunch
     spotify
     vlc
@@ -50,6 +48,7 @@
     prismlauncher # Minecraft Launcher
     bitwarden-desktop
     kdePackages.dolphin # File manager
+    cutter # Hydra but i like it more
 
     # Games
     # wowup-cf # Wow addon manager
@@ -69,12 +68,11 @@
     kubectl
     kubelogin
     libnotify # notify-send for desktop notifications
-    fluxcd
     jq
     nmap
     playerctl
     poppler-utils # pdf tools
-    quickemu
+    quickemu # QEMU wrapper
     ripgrep
     bat
     fd
@@ -96,9 +94,6 @@
     # Work
     teams-for-linux
     azure-cli
-
-    # Other
-    cutter # Hydra but i like it more
 
     # Fonts
     # nerdfonts
