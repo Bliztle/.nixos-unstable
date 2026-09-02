@@ -45,10 +45,11 @@
     wdisplays
     wl-mirror
     zathura
-    zotero
+    zotero # Zotero plugins are unfortunately handled imperatively in zotero
     signal-desktop
     prismlauncher # Minecraft Launcher
     bitwarden-desktop
+    kdePackages.dolphin # File manager
 
     # Games
     # wowup-cf # Wow addon manager
@@ -58,6 +59,7 @@
     # gcr
 
     # CLI Tools
+    wget
     devenv
     dig
     grim # Screenshot dependency
