@@ -90,7 +90,7 @@
     traceroute
     unzip
     usbutils # usb device management, lsusb
-    wf-recorder # Sway screen recording dependency
+    wf-recorder # Wayland screen recording dependency
     whois
     wireguard-tools
     wl-clipboard

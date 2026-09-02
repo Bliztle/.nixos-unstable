@@ -18,7 +18,11 @@ as the complete fallback.
   no built-in equivalent to `swaycwd`. Terminal shortcuts use Kitty's normal
   starting directory.
 - SwayFX gaps, borders, rounding, gradients, and colors are intentionally
-  deferred so Hyprland, hy3, HyprCapture, Hyprpaper, and hyprlauncher retain
-  their upstream default styling.
+  deferred so Hyprland, hy3, Hyprpaper, and hyprlauncher retain their upstream
+  default styling.
+- Screenshot and recording use the same `grimshot copy area` and
+  `sway-record-region` commands as Sway. Those paths are compositor-neutral;
+  HyprCapture is not used because its current source is incompatible with the
+  Hyprland version required by hy3.
 - Hyprpaper directory rotation and timeouts remain disabled until explicitly
   configured later.

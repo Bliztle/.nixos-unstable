@@ -10,10 +10,6 @@
       url = "github:outfoxxed/hy3";
       inputs.hyprland.follows = "hyprland";
     };
-    hyprcapture = {
-      url = "github:gfhdhytghd/HyprCapture";
-      inputs.hyprland.follows = "hyprland";
-    };
 
     tapaal.url = "github:bliztle/tapaal-nix";
 

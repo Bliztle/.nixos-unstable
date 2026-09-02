@@ -98,8 +98,6 @@ let
 in
 {
   home.packages = with pkgs; [
-    ffmpeg
-    gpu-screen-recorder
     hyprlauncher
     hyprpaper
   ];
@@ -113,7 +111,6 @@ in
 
     plugins = [
       inputs.hy3.packages.${system}.hy3
-      inputs.hyprcapture.packages.${system}.hyprcapture
     ];
 
     settings = {
@@ -207,8 +204,8 @@ in
         (bind "SUPER + SHIFT + Return" "hl.dsp.exec_cmd(\"uwsm app -- kitty --class floating-term\")")
         (bind "SUPER + SHIFT + q" "hl.dsp.window.close()")
         (bind "SUPER + r" "hl.dsp.submap(\"resize\")")
-        (bind "SUPER + SHIFT + Print" "hl.plugin.hyprcapture.open")
-        (bind "SUPER + SHIFT + r" "hl.plugin.hyprcapture.record_toggle")
+        (bind "SUPER + SHIFT + Print" "hl.dsp.exec_cmd(\"grimshot copy area\")")
+        (bind "SUPER + SHIFT + r" "hl.dsp.exec_cmd(\"sway-record-region\")")
         (bind "SUPER + SHIFT + c" "hl.dsp.exec_cmd(\"hyprctl reload\")")
 
         (bindWithFlags "XF86MonBrightnessDown" "hl.dsp.exec_cmd(\"brightnessctl set 10%-\")" {
