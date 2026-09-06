@@ -38,6 +38,7 @@
     gtk4
     gtk3-x11
     # Javascript / Typescript
+    nodejs
     pnpm
     # Nix
     mcp-nixos
