@@ -5,46 +5,46 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    settings = {
       "*" = {
-        addKeysToAgent = "yes";
-        # addKeysToAgent = "confirm";
-        forwardAgent = true;
+        AddKeysToAgent = "yes";
+        # AddKeysToAgent = "confirm";
+        ForwardAgent = true;
       };
       "gateway.home" = {
         # lenovo.home from outside the house
-        hostname = "home.bliztle.com";
-        user = "nixos";
-        forwardAgent = true;
-        # port = 12172;
+        HostName = "home.bliztle.com";
+        User = "nixos";
+        ForwardAgent = true;
+        # Port = 12172;
       };
       "gateway2.home" = {
         # lenovo.home from outside the house
-        hostname = "home-bliztle.dynamic-dns.net";
-        user = "nixos";
-        forwardAgent = true;
-        # port = 12172;
+        HostName = "home-bliztle.dynamic-dns.net";
+        User = "nixos";
+        ForwardAgent = true;
+        # Port = 12172;
       };
       "zenbook.home" = {
-        hostname = "10.0.0.8";
-        user = "nixos";
-        forwardAgent = true;
+        HostName = "10.0.0.8";
+        User = "nixos";
+        ForwardAgent = true;
       };
       "lenovo.home" = {
-        hostname = "10.0.0.7";
-        user = "nixos";
-        forwardAgent = true;
+        HostName = "10.0.0.7";
+        User = "nixos";
+        ForwardAgent = true;
       };
       "pi.home" = {
-        hostname = "10.0.0.6";
-        user = "nixos";
-        forwardAgent = true;
+        HostName = "10.0.0.6";
+        User = "nixos";
+        ForwardAgent = true;
       };
       "manfred" = {
-        hostname = "manfred.datalogi.net";
-        user = "manfred";
-        forwardAgent = true;
-        proxyCommand = "${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h";
+        HostName = "manfred.datalogi.net";
+        User = "manfred";
+        ForwardAgent = true;
+        ProxyCommand = "${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h";
       };
     };
   };
