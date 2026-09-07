@@ -113,6 +113,13 @@ in
     ];
 
     settings = {
+      animation = {
+        leaf = "global";
+        enabled = true;
+        speed = 5;
+        bezier = "default";
+      };
+
       config = {
         general.layout = "hy3";
         input = {

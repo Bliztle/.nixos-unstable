@@ -26,3 +26,21 @@ as the complete fallback.
   Hyprland version required by hy3.
 - Hyprpaper directory rotation and timeouts remain disabled until explicitly
   configured later.
+
+## Live testing
+
+Lua configuration changes can often be tried in the running session with
+`hyprctl eval` before they are made permanent in Nix. For example, the faster
+animation timing was tested with:
+
+```sh
+hyprctl eval 'hl.animation({ leaf = "global", enabled = true, speed = 5, bezier = "default" })'
+hyprctl animations -j
+```
+
+Use the same official Lua API call that Home Manager will generate, then query
+the relevant state with `hyprctl` to confirm it took effect. Changes made this
+way are temporary and disappear after a reload or session restart. Once a value
+feels right, add it to `home-manager/hyprland/default.nix` and rebuild normally.
+Not every change is safe to apply live; session startup, package, plugin, and
+service changes still require a rebuild or a fresh session.
