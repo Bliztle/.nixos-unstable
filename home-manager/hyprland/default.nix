@@ -303,6 +303,8 @@ in
           kb_options = "grp:alt_shift_toggle,caps:swapescape";
           touchpad = {
             tap_to_click = true;
+            # Keep dragging across finger lifts until the next tap/click.
+            drag_lock = 2;
             natural_scroll = true;
           };
         };
