@@ -67,7 +67,7 @@ let
   ];
 
   directionBinds = lib.concatMap (direction: [
-    (bind "SUPER + ${direction.key}" ''hl.dsp.focus({ direction = "${direction.nativeDirection}" })'')
+    (bind "SUPER + ${direction.key}" "hl.dsp.focus({ direction = \"${direction.nativeDirection}\" })")
     (bind "SUPER + SHIFT + ${direction.key}" "hl.plugin.hy3.move_window(\"${direction.direction}\")")
   ]) directions;
 
@@ -261,6 +261,7 @@ in
       config = {
         general = {
           layout = "hy3";
+          no_focus_fallback = true;
           gaps_in = 5;
           gaps_out = 10;
           border_size = 2;
@@ -432,6 +433,8 @@ in
         (bind "SUPER + e" "hl.plugin.hy3.change_group(\"opposite\")")
         (bind "SUPER + f" "hl.dsp.window.fullscreen()")
         (bind "SUPER + a" "hl.plugin.hy3.change_focus(\"raise\")")
+        (bind "SUPER + tab" ''hl.plugin.hy3.focus_tab({ direction = "r", wrap = true })'')
+        (bind "SUPER + SHIFT + tab" ''hl.plugin.hy3.focus_tab({ direction = "l", wrap = true })'')
 
         (bindWithFlags "SUPER + mouse:272" "hl.dsp.window.drag()" { mouse = true; })
         (bindWithFlags "SUPER + mouse:273" "hl.dsp.window.resize()" { mouse = true; })

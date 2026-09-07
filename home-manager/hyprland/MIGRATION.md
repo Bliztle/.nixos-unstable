@@ -20,9 +20,11 @@ of the Sway/SwayFX configuration:
 - Focused-window working-directory discovery is not ported because Hyprland has
   no built-in equivalent to `swaycwd`. Terminal shortcuts use Kitty's normal
   starting directory.
-- Directional focus uses Hyprland's geometric focus dispatcher instead of
-  hy3's container-history navigation, matching Sway's spatial behavior. Window
-  movement still uses hy3 so it can preserve the manual layout tree.
+- Directional focus uses Hyprland's geometric focus dispatcher for spatial
+  navigation, matching Sway's behavior. `Mod+Tab` and `Mod+Shift+Tab` cycle
+  forward and backward through hy3 tabs, respectively, without overloading
+  spatial navigation. Window movement still uses hy3 so it can preserve the
+  manual layout tree.
 - Hyprland uses a compact One Dark visual baseline with small gaps, rounded
   corners, restrained depth, and blue-to-magenta accents. Waybar, Wofi, and
   Dunst share that palette, while application content such as Kitty remains
