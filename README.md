@@ -71,13 +71,35 @@ From the root of this repository, import the GPG key used as follows:
 gpg --import pubkey.asc
 ```
 
-And trust the key
+Then edit the key to set its owner trust:
+
 ```sh
 # Replace this with your key id
-gpg --edit-key 92810374E3AC1EE1 
+gpg --edit-key 92810374E3AC1EE1
 ```
-- 
 
+Confirm the displayed key is your own, then enter these responses one at a time:
+
+```text
+gpg> trust
+Your decision? 5
+Do you really want to set this key to ultimate trust? (y/N) y
+gpg> quit
+```
+
+`5` means ultimate trust, appropriate for your own key. This sets owner trust in your local GPG keyring.
+
+Verify that your user ID shows `[ultimate]`:
+
+```sh
+gpg --list-keys 92810374E3AC1EE1
+```
+
+If GPG says the trust database needs updating, run the following and list the key again:
+
+```sh
+gpg --check-trustdb
+```
 
 ### 3) Add Sops Key
 
