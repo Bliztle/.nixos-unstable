@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   lib,
   pkgs,
@@ -105,6 +106,12 @@ let
     ];
 in
 {
+  # Load Home Manager's session environment before UWSM starts desktop apps.
+  # Nushell does not source the POSIX shell profile that normally loads this.
+  xdg.configFile."uwsm/env".text = ''
+    . "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh"
+  '';
+
   home.packages = with pkgs; [
     hyprpaper
   ];
