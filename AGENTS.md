@@ -18,8 +18,10 @@ Be aware that since this configuration controls the devices agents like you are 
     - `omen` is a dualboot desktop and rarely used
 
 ## Commands
-- Build: `nix-test` - This is a custom alias, adding files to git before testing the configuration
-    - Do not test configurations unless explicitly asked to do so. Leave that to me.
+- Validate configuration changes with `nh os build`. It builds without sudo and does not activate or switch the running system.
+    - Stage newly added configuration files before building so the Git-backed flake includes them. Do not stage unrelated changes.
+    - A successful build is the standard validation; separate syntax checks are normally redundant. Use targeted checks only for behavior the build cannot verify.
+    - Do not run activation commands (`nix-test`, `nh os test`, or switch commands) unless explicitly requested.
 
 ## Conventions
 - Always use declarative modules over imperativ approaches
