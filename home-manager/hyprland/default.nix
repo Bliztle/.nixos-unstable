@@ -116,6 +116,17 @@ in
     hyprpaper
   ];
 
+  # Bibata provides XCursor assets, which Hyprland also supports.
+  home.pointerCursor = {
+    enable = true;
+    package = pkgs.bibata-cursors;
+    name = "Bibata-Modern-Amber";
+    size = 28;
+    gtk.enable = true;
+    x11.enable = true;
+  };
+  gtk.enable = true;
+
   wayland.windowManager.hyprland = {
     enable = true;
     package = null;
