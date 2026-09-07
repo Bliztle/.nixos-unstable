@@ -36,17 +36,11 @@
   #   };
   # };
 
-  # Firmware
+  # Manage firmware updates
   services.fwupd.enable = true;
 
   ##### Optimisation
   nix.optimise.automatic = true; # Automatically optimise /nix/store once a day (possibly only on rebuilds)
-  nix.gc = {
-    # Automatically clean out old generations
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 14d";
-  };
 
   ##### Shell
   # It is 3 lines to enable zsh

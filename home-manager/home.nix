@@ -175,6 +175,11 @@
   programs.nh = {
     enable = true;
     flake = /home/bliztle/.nixos-unstable;
+    clean = {
+      enable = true;
+      dates = "weekly";
+      extraArgs = "--keep-daily 7 --keep-weekly 2";
+    };
   };
 
   home.sessionVariables = {
