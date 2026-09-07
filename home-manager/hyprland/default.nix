@@ -27,39 +27,47 @@ let
     {
       key = "h";
       direction = "l";
+      nativeDirection = "left";
     }
     {
       key = "j";
       direction = "d";
+      nativeDirection = "down";
     }
     {
       key = "k";
       direction = "u";
+      nativeDirection = "up";
     }
     {
       key = "l";
       direction = "r";
+      nativeDirection = "right";
     }
     {
       key = "left";
       direction = "l";
+      nativeDirection = "left";
     }
     {
       key = "down";
       direction = "d";
+      nativeDirection = "down";
     }
     {
       key = "up";
       direction = "u";
+      nativeDirection = "up";
     }
     {
       key = "right";
       direction = "r";
+      nativeDirection = "right";
     }
   ];
 
   directionBinds = lib.concatMap (direction: [
-    (bind "SUPER + ${direction.key}" "hl.plugin.hy3.move_focus(\"${direction.direction}\")")
+    (bind "SUPER + ${direction.key}" ''hl.dsp.focus({ direction = "${direction.nativeDirection}" })'')
     (bind "SUPER + SHIFT + ${direction.key}" "hl.plugin.hy3.move_window(\"${direction.direction}\")")
   ]) directions;
 
@@ -113,15 +121,181 @@ in
     ];
 
     settings = {
-      animation = {
-        leaf = "global";
-        enabled = true;
-        speed = 5;
-        bezier = "default";
-      };
+      curve = [
+        {
+          _args = [
+            "easeOutQuint"
+            {
+              type = "bezier";
+              points = [
+                [
+                  0.23
+                  1
+                ]
+                [
+                  0.32
+                  1
+                ]
+              ];
+            }
+          ];
+        }
+        {
+          _args = [
+            "almostLinear"
+            {
+              type = "bezier";
+              points = [
+                [
+                  0.5
+                  0.5
+                ]
+                [
+                  0.75
+                  1
+                ]
+              ];
+            }
+          ];
+        }
+        {
+          _args = [
+            "quick"
+            {
+              type = "bezier";
+              points = [
+                [
+                  0.15
+                  0
+                ]
+                [
+                  0.1
+                  1
+                ]
+              ];
+            }
+          ];
+        }
+        {
+          _args = [
+            "linear"
+            {
+              type = "bezier";
+              points = [
+                [
+                  0
+                  0
+                ]
+                [
+                  1
+                  1
+                ]
+              ];
+            }
+          ];
+        }
+      ];
+
+      animation = [
+        {
+          leaf = "global";
+          enabled = true;
+          speed = 5;
+          bezier = "default";
+        }
+        {
+          leaf = "windows";
+          enabled = true;
+          speed = 3.5;
+          bezier = "quick";
+        }
+        {
+          leaf = "windowsIn";
+          enabled = true;
+          speed = 3;
+          bezier = "easeOutQuint";
+          style = "popin 92%";
+        }
+        {
+          leaf = "windowsOut";
+          enabled = true;
+          speed = 1.4;
+          bezier = "linear";
+          style = "popin 92%";
+        }
+        {
+          leaf = "fadeIn";
+          enabled = true;
+          speed = 2;
+          bezier = "almostLinear";
+        }
+        {
+          leaf = "fadeOut";
+          enabled = true;
+          speed = 1.2;
+          bezier = "linear";
+        }
+        {
+          leaf = "layersIn";
+          enabled = true;
+          speed = 2.5;
+          bezier = "easeOutQuint";
+          style = "fade";
+        }
+        {
+          leaf = "layersOut";
+          enabled = true;
+          speed = 1.2;
+          bezier = "linear";
+          style = "fade";
+        }
+        {
+          leaf = "workspaces";
+          enabled = true;
+          speed = 2.2;
+          bezier = "quick";
+          style = "slidefade 15%";
+        }
+      ];
 
       config = {
-        general.layout = "hy3";
+        general = {
+          layout = "hy3";
+          gaps_in = 5;
+          gaps_out = 10;
+          border_size = 2;
+          resize_on_border = true;
+          col = {
+            active_border = {
+              colors = [
+                "rgba(c678ddee)"
+                "rgba(61afefff)"
+              ];
+              angle = 45;
+            };
+            inactive_border = "rgba(53596588)";
+          };
+        };
+
+        decoration = {
+          rounding = 8;
+          rounding_power = 2;
+          active_opacity = 1.0;
+          inactive_opacity = 1.0;
+          shadow = {
+            enabled = true;
+            range = 4;
+            render_power = 3;
+            color = 1712592932;
+          };
+          blur = {
+            enabled = true;
+            size = 4;
+            passes = 2;
+            vibrancy = 0.1;
+          };
+        };
+
         input = {
           kb_layout = "us,dk,us";
           kb_variant = "altgr-intl,,colemak_dh";
@@ -314,6 +488,17 @@ in
           name = "proton-mail-workspace";
           match.class = "^Proton Mail$";
           workspace = "4";
+        }
+      ];
+
+      layer_rule = [
+        {
+          match.namespace = "wofi";
+          blur = true;
+        }
+        {
+          match.namespace = "waybar";
+          blur = false;
         }
       ];
     };

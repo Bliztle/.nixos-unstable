@@ -111,7 +111,57 @@
     profiles = { }; # This is required to build
   };
   programs.btop.enable = true;
-  services.dunst.enable = true;
+  services.dunst = {
+    enable = true;
+    settings = {
+      global = {
+        origin = "top-right";
+        offset = "(12, 48)";
+        width = "(320, 420)";
+        height = "(0, 300)";
+        notification_limit = 5;
+        gap_size = 8;
+        corner_radius = 8;
+        frame_width = 2;
+        frame_color = "#c678dd";
+        separator_color = "frame";
+        font = "JetBrainsMono Nerd Font 10";
+        padding = 12;
+        horizontal_padding = 12;
+        text_icon_padding = 10;
+        format = "<b>%s</b>\\n%b";
+        alignment = "left";
+        vertical_alignment = "center";
+        icon_position = "left";
+        min_icon_size = 32;
+        max_icon_size = 48;
+        progress_bar = true;
+        progress_bar_height = 8;
+        progress_bar_frame_width = 0;
+        progress_bar_corner_radius = 4;
+        highlight = "#61afef";
+      };
+
+      urgency_low = {
+        background = "#282c34f2";
+        foreground = "#7a818e";
+        timeout = 4;
+      };
+
+      urgency_normal = {
+        background = "#282c34f2";
+        foreground = "#abb2bf";
+        timeout = 6;
+      };
+
+      urgency_critical = {
+        background = "#282c34f2";
+        foreground = "#e06c75";
+        frame_color = "#e06c75";
+        timeout = 0;
+      };
+    };
+  };
   services.awww.enable = true;
   services.udiskie.enable = true;
   programs.kitty.enable = true;

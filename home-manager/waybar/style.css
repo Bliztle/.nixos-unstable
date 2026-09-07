@@ -1,4 +1,4 @@
-/* onedarkpro */
+/* One Dark, tuned to the purple sunset wallpaper. */
 
 @define-color background        #282c34;
 @define-color background_alt    #333842;
@@ -10,29 +10,29 @@
 @define-color magenta           #c678dd;
 @define-color magenta_alt       #d7a1e7;
 @define-color yellow            #e5c07b;
-@define-color yellow_alt        #edd4a6;
 @define-color green             #98c379;
-@define-color green_alt         #b3d39c;
 @define-color red               #e06c75;
-@define-color white             #abb2bf;
 @define-color orange            #cc9057;
-
 @define-color grey              #535965;
-@define-color light_grey        #7a818e;
 
 @keyframes blink {
   to {
     background-color: @red;
+    color: @background;
   }
 }
 
 * {
-  font-family:
-    Symbols Nerd Font,
-    FiraCode Nerd Font Mono;
-  font-size: 15px;
+  border: none;
+  border-radius: 0;
+  font-family: "JetBrainsMono Nerd Font", "Symbols Nerd Font";
+  font-size: 13px;
   min-height: 0;
-  margin-top: 1px;
+}
+
+#waybar {
+  background: transparent;
+  color: @foreground;
 }
 
 #temperature,
@@ -41,7 +41,6 @@
 #disk,
 #network,
 #custom-pacman,
-#custom-music,
 #custom-expressvpn,
 #tray,
 #backlight,
@@ -49,82 +48,77 @@
 #battery,
 #wireplumber,
 #pulseaudio,
-#custom-left,
-#custom-right,
-#custom-scrot {
-  background-color: @background;
-  padding: 0.5rem 0.8rem;
-  margin: 8px 0;
-}
-
-#waybar {
-  background: transparent;
-  color: @background;
+#custom-music,
+#custom-scrot,
+#mode {
+  background-color: rgba(40, 44, 52, 0.94);
+  padding: 0 10px;
+  margin: 5px 0;
+  min-height: 30px;
 }
 
 #workspaces {
-  background-color: @background;
-  border-radius: 2rem;
-  margin: 8px;
-  margin-left: 1rem;
+  background-color: rgba(40, 44, 52, 0.94);
+  border: 1px solid rgba(83, 89, 101, 0.65);
+  border-radius: 10px;
+  padding: 2px 4px;
+  margin: 5px 0 5px 10px;
 }
 
 #workspaces button {
-  color: @magenta;
-  border-radius: 1rem;
-  padding: 0.4rem;
+  color: @grey;
+  border-radius: 7px;
+  padding: 0 6px;
+  margin: 1px;
+  min-width: 18px;
 }
 
 #workspaces button.empty {
-  color: @foreground;
-  border-radius: 1rem;
+  color: @grey;
 }
 
-#workspaces button.active {
+#workspaces button.active,
+#workspaces button.focused {
+  background-color: @background_alt;
   color: @blue;
-  border-radius: 1rem;
+  box-shadow: inset 0 -2px @magenta;
 }
 
 #workspaces button:hover {
+  background-color: @background_alt;
   color: @magenta_alt;
-  border-radius: 1rem;
 }
 
 #workspaces button.urgent {
-  color: @magenta;
-  border-radius: 1rem;
+  color: @background;
+  background-color: @magenta;
   animation-name: blink;
   animation-duration: 1s;
-  animation-timing-function: steps(200);
+  animation-timing-function: steps(20);
   animation-iteration-count: infinite;
   animation-direction: alternate;
+}
+
+#mode {
+  color: @yellow;
+  border-radius: 10px;
+  margin-left: 8px;
 }
 
 #temperature {
   color: @yellow;
-  border-radius: 1rem 0px 0px 1rem;
-  margin-left: 1rem;
+  border-radius: 10px 0 0 10px;
+  margin-left: 10px;
 }
 
-#temperature.critical {
+#temperature.critical,
+#battery.critical:not(.charging) {
   animation-name: blink;
   animation-duration: 1s;
-  animation-timing-function: steps(200);
+  animation-timing-function: steps(20);
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
-
-/* #custom-left { */
-/*   background-color: @background; */
-/*   margin-left: 1rem; */
-/*   border-radius: 1rem 0px 0px 1rem; */
-/* } */
-
-/* #custom-right { */
-/*   background-color: @background; */
-/*   margin-right: 1rem; */
-/*   border-radius: 0px 1rem 1rem 0px; */
-/* } */
 
 #cpu {
   color: @magenta;
@@ -134,74 +128,79 @@
   color: @cyan;
 }
 
-#pulseaudio {
+#disk {
+  color: @blue;
+  border-radius: 0 10px 10px 0;
+  margin-right: 10px;
+}
+
+#custom-music {
+  color: @cyan_alt;
+  border: 1px solid rgba(83, 89, 101, 0.65);
+  border-radius: 10px;
+}
+
+#tray {
+  border: 1px solid rgba(83, 89, 101, 0.65);
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+#backlight {
+  color: @yellow;
+  border-radius: 10px 0 0 10px;
+}
+
+#pulseaudio,
+#wireplumber {
   color: @green;
 }
 
-#disk {
-  color: @blue;
-  border-radius: 0px 1rem 1rem 0px;
-  margin-right: 1rem;
+#pulseaudio.muted,
+#wireplumber.muted {
+  color: @red;
 }
 
 #network {
   color: @magenta;
 }
 
-#custom-pacman {
-  color: @orange;
-  /* border-radius: 1rem 0px 0px 1rem; */
-  margin-left: 1rem;
+#network.disconnected {
+  color: @red;
 }
 
 #custom-expressvpn {
   color: @red;
 }
 
-#clock {
-  color: @blue;
-  border-radius: 0px 1rem 1rem 0px;
-  margin-right: 1rem;
-}
-
 #battery {
   color: @cyan;
 }
 
-#battery.critical:not(.charging) {
-  animation-name: blink;
-  animation-duration: 1s;
-  animation-timing-function: steps(200);
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+#clock {
+  color: @blue;
+  border-radius: 0 10px 10px 0;
+  margin-right: 10px;
 }
 
-#backlight {
-  border-radius: 1rem 0rem 0rem 1rem;
-  color: @yellow;
-}
-
-#wireplumber {
-  color: @green;
-}
-
-#wireplumber.muted {
-  color: @background;
-  background-color: @red;
-}
-
-#custom-music {
-  color: @cyan_alt;
-  border-radius: 1rem;
+#custom-pacman {
+  color: @orange;
+  margin-left: 10px;
 }
 
 #custom-scrot {
-  margin-right: 1rem;
-  /* border-radius: 1rem; */
   color: @green;
+  border-radius: 10px;
+  margin-right: 10px;
 }
 
-#tray {
-  margin-right: 1rem;
-  border-radius: 1rem;
+tooltip {
+  background-color: @background;
+  border: 1px solid @grey;
+  border-radius: 8px;
+}
+
+tooltip label {
+  color: @foreground;
+  padding: 5px;
 }
