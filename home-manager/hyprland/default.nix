@@ -98,7 +98,6 @@ let
 in
 {
   home.packages = with pkgs; [
-    hyprlauncher
     hyprpaper
   ];
 
@@ -129,10 +128,10 @@ in
 
       monitor = [
         {
-          output = "desc:BOE NE135A1M-NY1 Unknown";
+          output = "desc:BOE NE135A1M-NY1";
           mode = "2880x1920@120";
           position = "2400x1440";
-          scale = 1.3;
+          scale = 1.33;
         }
         {
           output = "desc:ASUSTek COMPUTER INC ASUS MB14AHD R2LMTF057922";
@@ -198,8 +197,8 @@ in
       };
 
       bind = [
-        (bind "SUPER + space" "hl.dsp.exec_cmd(\"uwsm app -- hyprlauncher\")")
-        (bind "SUPER + d" "hl.dsp.exec_cmd(\"uwsm app -- hyprlauncher\")")
+        (bind "SUPER + space" "hl.dsp.exec_cmd(\"uwsm app -- wofi --show drun\")")
+        (bind "SUPER + d" "hl.dsp.exec_cmd(\"uwsm app -- wofi --show drun\")")
         (bind "SUPER + Return" "hl.dsp.exec_cmd(\"uwsm app -- kitty\")")
         (bind "SUPER + SHIFT + Return" "hl.dsp.exec_cmd(\"uwsm app -- kitty --class floating-term\")")
         (bind "SUPER + SHIFT + q" "hl.dsp.window.close()")
@@ -318,14 +317,9 @@ in
   services.hyprpaper = {
     enable = true;
     package = null;
-    # settings.wallpaper = {
-    #   monitor = "";
-    #   path = wallpaper;
-    # };
+    settings.wallpaper = {
+      monitor = "";
+      path = toString wallpaper;
+    };
   };
-
-  # Make applications launched by the menu part of UWSM's graphical app slice.
-  xdg.configFile."hypr/hyprlauncher.conf".text = ''
-    desktop_launch_prefix = uwsm app --
-  '';
 }
