@@ -121,7 +121,10 @@
 
   ##### Misc security
   # SSH config is deferred to home-manager
-  programs.ssh.startAgent = true;
+  programs.ssh = {
+    startAgent = true;
+    enableAskPassword = true;
+  };
   services.openssh = {
     enable = true;
     openFirewall = false;
