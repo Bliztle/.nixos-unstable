@@ -40,6 +40,8 @@
     # Javascript / Typescript
     nodejs
     pnpm
+    # Lean
+    lean4
     # Nix
     mcp-nixos
     # OCaml - `ocaml` and `merlin` are installed and managed by opam

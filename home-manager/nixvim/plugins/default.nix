@@ -38,6 +38,10 @@
       lualine.enable = true;
       web-devicons.enable = true;
       rustaceanvim.enable = true;
+      lean = {
+        enable = true;
+        settings.mappings = true;
+      };
       # tailwind-tools.enable = true;
       markdown-preview.enable = true;
       render-markdown = {
