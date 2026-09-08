@@ -15,7 +15,7 @@ lib.mkIf conf.custom.syncthing.enable {
       };
 
       devices.framework = {
-        id = "7VE4AEN-CYY4UKI-R7GH3BB-PJOVQEB-JE5EDRT-L2JPWSB-RT3VEWT-ZOFYVQA";
+        id = "IQBW5LI-UQWXOZ4-6KDYZPL-MP3JAPC-K564QH3-CT3WSTP-TORAEQ4-FCMLLA2";
         compression = "metadata";
       };
 
