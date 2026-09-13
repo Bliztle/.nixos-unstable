@@ -277,6 +277,9 @@ in
       ];
 
       config = {
+        # Keep XWayland pixels sharp; use application settings to scale their UI.
+        xwayland.force_zero_scaling = true;
+
         general = {
           layout = "hy3";
           no_focus_fallback = true;
