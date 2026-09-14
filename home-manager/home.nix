@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   config,
   conf,
   lib,
@@ -29,7 +30,7 @@
 
   home.packages = with pkgs; [
     # Applications
-    # chatgpt # Still points to macos (nix darwin) version
+    inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.chatgpt
     discord
     firefox
     herdr
