@@ -1,7 +1,6 @@
 {
   pkgs,
   inputs,
-  config,
   conf,
   lib,
   ...
@@ -187,14 +186,71 @@
     EDITOR = "nvim";
   };
 
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "text/html" = "firefox.desktop";
-      "application/pdf" = "firefox.desktop";
-      "x-scheme-handler/msteams" = "teams-for-linux.desktop";
+  xdg =
+    let
+      editorMimeTypes = [
+        "text/plain"
+        "text/x-haskell"
+        "text/x-literate-haskell"
+        "text/x-c"
+        "text/x-c++"
+        "text/x-chdr"
+        "text/x-csrc"
+        "text/x-c++hdr"
+        "text/x-c++src"
+        "text/x-java"
+        "text/x-python"
+        "text/x-python3"
+        "text/rust"
+        "text/x-rust"
+        "text/x-go"
+        "text/javascript"
+        "application/javascript"
+        "text/typescript"
+        "text/x-typescript"
+        "text/jsx"
+        "text/tsx"
+        "text/x-nix"
+        "text/x-lua"
+        "text/x-makefile"
+        "application/x-shellscript"
+        "application/json"
+        "application/toml"
+        "application/yaml"
+        "text/yaml"
+        "text/x-yaml"
+        "text/css"
+        "text/markdown"
+        "text/x-tex"
+      ];
+    in
+    {
+      desktopEntries.nvim-kitty = {
+        name = "Neovim (Kitty)";
+        genericName = "Text Editor";
+        exec = "${pkgs.kitty}/bin/kitty -- nvim -- %F";
+        icon = "nvim";
+        terminal = false;
+        categories = [
+          "Utility"
+          "TextEditor"
+          "Development"
+        ];
+        mimeType = editorMimeTypes;
+      };
+
+      mimeApps = {
+        enable = true;
+        defaultApplications = {
+          "text/html" = "firefox.desktop";
+          "x-scheme-handler/http" = "firefox.desktop";
+          "x-scheme-handler/https" = "firefox.desktop";
+          "application/pdf" = "firefox.desktop";
+          "x-scheme-handler/msteams" = "teams-for-linux.desktop";
+        }
+        // pkgs.lib.genAttrs editorMimeTypes (_: "nvim-kitty.desktop");
+      };
     };
-  };
 
   # add ./modules/config/* to ~/.config
   home.file = builtins.listToAttrs (
