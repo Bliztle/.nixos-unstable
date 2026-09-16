@@ -27,6 +27,14 @@
   programs.home-manager.enable = true;
   fonts.fontconfig.enable = true;
 
+  gtk = {
+    enable = true;
+    colorScheme = "dark";
+  };
+
+  # Advertise the preference to libadwaita and desktop-portal clients.
+  dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+
   home.packages = with pkgs; [
     # Applications
     inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.chatgpt
