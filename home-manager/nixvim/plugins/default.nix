@@ -7,6 +7,8 @@
     ./harpoon.nix
     ./neotest.nix
     ./notebook.nix
+    ./render-latex.nix
+    ./math-conceal.nix
   ];
 
   programs.nixvim = {
@@ -47,6 +49,9 @@
       render-markdown = {
         enable = true;
         settings = {
+          latex.enabled = false;
+          # Preserve render-latex's inline Unicode replacements (e.g. α and ×).
+          win_options.conceallevel.rendered = 2;
           file_types = [
             "markdown"
             "quarto"
