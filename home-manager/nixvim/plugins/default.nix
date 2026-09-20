@@ -9,6 +9,7 @@
     ./notebook.nix
     ./render-latex.nix
     ./math-conceal.nix
+    ./pdf.nix
   ];
 
   programs.nixvim = {
@@ -52,6 +53,7 @@
           latex.enabled = false;
           # Preserve render-latex's inline Unicode replacements (e.g. α and ×).
           win_options.conceallevel.rendered = 2;
+          # Preserve render-latex's inline Unicode replacements (e.g. α and ×).
           file_types = [
             "markdown"
             "quarto"
