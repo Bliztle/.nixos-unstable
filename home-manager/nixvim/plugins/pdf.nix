@@ -13,6 +13,12 @@ let
       hash = "sha256-kvedUdaDvdJkfD7cG1AaezYWEeq9WNyui0EjBu/SrRQ=";
     };
 
+    # The plugin hardcodes its page navigation keys.
+    postPatch = ''
+      substituteInPlace lua/pdfreader/init.lua \
+        --replace-fail 'vim.keymap.set("n", "p", function()' 'vim.keymap.set("n", "N", function()'
+    '';
+
     dependencies = with pkgs.vimPlugins; [
       snacks-nvim
       telescope-nvim
