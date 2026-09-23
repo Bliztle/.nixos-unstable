@@ -506,6 +506,21 @@
         "type": "github"
       }
     },
+    "multiverse": {
+      "locked": {
+        "lastModified": 1790088158,
+        "narHash": "sha256-CflIeElc3re/Z4IJJrfM0jn+uIISHkQzwVvoxuFsqf4=",
+        "owner": "fzakaria",
+        "repo": "nixpkgs-multiverse",
+        "rev": "a9890af724fed3ab6e3e02513d3aee5a23d4af86",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fzakaria",
+        "repo": "nixpkgs-multiverse",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1788404924,
@@ -618,6 +633,7 @@
         "hy3": "hy3",
         "hyprland": "hyprland",
         "llm-agents": "llm-agents",
+        "multiverse": "multiverse",
         "nixpkgs": "nixpkgs_3",
         "nixvim": "nixvim",
         "sops-nix": "sops-nix",

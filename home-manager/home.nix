@@ -54,7 +54,8 @@
     wdisplays
     wl-mirror
     zathura
-    zotero # Zotero plugins are unfortunately handled imperatively in zotero
+    # 10.0.2 fixes HTML indexing crashes; keep the system's nixpkgs pin unchanged.
+    inputs.multiverse.legacyPackages.${pkgs.stdenv.hostPlatform.system}.versions.zotero."10.0.2"
     signal-desktop
     prismlauncher # Minecraft Launcher
     bitwarden-desktop
