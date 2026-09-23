@@ -1,5 +1,12 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
+  # VerifyPN uses a named CMake build directory, which clangd won't discover
+  # automatically. Keep this local preference out of the project's source tree.
+  xdg.configFile."clangd/config.yaml".text = builtins.toJSON {
+    If.PathMatch = "${pkgs.lib.escapeRegex config.home.homeDirectory}/projects/verifypn/.*";
+    CompileFlags.CompilationDatabase = "${config.home.homeDirectory}/projects/verifypn/build-release";
+  };
+
   programs.nixvim = {
     userCommands = {
       LspRestart = {
@@ -71,6 +78,16 @@
       lsp = {
         enable = true;
         servers = {
+          clangd = {
+            enable = true;
+            package = pkgs.libclang;
+            cmd = [
+              "${pkgs.libclang}/bin/clangd"
+              "--background-index"
+              # Query Nix's GCC wrappers for the C/C++ standard-library headers.
+              "--query-driver=/nix/store/*-gcc-wrapper-*/bin/g++,/nix/store/*-gcc-wrapper-*/bin/gcc"
+            ];
+          };
           nil_ls.enable = true; # Lua
           ts_ls.enable = true; # Typescript
           eslint = {
