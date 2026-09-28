@@ -33,9 +33,7 @@
     n = "nvim";
     k = "kubectl";
     p = "${pkgs.python3}/bin/python3";
-    # cat = "${pkgs.bat}/bin/bat";
-    # grep = "${pkgs.ripgrep}/bin/rg";
-    # find = "${pkgs.fd}/bin/fd";
+    pn = "pnpm";
 
     sgit = "sudo git -c \"include.path=\${XDG_CONFIG_DIR:-$HOME/.config}/git/config\" -c \"include.path=$HOME/.gitconfig\"";
   };
@@ -72,7 +70,8 @@
       }
     '';
     envFile.text = ''
-      $env.PATH ++= ['~/.config/scripts']
+      $env.PATH ++= ['~/.config/scripts', '/home/bliztle/.local/share/pnpm/bin']
+      $env.PNPM_HOME = '/home/bliztle/.local/share/pnpm'
       $env.EDITOR = 'nvim'
       # source-env ~/.config/nushell/env.secret.nu
     '';
