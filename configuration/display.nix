@@ -40,6 +40,14 @@
     withUWSM = true;
     xwayland.enable = true;
   };
+
+  # Cache upstream Hyprland flake builds and their dependencies.
+  nix.settings = lib.mkIf config.custom.hyprland.enable {
+    substituters = [ "https://hyprland.cachix.org" ];
+    trusted-public-keys = [
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+    ];
+  };
   # services.desktopManager.plasma6.enable = true;
   # services.xserver.enable = true;
 

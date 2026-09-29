@@ -5,7 +5,9 @@
     sops-nix.url = "github:Mic92/sops-nix";
     nixvim.url = "github:nix-community/nixvim";
 
-    hyprland.url = "github:hyprwm/Hyprland?submodules=1";
+    # Keep the pre-update revision until hy3 supports Hyprland's desktop API changes.
+    # Update Hyprland and hy3 together, validating with `nh os build`.
+    hyprland.url = "github:hyprwm/Hyprland/7ebf13abb3c391604c60c9f627c7a403bcec8d17?submodules=1";
     hy3 = {
       url = "github:outfoxxed/hy3";
       inputs.hyprland.follows = "hyprland";
