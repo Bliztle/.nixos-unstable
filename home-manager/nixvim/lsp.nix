@@ -1,4 +1,16 @@
 { config, pkgs, ... }:
+let
+  fgaGrammar = pkgs.tree-sitter.buildGrammar {
+    language = "fga";
+    version = "0.1.0";
+    src = pkgs.fetchFromGitHub {
+      owner = "matoous";
+      repo = "tree-sitter-fga";
+      rev = "ce72d1c484ba133a18e966d67be66bce85695451";
+      hash = "sha256-8op8IFKh3dZY02Yiehvqz1XyeOw9qSoe0f31M4yzw1U=";
+    };
+  };
+in
 {
   # VerifyPN uses a named CMake build directory, which clangd won't discover
   # automatically. Keep this local preference out of the project's source tree.
@@ -8,6 +20,18 @@
   };
 
   programs.nixvim = {
+    filetype.extension = {
+      fga = "fga";
+      openfga = "fga";
+    };
+    autoCmd = [
+      {
+        event = "FileType";
+        pattern = "fga";
+        callback.__raw = "function(args) vim.treesitter.start(args.buf, 'fga') end";
+        desc = "Highlight OpenFGA models with Tree-sitter";
+      }
+    ];
     userCommands = {
       LspRestart = {
         command = "lsp restart <args>";
@@ -258,6 +282,8 @@
     };
     extraPlugins = with pkgs.vimPlugins; [
       haskell-tools-nvim
+      # Package both the custom parser and its upstream highlighting queries.
+      (pkgs.neovimUtils.grammarToPlugin fgaGrammar)
     ];
     keymaps = [
       {
