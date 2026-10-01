@@ -55,10 +55,10 @@
     wl-mirror
     zathura
     # Zotero 10.0.2 requires Gecko 140.15; nixpkgs prematurely switched it to 153.
-    # Reuse the existing Hyprland input's runtime until Zotero updates in nixpkgs.
+    # Keep the existing runtime snapshot until Zotero updates in nixpkgs.
     (zotero.override (pkgs.lib.optionalAttrs (zotero.version == "10.0.2") {
       firefox-esr-153-unwrapped =
-        inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.firefox-esr-140-unwrapped;
+        inputs.zotero-runtime.legacyPackages.${pkgs.stdenv.hostPlatform.system}.firefox-esr-140-unwrapped;
     }))
     signal-desktop
     prismlauncher # Minecraft Launcher

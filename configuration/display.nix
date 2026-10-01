@@ -1,6 +1,5 @@
 {
   config,
-  inputs,
   pkgs,
   lib,
   ...
@@ -34,31 +33,10 @@
   programs.sway.enable = true;
   programs.hyprland = lib.mkIf config.custom.hyprland.enable {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage =
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     withUWSM = true;
     xwayland.enable = true;
   };
 
-  # Hyprland loads Mesa at runtime. Keep drivers compatible with its pinned glibc.
-  hardware.graphics = lib.mkIf config.custom.hyprland.enable (
-    let
-      hyprlandPkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-    in
-    {
-      package = hyprlandPkgs.mesa;
-      package32 = hyprlandPkgs.pkgsi686Linux.mesa;
-    }
-  );
-
-  # Cache upstream Hyprland flake builds and their dependencies.
-  nix.settings = lib.mkIf config.custom.hyprland.enable {
-    substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys = [
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-    ];
-  };
   # services.desktopManager.plasma6.enable = true;
   # services.xserver.enable = true;
 

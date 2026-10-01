@@ -1,12 +1,10 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   ...
 }:
 let
-  system = pkgs.stdenv.hostPlatform.system;
   lua = lib.generators.mkLuaInline;
   wallpaper = ../config/wallpapers/inactive/purple/purple_sunset.jpg;
 
@@ -134,7 +132,7 @@ in
     systemd.enable = false;
 
     plugins = [
-      inputs.hy3.packages.${system}.hy3
+      pkgs.hyprlandPlugins.hy3
     ];
 
     settings = {

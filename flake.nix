@@ -5,13 +5,8 @@
     sops-nix.url = "github:Mic92/sops-nix";
     nixvim.url = "github:nix-community/nixvim";
 
-    # Keep the pre-update revision until hy3 supports Hyprland's desktop API changes.
-    # Update Hyprland and hy3 together, validating with `nh os build`.
-    hyprland.url = "github:hyprwm/Hyprland/7ebf13abb3c391604c60c9f627c7a403bcec8d17?submodules=1";
-    hy3 = {
-      url = "github:outfoxxed/hy3";
-      inputs.hyprland.follows = "hyprland";
-    };
+    # Existing runtime snapshot for Zotero's temporary Gecko 140 workaround.
+    zotero-runtime.url = "github:NixOS/nixpkgs/0968519e14f7aa7d3e9b389682bd74d2b51c8ce8";
 
     tapaal.url = "github:bliztle/tapaal-nix";
     llm-agents.url = "github:numtide/llm-agents.nix";
