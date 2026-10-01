@@ -41,6 +41,17 @@
     xwayland.enable = true;
   };
 
+  # Hyprland loads Mesa at runtime. Keep drivers compatible with its pinned glibc.
+  hardware.graphics = lib.mkIf config.custom.hyprland.enable (
+    let
+      hyprlandPkgs = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+    in
+    {
+      package = hyprlandPkgs.mesa;
+      package32 = hyprlandPkgs.pkgsi686Linux.mesa;
+    }
+  );
+
   # Cache upstream Hyprland flake builds and their dependencies.
   nix.settings = lib.mkIf config.custom.hyprland.enable {
     substituters = [ "https://hyprland.cachix.org" ];

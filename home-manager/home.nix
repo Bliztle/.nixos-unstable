@@ -54,8 +54,12 @@
     wdisplays
     wl-mirror
     zathura
-    # 10.0.2 fixes HTML indexing crashes; keep the system's nixpkgs pin unchanged.
-    inputs.multiverse.legacyPackages.${pkgs.stdenv.hostPlatform.system}.versions.zotero."10.0.2"
+    # Zotero 10.0.2 requires Gecko 140.15; nixpkgs prematurely switched it to 153.
+    # Reuse the existing Hyprland input's runtime until Zotero updates in nixpkgs.
+    (zotero.override (pkgs.lib.optionalAttrs (zotero.version == "10.0.2") {
+      firefox-esr-153-unwrapped =
+        inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system}.firefox-esr-140-unwrapped;
+    }))
     signal-desktop
     prismlauncher # Minecraft Launcher
     bitwarden-desktop

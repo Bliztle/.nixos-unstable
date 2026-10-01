@@ -1,0 +1,52 @@
+Welcome to Hyprland!
+
+                                                  
+                     YY    UJ                     
+                    YYY    UUJ                    
+                   XXXY    UUUU                   
+                  zXXXX    UUUUU                  
+                zzzzX        UUUUJ                
+               cczzz          UUUUJ               
+             vccccz            UUUUUJ             
+            vvcccc              UUUUUJ            
+           vvvvv                  UUUUJ           
+          uuuvv                    UUUUJ          
+         uuuuu                      UUUUU         
+        nnnuu                        UUUUU        
+       nnnnn                          YUUUU       
+       xxnn                            YUUU       
+       xxxn                            YYUU       
+      xxxx                              YYUU      
+      rxxx                              YYYY      
+      rrrx                              YYYY      
+       rrrx                            XXXY       
+       rrrr                            XXXX       
+        rrrr                          zzXX        
+         rrrr                        zzzz         
+          rrrrr                    ccczz          
+           rrrrrx                vccccc           
+             rrrrxxxx        uuvvvvvc             
+                rrxxxxxxnnnnuuuuuv                
+                    xxxxxnnnnu                    
+
+
+
+DEBUG ]: [CCompositor::bumpNofile] Old rlimit: soft -> 1024, hard -> 524288
+DEBUG ]: [CCompositor::bumpNofile] New rlimit: soft -> 524288, hard -> 524288
+DEBUG ]: [CCompositor::initManagers] Creating the EventLoopManager!
+DEBUG ]: [CCompositor::initManagers] Creating the KeybindManager!
+DEBUG ]: [CCompositor::initManagers] Creating the AnimationManager!
+DEBUG ]: [CCompositor::initManagers] Creating the DynamicPermissionManager!
+DEBUG ]: [CCompositor::initManagers] Creating the MonitorState!
+DEBUG ]: [CCompositor::initManagers] Creating the WorkspaceState!
+DEBUG ]: [CCompositor::initManagers] Creating the ConfigManager!
+DEBUG ]: [Config::initConfigManager] [cfg] Regular config at /home/bliztle/.config/hypr/hyprland.lua
+DEBUG ]: [CCompositor::initManagers] Creating the Error Overlay!
+DEBUG ]: [CCompositor::initManagers] Creating the LayoutManager!
+DEBUG ]: [CCompositor::initManagers] Creating the TokenManager!
+DEBUG ]: [Config::Lua::CConfigManager::postConfigReload] Disabling stdout logs (debug.enable_stdout_logs = 0). Further logs will be written to /run/user/1000/hypr/7ebf13abb3c391604c60c9f627c7a403bcec8d17_1790874095_234548687/hyprland.log
+DEBUG ]: [CCompositor::initManagers] Creating the PointerManager!
+DEBUG ]: [CCompositor::initManagers] Creating the AsyncResourceGatherer!
+[1;31mERR [0mfrom start-hyprland ]: Couldn't waitpid for hyprland: No child processes
+[1;32mDEBUG [0mfrom start-hyprland ]: hyprland exit, breaking poll, checking state
+[1;32mDEBUG [0mfrom start-hyprland ]: Hyprland exit cleanly.

@@ -15,7 +15,6 @@
 
     tapaal.url = "github:bliztle/tapaal-nix";
     llm-agents.url = "github:numtide/llm-agents.nix";
-    multiverse.url = "github:fzakaria/nixpkgs-multiverse";
 
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
