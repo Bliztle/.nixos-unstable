@@ -29,11 +29,11 @@
 
   gtk = {
     enable = true;
-    colorScheme = "dark";
+    colorScheme = "light";
   };
 
   # Advertise the preference to libadwaita and desktop-portal clients.
-  dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+  dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-light";
 
   home.packages = with pkgs; [
     # Applications
