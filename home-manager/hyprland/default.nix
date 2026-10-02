@@ -22,6 +22,24 @@ let
     ];
   };
 
+  # Resolve focus against the normal layout, then carry fullscreen to the target.
+  # Run synchronously in Lua so no shell/IPC round trips expose the tiled layout.
+  fullscreenFocus = action: ''
+    function()
+      local window = hl.get_active_window()
+      if window == nil or window.fullscreen == 0 then
+        hl.dispatch(${action})
+        return
+      end
+
+      local internal = window.fullscreen
+      local client = window.fullscreen_client
+      hl.dispatch(hl.dsp.window.fullscreen_state({ internal = 0, client = 0, action = "set" }))
+      hl.dispatch(${action})
+      hl.dispatch(hl.dsp.window.fullscreen_state({ internal = internal, client = client, action = "set" }))
+    end
+  '';
+
   directions = [
     {
       key = "h";
@@ -66,7 +84,7 @@ let
   ];
 
   directionBinds = lib.concatMap (direction: [
-    (bind "SUPER + ${direction.key}" "hl.dsp.focus({ direction = \"${direction.nativeDirection}\" })")
+    (bind "SUPER + ${direction.key}" (fullscreenFocus "hl.dsp.focus({ direction = \"${direction.nativeDirection}\" })"))
     (bind "SUPER + SHIFT + ${direction.key}" "hl.plugin.hy3.move_window(\"${direction.direction}\")")
   ]) directions;
 
@@ -459,8 +477,8 @@ in
         (bind "SUPER + e" "hl.plugin.hy3.change_group(\"opposite\")")
         (bind "SUPER + f" "hl.dsp.window.fullscreen()")
         (bind "SUPER + a" "hl.plugin.hy3.change_focus(\"raise\")")
-        (bind "SUPER + tab" ''hl.plugin.hy3.focus_tab({ direction = "r", wrap = true })'')
-        (bind "SUPER + SHIFT + tab" ''hl.plugin.hy3.focus_tab({ direction = "l", wrap = true })'')
+        (bind "SUPER + tab" (fullscreenFocus ''hl.plugin.hy3.focus_tab({ direction = "r", wrap = true })''))
+        (bind "SUPER + SHIFT + tab" (fullscreenFocus ''hl.plugin.hy3.focus_tab({ direction = "l", wrap = true })''))
 
         (bindWithFlags "SUPER + mouse:272" "hl.dsp.window.drag()" { mouse = true; })
         (bindWithFlags "SUPER + mouse:273" "hl.dsp.window.resize()" { mouse = true; })

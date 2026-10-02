@@ -24,7 +24,10 @@ of the Sway/SwayFX configuration:
   navigation, matching Sway's behavior. `Mod+Tab` and `Mod+Shift+Tab` cycle
   forward and backward through hy3 tabs, respectively, without overloading
   spatial navigation. Window movement still uses hy3 so it can preserve the
-  manual layout tree.
+  manual layout tree. Directional focus and tab cycling carry fullscreen (or
+  maximized) state to the destination window, resolving the destination using
+  the normal tiled layout. If focus does not move, the current window retains
+  its fullscreen state.
 - Hyprland uses a compact One Dark visual baseline with small gaps, rounded
   corners, restrained depth, and blue-to-magenta accents. Waybar, Wofi, and
   Dunst share that palette, while application content such as Kitty remains
