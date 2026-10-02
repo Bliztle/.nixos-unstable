@@ -55,6 +55,12 @@
     postgresql
     # Prolog
     swi-prolog
+    # Rocq. Wrap the compiler and language server
+    # together so both can find the matching standard library and OCaml plugins.
+    (rocqPackages.rocq-core.withPackages (rocqPkgs: [
+      rocqPkgs.stdlib
+      rocqPkgs.coq-lsp
+    ]))
     # Python
     python3
     uv

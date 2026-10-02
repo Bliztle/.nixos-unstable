@@ -10,6 +10,7 @@
     ./render-latex.nix
     ./math-conceal.nix
     ./pdf.nix
+    ./rocq.nix
   ];
 
   programs.nixvim = {
