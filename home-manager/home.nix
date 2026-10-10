@@ -54,10 +54,9 @@
     wdisplays
     wl-mirror
     zathura
-    # Zotero 10.0.2 requires Gecko 140.15; nixpkgs prematurely switched it to 153.
-    # Keep the existing runtime snapshot until Zotero updates in nixpkgs.
     (zotero.override (
-      pkgs.lib.optionalAttrs (zotero.version == "10.0.2") {
+      pkgs.lib.optionalAttrs (zotero.version == "10.0.4") {
+        # Zotero 10.0.4 requires Gecko 140.15; nixpkgs supplies 153.
         firefox-esr-153-unwrapped =
           inputs.zotero-runtime.legacyPackages.${pkgs.stdenv.hostPlatform.system}.firefox-esr-140-unwrapped;
       }
