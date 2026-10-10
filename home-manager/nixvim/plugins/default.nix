@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./telescope.nix
@@ -13,7 +13,11 @@
     ./rocq.nix
   ];
 
+  # The daemon is also used from a terminal with `teamtype join`.
+  home.packages = [ pkgs.teamtype ];
+
   programs.nixvim = {
+    extraPlugins = [ pkgs.vimPlugins.teamtype ];
     plugins = {
       neo-tree = {
         enable = true;
@@ -39,7 +43,24 @@
       highlight-colors.enable = true;
       nvim-lightbulb.enable = true;
       typst-preview.enable = true;
-      lualine.enable = true;
+      lualine = {
+        enable = true;
+        settings.sections.lualine_c = [
+          "filename"
+          {
+            __unkeyed-1.__raw = ''
+              function()
+                return require("teamtype").status()
+              end
+            '';
+            cond.__raw = ''
+              function()
+                return vim.fs.root(0, ".teamtype") ~= nil
+              end
+            '';
+          }
+        ];
+      };
       web-devicons.enable = true;
       rustaceanvim.enable = true;
       lean = {
