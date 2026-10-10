@@ -36,6 +36,9 @@
   #   };
   # };
 
+  # Turn off OOMD. Memory manager, but does nothing without further configuration.
+  systemd.oomd.enable = false;
+
   # Manage firmware updates
   services.fwupd.enable = true;
 
