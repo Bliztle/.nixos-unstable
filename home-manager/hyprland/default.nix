@@ -379,13 +379,19 @@ in
           transform = 3;
         }
         {
-          output = "desc:Lenovo Group Limited P27q-20 V909LR00";
+          output = "desc:Lenovo Group Limited P27q-20 V909LRML";
           mode = "2560x1440@60";
           position = "2218x0";
           scale = 1;
         }
         {
-          output = "desc:Lenovo Group Limited P27q-20 V909LPW5";
+          output = "desc:Lenovo Group Limited P27q-20 V909LNVD";
+          mode = "2560x1440@60";
+          position = "4778x0";
+          scale = 1;
+        }
+        {
+          output = "desc:Lenovo Group Limited P27q-20 V909LR00";
           mode = "2560x1440@60";
           position = "2218x0";
           scale = 1;
@@ -394,6 +400,12 @@ in
           output = "desc:Lenovo Group Limited P27q-20 V909LPXM";
           mode = "2560x1440@60";
           position = "4778x0";
+          scale = 1;
+        }
+        {
+          output = "desc:Lenovo Group Limited P27q-20 V909LPW5";
+          mode = "2560x1440@60";
+          position = "2218x0";
           scale = 1;
         }
         {
