@@ -23,6 +23,10 @@ in
         pname = "math-conceal.nvim";
         inherit version src;
         postPatch = ''
+          # Keep commas between call arguments, including adjacent math formulas.
+          substituteInPlace lua/math-conceal/symbols/typst/conceal_math.scm \
+            --replace-fail '(#set! @punctuation.delimiter conceal " ")' \
+            ""
           # Reveal every rendered expression intersecting the cursor line.
           substituteInPlace lua/math-conceal/image/placement/conflict.lua \
             --replace-fail 'return start_col ~= nil and cursor.col >= start_col and cursor.col < end_col' \
