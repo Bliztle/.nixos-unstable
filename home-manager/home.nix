@@ -25,6 +25,14 @@
   home.homeDirectory = "/home/bliztle";
 
   programs.home-manager.enable = true;
+  programs.numbat = {
+    enable = true;
+    settings = {
+      intro-banner = "off";
+      edit-mode = "vi";
+      prompt = "> ";
+    };
+  };
   fonts.fontconfig.enable = true;
 
   gtk = {

@@ -20,6 +20,8 @@ in {
     checkConfig = false;
     config = null; # Do not use the default config
     extraConfigEarly = hostConfig;
-    extraConfig = config;
+    extraConfig = config + ''
+      bindsym $mod+c exec $term --class=numbat -o 'map escape close_window' -e ${pkgs.lib.getExe pkgs.numbat}
+    '';
   };
 }

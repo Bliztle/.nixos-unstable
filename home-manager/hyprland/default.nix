@@ -439,6 +439,7 @@ in
         (bind "SUPER + d" "hl.dsp.exec_cmd(\"uwsm app -- wofi --show drun\")")
         (bind "SUPER + Return" "hl.dsp.exec_cmd(\"uwsm app -- kitty\")")
         (bind "SUPER + SHIFT + Return" "hl.dsp.exec_cmd(\"uwsm app -- kitty --class floating-term\")")
+        (bind "SUPER + c" "hl.dsp.exec_cmd(\"uwsm app -- kitty --class numbat -e ${pkgs.lib.getExe pkgs.numbat}\")")
         (bind "SUPER + SHIFT + q" "hl.dsp.window.close()")
         (bind "SUPER + r" "hl.dsp.submap(\"resize\")")
         (bind "SUPER + SHIFT + Print" "hl.dsp.exec_cmd(\"grimshot copy area\")")
@@ -526,6 +527,15 @@ in
           size = [
             400
             200
+          ];
+        }
+        {
+          name = "numbat-float";
+          match.class = "^numbat$";
+          float = true;
+          size = [
+            600
+            350
           ];
         }
         {
