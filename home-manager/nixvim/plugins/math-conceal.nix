@@ -27,6 +27,26 @@ in
           substituteInPlace lua/math-conceal/symbols/typst/conceal_math.scm \
             --replace-fail '(#set! @punctuation.delimiter conceal " ")' \
             ""
+          # Always show Typst equation boundaries, regardless of cursor position.
+          substituteInPlace lua/math-conceal/symbols/typst/conceal_delim.scm \
+            --replace-fail '(#set! @typ_inline_dollar conceal "")' \
+            ""
+          # Reveal all inline symbol replacements throughout the active multiline equation.
+          substituteInPlace lua/math-conceal/render.lua \
+            --replace-fail 'local function get_expand_range(spec, node)' \
+            'local function get_expand_range(spec, node)
+  if spec.target_lang == "typst" then
+    local ancestor = node
+    while ancestor do
+      if ancestor:type() == "math" then
+        local start_row, start_col, end_row, end_col = ancestor:range()
+        if start_row < end_row then
+          return start_row, start_col, end_row, end_col
+        end
+      end
+      ancestor = ancestor:parent()
+    end
+  end'
           # Reveal every rendered expression intersecting the cursor line.
           substituteInPlace lua/math-conceal/image/placement/conflict.lua \
             --replace-fail 'return start_col ~= nil and cursor.col >= start_col and cursor.col < end_col' \
