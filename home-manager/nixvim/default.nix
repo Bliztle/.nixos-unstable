@@ -30,6 +30,19 @@
       foldexpr = "nvim_treesitter#foldexpr()";
       foldenable = false;
     };
+    autoCmd = [
+      {
+        event = "FileType";
+        pattern = [ "markdown" "typst" ];
+        callback.__raw = ''
+          function()
+            vim.opt_local.wrap = true
+            vim.opt_local.linebreak = true
+            vim.opt_local.breakindent = true
+          end
+        '';
+      }
+    ];
     clipboard.register = "unnamedplus";
   };
 }

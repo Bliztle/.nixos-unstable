@@ -84,7 +84,9 @@ let
   ];
 
   directionBinds = lib.concatMap (direction: [
-    (bind "SUPER + ${direction.key}" (fullscreenFocus "hl.dsp.focus({ direction = \"${direction.nativeDirection}\" })"))
+    (bind "SUPER + ${direction.key}" (
+      fullscreenFocus "hl.dsp.focus({ direction = \"${direction.nativeDirection}\" })"
+    ))
     (bind "SUPER + SHIFT + ${direction.key}" "hl.plugin.hy3.move_window(\"${direction.direction}\")")
   ]) directions;
 
@@ -292,6 +294,8 @@ in
       ];
 
       config = {
+        misc.disable_splash_rendering = true;
+
         # Keep XWayland pixels sharp; use application settings to scale their UI.
         xwayland.force_zero_scaling = true;
 
@@ -356,7 +360,7 @@ in
         {
           output = "desc:ASUSTek COMPUTER INC ASUS MB14AHD R2LMTF057922";
           mode = "1920x1080";
-          position = "4614x1440";
+          position = "4560x1440";
           scale = 1;
         }
         {
@@ -491,7 +495,9 @@ in
         (bind "SUPER + f" "hl.dsp.window.fullscreen()")
         (bind "SUPER + a" "hl.plugin.hy3.change_focus(\"raise\")")
         (bind "SUPER + tab" (fullscreenFocus ''hl.plugin.hy3.focus_tab({ direction = "r", wrap = true })''))
-        (bind "SUPER + SHIFT + tab" (fullscreenFocus ''hl.plugin.hy3.focus_tab({ direction = "l", wrap = true })''))
+        (bind "SUPER + SHIFT + tab" (
+          fullscreenFocus ''hl.plugin.hy3.focus_tab({ direction = "l", wrap = true })''
+        ))
 
         (bindWithFlags "SUPER + mouse:272" "hl.dsp.window.drag()" { mouse = true; })
         (bindWithFlags "SUPER + mouse:273" "hl.dsp.window.resize()" { mouse = true; })
@@ -578,6 +584,7 @@ in
   services.hyprpaper = {
     enable = true;
     package = null;
+    settings.splash = false;
     settings.wallpaper = {
       monitor = "";
       path = toString wallpaper;
