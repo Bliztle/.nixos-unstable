@@ -418,11 +418,13 @@ in
           position = "4778x0";
           scale = 1;
         }
+        # Default to mirror laptop
         {
           output = "";
           mode = "preferred";
           position = "auto";
           scale = "auto";
+          mirror = "desc:BOE NE135A1M-NY1";
         }
       ];
 
