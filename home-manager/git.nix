@@ -48,12 +48,8 @@ in
           caamnpf = "!git add -A && git commit --amend --no-edit && git push --force-with-lease";
           ch = "checkout";
           chb = "checkout -b";
-          d = "diff";
-          dh = "diff HEAD";
-          dm = "diff main";
-          do = "diff origin";
-          doh = "diff origin/HEAD";
-          dom = "diff origin/main";
+          d = "diff --minimal";
+          dh = "diff --minimal HEAD";
           del = "branch -d";
           der = "!_gder() { git push origin --delete $1; }; _gder";
           delr = "!_gdelr() { git branch -d $1; git push origin --delete $1; }; _gdelr";
