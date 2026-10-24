@@ -32,13 +32,17 @@
     };
     autoCmd = [
       {
-        event = "FileType";
-        pattern = [ "markdown" "typst" ];
+        # These options belong to windows, so also restore them when a buffer
+        # is displayed in another window after its FileType event has fired.
+        event = [ "FileType" "BufWinEnter" ];
+        pattern = "*";
         callback.__raw = ''
           function()
-            vim.opt_local.wrap = true
-            vim.opt_local.linebreak = true
-            vim.opt_local.breakindent = true
+            if vim.bo.filetype == "markdown" or vim.bo.filetype == "typst" or vim.bo.filetype == "text" then
+              vim.opt_local.wrap = true
+              vim.opt_local.linebreak = true
+              vim.opt_local.breakindent = true
+            end
           end
         '';
       }

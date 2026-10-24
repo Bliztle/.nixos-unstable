@@ -2,6 +2,26 @@
   programs.nixvim = {
     keymaps = [
       {
+        key = "j";
+        mode = [ "n" "x" ];
+        action = "v:count == 0 ? 'gj' : 'j'";
+        options = {
+          expr = true;
+          silent = true;
+          desc = "Down a visual line (buffer lines with a count)";
+        };
+      }
+      {
+        key = "k";
+        mode = [ "n" "x" ];
+        action = "v:count == 0 ? 'gk' : 'k'";
+        options = {
+          expr = true;
+          silent = true;
+          desc = "Up a visual line (buffer lines with a count)";
+        };
+      }
+      {
         key = "<C-h>";
         mode = "n";
         action = "<C-w>h";
