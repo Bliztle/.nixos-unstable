@@ -1,5 +1,6 @@
 {
   pkgs,
+  stablePkgs,
   inputs,
   conf,
   lib,
@@ -62,18 +63,12 @@
     wdisplays
     wl-mirror
     zathura
-    (zotero.override (
-      pkgs.lib.optionalAttrs (zotero.version == "10.0.4") {
-        # Zotero 10.0.4 requires Gecko 140.15; nixpkgs supplies 153.
-        firefox-esr-153-unwrapped =
-          inputs.zotero-runtime.legacyPackages.${pkgs.stdenv.hostPlatform.system}.firefox-esr-140-unwrapped;
-      }
-    ))
+    stablePkgs.zotero
     signal-desktop
     prismlauncher # Minecraft Launcher
     bitwarden-desktop
     kdePackages.dolphin # File manager
-    cutter # Hydra but i like it more
+    stablePkgs.cutter # Hydra but i like it more
     remmina # RDP Client
 
     # Games
@@ -120,7 +115,7 @@
 
     # Work
     teams-for-linux
-    azure-cli
+    stablePkgs.azure-cli
 
     # Fonts
     # nerdfonts

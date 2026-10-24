@@ -1,6 +1,7 @@
 {
   config,
   inputs,
+  stablePkgs,
   ...
 }: {
   imports = [inputs.home-manager.nixosModules.default];
@@ -9,7 +10,7 @@
   home-manager.useUserPackages = true;
 
   home-manager.extraSpecialArgs = {
-    inherit inputs;
+    inherit inputs stablePkgs;
     # Make NixOs configuration available to home-manager modules
     conf = config;
   };

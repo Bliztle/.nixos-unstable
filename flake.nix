@@ -1,12 +1,10 @@
 {
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
+    nixpkgs-stable.url = "https://channels.nixos.org/nixos-26.05/nixexprs.tar.xz";
     home-manager.url = "github:nix-community/home-manager";
     sops-nix.url = "github:Mic92/sops-nix";
     nixvim.url = "github:nix-community/nixvim";
-
-    # Existing runtime snapshot for Zotero's temporary Gecko 140 workaround.
-    zotero-runtime.url = "github:NixOS/nixpkgs/0968519e14f7aa7d3e9b389682bd74d2b51c8ce8";
 
     tapaal.url = "github:bliztle/tapaal-nix";
     llm-agents.url = "github:numtide/llm-agents.nix";

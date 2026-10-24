@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  stablePkgs,
+  ...
+}:
 let
   fgaGrammar = pkgs.tree-sitter.buildGrammar {
     language = "fga";
@@ -167,7 +172,7 @@ in
           # }; # Rust
           bicep = {
             enable = true;
-            package = pkgs.bicep-lsp;
+            package = stablePkgs.bicep-lsp;
           };
         };
         keymaps = {
