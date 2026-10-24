@@ -149,6 +149,9 @@ in
     package = null;
     portalPackage = null;
     configType = "lua";
+    extraConfig = ''
+      dofile("${./workspace-placement.lua}").setup(hl)
+    '';
     systemd.enable = false;
 
     plugins = [

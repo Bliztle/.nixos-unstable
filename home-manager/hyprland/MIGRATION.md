@@ -4,12 +4,18 @@ Hyprland is the primary desktop design target for Framework. The existing Sway
 session remains available as a functional fallback, but exact visual parity in
 shared applications and services does not gate improvements to Hyprland.
 
+Workspace placement uses Lua events for laptop, portable, and work setups.
+At work, the Lenovo above the laptop receives 2–3 and its partner receives 1;
+4 stays on the laptop. With the portable, 1–2 stay on the laptop and 3–4 move
+to the portable. Missing work destinations fall back to the laptop. Other
+external setups remain unmanaged. Manual moves persist until the relevant
+assignment changes or the config reloads. Native monitor rules place new
+workspaces directly on their destination, without delayed relocation when
+switching. The 300 ms delay applies only to setup changes; laptop-only mode
+disables the monitor rules and imposes no assignments.
+
 The Framework Hyprland session intentionally does not yet reproduce every part
 of the Sway/SwayFX configuration:
-
-- Ordered fallback workspace-to-monitor mappings are not ported. Hyprland
-  accepts one monitor per workspace rule and has no built-in equivalent to the
-  current list of alternative connected outputs.
 - Corne, Glove80, touchscreen, and stylus overrides are deferred until their
   exact names can be collected from `hyprctl devices`. Only global keyboard and
   touchpad settings are included initially.
