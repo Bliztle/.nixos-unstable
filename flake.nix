@@ -2,6 +2,8 @@
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
     nixpkgs-stable.url = "https://channels.nixos.org/nixos-26.05/nixexprs.tar.xz";
+    # Zotero 10.0.4 with its ESR 140 runtime; keep until stable catches up.
+    zotero-pinned.url = "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1097682.02c087f3fe67/nixexprs.tar.xz";
     home-manager.url = "github:nix-community/home-manager";
     sops-nix.url = "github:Mic92/sops-nix";
     nixvim.url = "github:nix-community/nixvim";

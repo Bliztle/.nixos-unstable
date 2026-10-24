@@ -19,6 +19,7 @@
     ./waybar
     ./wofi
     ./syncthing.nix
+    ./zotero.nix
   ]
   ++ lib.optionals conf.custom.hyprland.enable [ ./hyprland ];
 
@@ -63,7 +64,6 @@
     wdisplays
     wl-mirror
     zathura
-    stablePkgs.zotero
     signal-desktop
     prismlauncher # Minecraft Launcher
     bitwarden-desktop
