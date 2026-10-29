@@ -592,7 +592,8 @@ in
     settings.splash = false;
     settings.wallpaper = {
       monitor = "";
-      path = toString wallpaper;
+      # Copy the image into the store and retain it with the configuration.
+      path = "${wallpaper}";
     };
   };
 }
