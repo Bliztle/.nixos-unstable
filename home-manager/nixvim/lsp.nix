@@ -25,6 +25,13 @@ in
   };
 
   programs.nixvim = {
+    # Include HLint suggestions (INFO/HINT), not just compiler errors.
+    diagnostic.settings = {
+      virtual_text = { source = "if_many"; };
+      severity_sort = true;
+      float.source = "if_many";
+    };
+    lsp.inlayHints.enable = true;
     filetype.extension = {
       fga = "fga";
       openfga = "fga";
@@ -62,6 +69,7 @@ in
       dap.enable = true;
       dap-ui.enable = true;
       lint.enable = true;
+      haskell-tools.enable = true;
       luasnip.enable = true;
       lsp-lines = {
         enable = false;
@@ -226,6 +234,10 @@ in
               action = "hover";
               desc = "Hover";
             };
+            "<leader>K" = {
+              action = "signature_help";
+              desc = "Signature Help";
+            };
             "<leader>rn" = {
               action = "rename";
               desc = "Rename Symbol";
@@ -286,11 +298,16 @@ in
       };
     };
     extraPlugins = with pkgs.vimPlugins; [
-      haskell-tools-nvim
       # Package both the custom parser and its upstream highlighting queries.
       (pkgs.neovimUtils.grammarToPlugin fgaGrammar)
     ];
     keymaps = [
+      {
+        key = "<leader>hc";
+        mode = "n";
+        action.__raw = "vim.lsp.codelens.run";
+        options.desc = "Run Haskell Code Lens";
+      }
       {
         key = "<leader>hs";
         mode = "n";
@@ -308,7 +325,4 @@ in
       }
     ];
   };
-  home.packages = with pkgs; [
-    haskellPackages.haskell-language-server
-  ];
 }

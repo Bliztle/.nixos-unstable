@@ -1,4 +1,8 @@
 { pkgs, ... }:
+let
+  # Keep GHC and HLS together. HLS's HLint plugin does not support GHC 9.10.
+  haskell = pkgs.haskell.packages.ghc912;
+in
 {
   programs.direnv = {
     enable = true;
@@ -9,6 +13,7 @@
 
   programs.vscode.enable = true;
   programs.codex.enable = true;
+  programs.nixvim.plugins.haskell-tools.hlsPackage = haskell.haskell-language-server;
 
   home.packages = with pkgs; [
     android-studio
@@ -25,12 +30,9 @@
     # C#
     dotnet-sdk_8
     # Haskell
-    (haskellPackages.ghcWithPackages (
-      pkgs: with pkgs; [
-        stack
-        cabal-install
-      ]
-    ))
+    haskell.ghc
+    stack
+    cabal-install
     # Java
     # jdk17
     jdk21
