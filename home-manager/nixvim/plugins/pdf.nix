@@ -41,26 +41,24 @@ in
       pdfreader
     ];
 
-    extraConfigLua = ''
-      require("snacks").setup({
-        image = {
-          enabled = true,
-          formats = {
-            "png",
-            "jpg",
-            "jpeg",
-            "gif",
-            "bmp",
-            "webp",
-            "tiff",
-            "heic",
-            "avif",
-            "icns",
-          },
-          math = { enabled = false },
-        },
-      })
+    plugins.snacks.settings.image = {
+      enabled = true;
+      formats = [
+        "png"
+        "jpg"
+        "jpeg"
+        "gif"
+        "bmp"
+        "webp"
+        "tiff"
+        "heic"
+        "avif"
+        "icns"
+      ];
+      math.enabled = false;
+    };
 
+    extraConfigLua = ''
       require("pdfreader").setup()
     '';
   };

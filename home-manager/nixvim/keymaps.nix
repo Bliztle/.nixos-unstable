@@ -2,6 +2,44 @@
   programs.nixvim = {
     keymaps = [
       {
+        key = "s";
+        mode = [ "n" "x" ];
+        action.__raw = "function() require('flash').jump() end";
+        options.desc = "Flash jump";
+      }
+      {
+        # Keep visual S available for nvim-surround.
+        key = "S";
+        mode = "n";
+        action.__raw = "function() require('flash').treesitter() end";
+        options.desc = "Flash Treesitter selection";
+      }
+      {
+        # Avoid nvim-surround's ys/ds/cs and yS/cS sequences.
+        key = "z";
+        mode = "o";
+        action.__raw = "function() require('flash').jump() end";
+        options.desc = "Flash jump";
+      }
+      {
+        key = "Z";
+        mode = "o";
+        action.__raw = "function() require('flash').treesitter() end";
+        options.desc = "Flash Treesitter selection";
+      }
+      {
+        key = "r";
+        mode = "o";
+        action.__raw = "function() require('flash').remote() end";
+        options.desc = "Flash remote action";
+      }
+      {
+        key = "R";
+        mode = [ "o" "x" ];
+        action.__raw = "function() require('flash').treesitter_search() end";
+        options.desc = "Flash Treesitter search";
+      }
+      {
         key = "j";
         mode = [ "n" "x" ];
         action = "v:count == 0 ? 'gj' : 'j'";

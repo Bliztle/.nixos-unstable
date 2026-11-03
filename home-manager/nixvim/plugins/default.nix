@@ -19,6 +19,16 @@
   programs.nixvim = {
     extraPlugins = [ pkgs.vimPlugins.teamtype ];
     plugins = {
+      which-key.enable = true;
+      fidget.enable = true;
+      flash.enable = true;
+      snacks = {
+        enable = true;
+        settings.indent = {
+          enabled = true;
+          scope.enabled = true;
+        };
+      };
       neo-tree = {
         enable = true;
         settings.filesystem.filtered_items.always_show = [
