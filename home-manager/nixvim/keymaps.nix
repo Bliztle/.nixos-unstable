@@ -2,6 +2,44 @@
   programs.nixvim = {
     keymaps = [
       {
+        key = "<C-/>";
+        mode = "n";
+        action = "gcc";
+        options = {
+          remap = true;
+          desc = "Toggle comment line";
+        };
+      }
+      {
+        # Traditional terminals encode Ctrl+/ as Ctrl+_.
+        key = "<C-_>";
+        mode = "n";
+        action = "gcc";
+        options = {
+          remap = true;
+          desc = "Toggle comment line";
+        };
+      }
+      {
+        key = "<C-/>";
+        mode = "x";
+        action = "gc";
+        options = {
+          remap = true;
+          desc = "Toggle comments on selected lines";
+        };
+      }
+      {
+        # Traditional terminals encode Ctrl+/ as Ctrl+_.
+        key = "<C-_>";
+        mode = "x";
+        action = "gc";
+        options = {
+          remap = true;
+          desc = "Toggle comments on selected lines";
+        };
+      }
+      {
         key = "s";
         mode = [ "n" "x" ];
         action.__raw = "function() require('flash').jump() end";
