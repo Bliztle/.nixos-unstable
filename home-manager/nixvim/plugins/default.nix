@@ -31,6 +31,7 @@
       };
       neo-tree = {
         enable = true;
+        settings.filesystem.use_libuv_file_watcher = true;
         settings.filesystem.filtered_items.always_show = [
           ".nix"
           ".github"
