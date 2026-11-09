@@ -392,6 +392,12 @@ in
           scale = 1;
         }
         {
+          output = "desc:Lenovo Group Limited P27q-20 V909LNMR";
+          mode = "2560x1440@60";
+          position = "4778x0";
+          scale = 1;
+        }
+        {
           output = "desc:Lenovo Group Limited P27q-20 V909LNVD";
           mode = "2560x1440@60";
           position = "4778x0";
@@ -520,6 +526,11 @@ in
             450
           ];
           pin = true;
+        }
+        {
+          name = "dolphin-float";
+          match.class = "^org[.]kde[.]dolphin$";
+          float = true;
         }
         {
           name = "pavucontrol-float";
