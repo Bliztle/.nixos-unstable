@@ -10,16 +10,16 @@
             auto_trigger = true;
             keymap = {
               accept = "<C-CR>";
-              dismiss = "<ESC>";
+              # dismiss = "<ESC>"; # Remove dismiss as accept does not conflict with any other actions
             };
           };
-          news = {
-            enabled = true;
-            keymap = {
-              accept_and_goto = "<C-CR>";
-              dismiss = "<ESC>";
-            };
-          };
+          # news = {
+          #   enabled = true;
+          #   keymap = {
+          #     accept_and_goto = "<C-CR>";
+          #     dismiss = "<ESC>";
+          #   };
+          # };
         };
       };
       avante = {
