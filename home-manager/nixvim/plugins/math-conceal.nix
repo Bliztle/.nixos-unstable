@@ -23,6 +23,10 @@ in
         pname = "math-conceal.nvim";
         inherit version src;
         postPatch = ''
+          # The parser aliases numbered list markers to "-" too; only conceal literal bullets.
+          substituteInPlace lua/math-conceal/symbols/typst/conceal_delim.scm \
+            --replace-fail '"-" @conceal' \
+            '"-" @conceal (#eq? @conceal "-")'
           # Keep commas between call arguments, including adjacent math formulas.
           substituteInPlace lua/math-conceal/symbols/typst/conceal_math.scm \
             --replace-fail '(#set! @punctuation.delimiter conceal " ")' \
